@@ -1,5 +1,6 @@
 package com.mycompany.sistemamatriculas;
 
+import java.io.IOException;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -7,6 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 
 
 
@@ -32,7 +34,7 @@ public class App extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Sistema de matriculas");
         
-        initRootLLayout();
+        initRootLayout();
     }
     
     public void initRootLayout() {
@@ -48,6 +50,23 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
+    
+    /*public void MenuPrincipal
+
+    public void showPersonOverview() {
+        try {
+            // Cargar vista persona
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("/vista/VistaPersona.fxml"));
+            AnchorPane personOverview = (AnchorPane) loader.load();
+            
+            // Poner vista persona en el centro de principal
+            rootLayout.setCenter(personOverview);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
 
     public static void main(String[] args) {
         launch();
