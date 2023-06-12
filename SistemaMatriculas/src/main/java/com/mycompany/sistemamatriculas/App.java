@@ -1,20 +1,19 @@
 package com.mycompany.sistemamatriculas;
 
-import java.io.IOException;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-
+import java.io.IOException;
+import static javafx.application.Application.launch;
+import javafx.scene.layout.BorderPane;
 
 /**
  * JavaFX App
  */
+
 public class App extends Application {
 
     private Stage primaryStage;
@@ -22,15 +21,6 @@ public class App extends Application {
     
     @Override
     public void start(Stage stage) {
-        /*var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
-
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(new StackPane(label), 640, 480);
-        stage.setScene(scene);
-        stage.show();*/
-        
-        
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Sistema de matriculas");
         
@@ -41,7 +31,7 @@ public class App extends Application {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("/view/rootLayout.fxml"));
-            rootLayout = loader.load();
+            rootLayout = (BorderPane) loader.load();
 
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
@@ -51,22 +41,11 @@ public class App extends Application {
         }
     }
     
-    /*public void MenuPrincipal
-
-    public void showPersonOverview() {
-        try {
-            // Cargar vista persona
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("/vista/VistaPersona.fxml"));
-            AnchorPane personOverview = (AnchorPane) loader.load();
-            
-            // Poner vista persona en el centro de principal
-            rootLayout.setCenter(personOverview);
-            
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
+    public void MenuPrincipal(){
+        // Cargar menu principal
+        FXMLLoader loader = new FXMLLoader();
+        //loader.setLocation(App)
+    }
 
     public static void main(String[] args) {
         launch();
@@ -75,31 +54,34 @@ public class App extends Application {
 }
 
 
-/*
 
-public class App extends Application {
-    
-    private Stage primaryStage;
-    private BorderPane rutaraiz;
 
-    public void initRutaRaiz(){
-        try{
-            // Declarar e iniciar la ruta raiz
-            FXMLLoader loader = new FXMLLoader;
-        }catch()
-    }
-    
+
+
+
+
+/*public class App extends Application {
+
+    private static Scene scene;
+
     @Override
-    public void start(Stage stage) {
-        this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Sistema de matriculas");
-        
+    public void start(Stage stage) throws IOException {
+        scene = new Scene(loadFXML("primary"), 640, 480);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    static void setRoot(String fxml) throws IOException {
+        scene.setRoot(loadFXML(fxml));
+    }
+
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
         launch();
     }
 
-}
-
-*/
+}*/
