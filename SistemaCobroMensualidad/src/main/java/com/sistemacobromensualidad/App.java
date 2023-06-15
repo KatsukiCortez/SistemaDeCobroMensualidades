@@ -23,19 +23,15 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         this.primaryStage = stage;
         this.primaryStage.setTitle("Sistema de cobro de mensualidades");
-    
-        /*scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
-        stage.show();*/
         
         initRootLayout();
-        
+        showMenuPrincipal();
     }
     
     public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("/com.sistemacobromensualidad.view/rootLayout.fxml"));
+            loader.setLocation(App.class.getResource("rootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
 
             Scene scene = new Scene(rootLayout);
@@ -49,7 +45,7 @@ public class App extends Application {
     public void showMenuPrincipal(){
         try{
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("/com.sistemacobromensualidad.view/MenuPrincipal.fxml"));
+            loader.setLocation(App.class.getResource("MenuPrincipal.fxml"));
             AnchorPane menuPrincipal = (AnchorPane) loader.load();
         
             rootLayout.setCenter(menuPrincipal);
