@@ -1,5 +1,7 @@
 package com.sistemacobromensualidad;
 
+import com.sistemacobromensualidad.ControlMatricula;
+import com.sistemacobromensualidad.modelo.Student;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -116,7 +118,7 @@ public class App extends Application {
         }
     }
     
-    public boolean showMatricula(){
+    public boolean showMatricula(Student student){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
@@ -132,9 +134,10 @@ public class App extends Application {
             dialogStage.setScene(scene);
             
             //Usar el controlador
-            /*ControladorGradoSeccion controller = loader.getController();
+            ControlMatricula controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            */
+            controller.setStudent(student);
+            
             //Mostrar hasta que se cierre la ventana
             dialogStage.showAndWait();
             

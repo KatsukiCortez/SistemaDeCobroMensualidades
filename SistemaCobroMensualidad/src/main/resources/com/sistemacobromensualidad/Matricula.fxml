@@ -8,10 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="263.0" layoutY="14.0" text="Matricula">
+      <Label layoutX="264.0" layoutY="10.0" text="Matricula">
          <font>
             <Font size="18.0" />
          </font>
@@ -23,26 +22,26 @@
       <Label layoutX="301.0" layoutY="41.0" text="Nombres:" />
       <Label layoutX="301.0" layoutY="69.0" text="Apellido Materno:" />
       <Label layoutX="301.0" layoutY="95.0" text="Dirección:" />
-      <TextField layoutX="144.0" layoutY="37.0" />
-      <TextField layoutX="144.0" layoutY="65.0" />
-      <TextField layoutX="144.0" layoutY="91.0" />
-      <TextField layoutX="144.0" layoutY="116.0" />
-      <TextField layoutX="402.0" layoutY="37.0" />
-      <TextField layoutX="402.0" layoutY="65.0" />
-      <TextField layoutX="402.0" layoutY="91.0" />
+      <TextField fx:id="tfdoc" layoutX="144.0" layoutY="37.0" />
+      <TextField fx:id="tfappat" layoutX="144.0" layoutY="65.0" />
+      <TextField fx:id="tffecha" layoutX="144.0" layoutY="91.0" />
+      <TextField fx:id="tftele" layoutX="144.0" layoutY="116.0" />
+      <TextField fx:id="tfnombre" layoutX="402.0" layoutY="37.0" />
+      <TextField fx:id="tfapmat" layoutX="402.0" layoutY="65.0" />
+      <TextField fx:id="tfdire" layoutX="402.0" layoutY="91.0" />
       <Button layoutX="135.0" layoutY="164.0" mnemonicParsing="false" text="Nuevo" />
       <Button layoutX="219.0" layoutY="164.0" mnemonicParsing="false" text="Guardar" />
       <Button layoutX="328.0" layoutY="164.0" mnemonicParsing="false" text="Modificar" />
       <Button layoutX="425.0" layoutY="164.0" mnemonicParsing="false" text="Cancelar" />
-      <TableView layoutX="44.0" layoutY="200.0" prefHeight="200.0" prefWidth="560.0" AnchorPane.leftAnchor="15.0">
+      <TableView fx:id="studentTable" layoutX="44.0" layoutY="200.0" prefHeight="200.0" prefWidth="560.0" AnchorPane.leftAnchor="15.0">
         <columns>
-          <TableColumn text="Documento" />
-          <TableColumn text="Nombres" />
-            <TableColumn text="Apellido Paterno" />
-            <TableColumn text="Apellido Materno" />
-            <TableColumn text="Fecha Nacimiento" />
-            <TableColumn text="Dirección" />
-            <TableColumn text="Telefono" />
+          <TableColumn fx:id="DocColum" text="Documento" />
+          <TableColumn fx:id="NomColum" text="Nombres" />
+            <TableColumn fx:id="AppatColum" text="Apellido Paterno" />
+            <TableColumn fx:id="ApmatColum" text="Apellido Materno" />
+            <TableColumn fx:id="FechaColum" text="Fecha Nacimiento" />
+            <TableColumn fx:id="DireColum" text="Dirección" />
+            <TableColumn fx:id="TeleColum" text="Telefono" />
         </columns>
       </TableView>
    </children>
