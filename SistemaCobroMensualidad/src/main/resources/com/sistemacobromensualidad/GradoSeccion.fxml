@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="180.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+<AnchorPane id="AnchorPane" prefHeight="180.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorGradoSeccion">
    <children>
       <Label layoutX="29.0" layoutY="41.0" text="Grado:" />
       <Label layoutX="29.0" layoutY="82.0" text="Sección:" />
@@ -20,16 +19,16 @@
                <buttons>
                   <HBox>
                      <children>
-                        <RadioButton mnemonicParsing="false" text="1°">
+                        <RadioButton fx:id="Grado1" mnemonicParsing="false" text="1°">
                            <toggleGroup>
-                              <ToggleGroup fx:id="grado" />
+                              <ToggleGroup fx:id="Grado" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="2°" toggleGroup="$grado" />
-                        <RadioButton mnemonicParsing="false" text="3°" toggleGroup="$grado" />
-                        <RadioButton mnemonicParsing="false" text="4°" toggleGroup="$grado" />
-                        <RadioButton mnemonicParsing="false" text="5°" toggleGroup="$grado" />
-                        <RadioButton mnemonicParsing="false" text="6°" toggleGroup="$grado" />
+                        <RadioButton fx:id="Grado2" mnemonicParsing="false" text="2°" toggleGroup="$Grado" />
+                        <RadioButton fx:id="Grado3" mnemonicParsing="false" text="3°" toggleGroup="$Grado" />
+                        <RadioButton fx:id="Grado4" mnemonicParsing="false" text="4°" toggleGroup="$Grado" />
+                        <RadioButton fx:id="Grado5" mnemonicParsing="false" text="5°" toggleGroup="$Grado" />
+                        <RadioButton fx:id="Grado6" mnemonicParsing="false" text="6°" toggleGroup="$Grado" />
                      </children>
                   </HBox>
                </buttons>
@@ -40,19 +39,18 @@
          <buttons>
             <HBox>
                <children>
-                  <RadioButton mnemonicParsing="false" text="A">
+                  <RadioButton fx:id="SecciA" mnemonicParsing="false" text="A">
                      <toggleGroup>
-                        <ToggleGroup fx:id="seccion" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton mnemonicParsing="false" text="B" toggleGroup="$seccion" />
-                  <RadioButton mnemonicParsing="false" text="C" toggleGroup="$seccion" />
-                  <RadioButton mnemonicParsing="false" text="D" toggleGroup="$seccion" />
+                        <ToggleGroup fx:id="Seccion" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="SecciB" mnemonicParsing="false" text="B" toggleGroup="$Seccion" />
+                  <RadioButton fx:id="SecciC" mnemonicParsing="false" text="C" toggleGroup="$Seccion" />
+                  <RadioButton fx:id="SecciD" mnemonicParsing="false" text="D" />
                </children>
             </HBox>
          </buttons>
       </ButtonBar>
-      <Button layoutX="230.0" layoutY="125.0" mnemonicParsing="false" text="Confirmar" />
-      <Button layoutX="312.0" layoutY="125.0" mnemonicParsing="false" text="Volver" />
+      <Button layoutX="230.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleConfirmar" text="Confirmar" />
+      <Button layoutX="312.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
    </children>
 </AnchorPane>

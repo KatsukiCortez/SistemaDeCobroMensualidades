@@ -1,13 +1,45 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.sistemacobromensualidad;
 
-/**
- *
- * @author burro
- */
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.stage.Stage;
+
 public class ControladorMenuPrincipal {
+    // Referencia a la aplicacion principal
+    private App app;
+    private Stage dialogStage;
+    private boolean okClicked = false;
     
+    // Constructor
+    public ControladorMenuPrincipal() {
+    }
+    
+    @FXML
+    private void initialize(){
+    }
+    
+    public void setApp(App app) {
+        this.app = app;
+    }
+    
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
+    }
+    
+    @FXML
+    private void handleEstudiantes() {
+        app.showGradoSeccion();
+    }
+
+    @FXML
+    private void handleMatriculas() {
+        // Acciones al hacer clic en el botón "Matriculas"
+        System.out.println("Hiciste clic en el botón 'Matriculas'");
+    }
+
+    @FXML
+    private void handleSalir() {
+        // Acciones al hacer clic en el botón "Salir"
+        System.exit(0); // Sale de la aplicación
+    }
 }
