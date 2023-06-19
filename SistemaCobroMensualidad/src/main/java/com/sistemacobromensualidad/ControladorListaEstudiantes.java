@@ -5,6 +5,11 @@ import javafx.fxml.FXML;
 public class ControladorListaEstudiantes {
     //Constructor
     public ControladorListaEstudiantes(){}
+    private App app;
+    
+    public void setApp(App app) {
+        this.app = app;
+    }
     
     @FXML
     private void initialize(){
@@ -12,7 +17,8 @@ public class ControladorListaEstudiantes {
     
     @FXML
     private void handleVerCuotas() {
-        //app.showGradoSeccion();.
+        //app.showGradoSeccion();
+        app.showCuotas();
     }
     
     @FXML
