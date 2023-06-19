@@ -12,7 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 
 /**
- * JavaFX App
+ * JavaFX App VERSION ESTABLE
  */
 public class App extends Application {
 
