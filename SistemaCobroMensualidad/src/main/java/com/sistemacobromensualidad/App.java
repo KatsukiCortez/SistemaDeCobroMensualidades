@@ -115,6 +115,35 @@ public class App extends Application {
         }
     }
     
+    public boolean showMatricula(){
+        try {
+            // Cargar el FXML
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("Matricula.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+        
+            // Crear la ventana ejecutable
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Matricula");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            
+            //Usar el controlador
+            /*ControladorGradoSeccion controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            */
+            //Mostrar hasta que se cierre la ventana
+            dialogStage.showAndWait();
+            
+            //return controller.isOkClicked();
+            return false;
+        }catch(IOException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
     
     public static void main(String[] args) {
         launch(args);

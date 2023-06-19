@@ -33,8 +33,7 @@ public class ControladorMenuPrincipal {
 
     @FXML
     private void handleMatriculas() {
-        // Acciones al hacer clic en el botón "Matriculas"
-        System.out.println("Hiciste clic en el botón 'Matriculas'");
+        app.showMatricula();
     }
 
     @FXML
