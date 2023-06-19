@@ -12,7 +12,7 @@ public class ControladorListaEstudiantes {
     
     @FXML
     private void handleVerCuotas() {
-        //app.showGradoSeccion();..git 
+        //app.showGradoSeccion();.
     }
     
     @FXML
