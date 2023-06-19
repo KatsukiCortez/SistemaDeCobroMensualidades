@@ -89,10 +89,10 @@ public class ControladorGradoSeccion {
     
     @FXML
     private void handleConfirmar() {
-        /*grado = getGrado();
-        seccion = getSeccion();*/
+        grado = getGrado();
+        seccion = getSeccion();
         dialogStage.close();
-        app.showListaEstudiantes();
+        app.showListaEstudiantes(grado,seccion);
     }
 
     @FXML

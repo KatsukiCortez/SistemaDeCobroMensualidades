@@ -1,13 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.sistemacobromensualidad;
 
-/**
- *
- * @author burro
- */
+import javafx.fxml.FXML;
+
 public class ControladorListaEstudiantes {
+    //Constructor
+    public ControladorListaEstudiantes(){}
+    
+    @FXML
+    private void initialize(){
+    }
+    
+    @FXML
+    private void handleVerCuotas() {
+        //app.showGradoSeccion();
+    }
+    
+    @FXML
+    private void handleVolver() {
+        //app.showGradoSeccion();
+    }
+    
     
 }

@@ -88,7 +88,7 @@ public class App extends Application {
         }
     }
     
-    public void showListaEstudiantes(/*int grado, char seccion*/){
+    public void showListaEstudiantes(int grado, char seccion){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
