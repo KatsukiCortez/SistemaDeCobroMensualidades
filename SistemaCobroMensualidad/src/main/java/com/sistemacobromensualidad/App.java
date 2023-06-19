@@ -147,7 +147,7 @@ public class App extends Application {
     }
     
     //para mostrar la ventana de cuotas
-    public boolean showCuotas(){
+    public void showCuotas(){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
@@ -156,25 +156,20 @@ public class App extends Application {
         
             // Crear la ventana ejecutable
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("VISTA DE DATOS Y CUOTAS");
+            dialogStage.setTitle("XXXX");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
             
             //Usar el controlador
-            ControladorGradoSeccion controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.setApp(this);
+            /*ControladorCuotas controller = loader.getController();
+            controller.setDialogStage(dialogStage);*/
             
             //Mostrar hasta que se cierre la ventana
             dialogStage.showAndWait();
-            
-            //return controller.isOkClicked();
-            return false;
-        }catch(IOException e){
+        } catch(IOException e){
             e.printStackTrace();
-            return false;
         }
     }
     
