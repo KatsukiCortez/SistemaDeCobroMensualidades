@@ -75,6 +75,7 @@ public class App extends Application {
             //Usar el controlador
             ControladorGradoSeccion controller = loader.getController();
             controller.setDialogStage(dialogStage);
+            controller.setApp(this);
             
             //Mostrar hasta que se cierre la ventana
             dialogStage.showAndWait();
@@ -87,7 +88,7 @@ public class App extends Application {
         }
     }
     
-    public void showListaEstudiantes(int grado, char seccion){
+    public void showListaEstudiantes(/*int grado, char seccion*/){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();

@@ -14,10 +14,13 @@ public class ControladorGradoSeccion {
     private RadioButton Grado1,Grado2,Grado3,Grado4,Grado5,Grado6;
     @FXML
     private RadioButton SecciA,SecciB,SecciC,SecciD;
-    
+   
     private App app;
+
+    public void setApp(App app) {
+        this.app = app;
+    }
     private Stage dialogStage;
-    
     private boolean okClicked = false;
     private int grado;
     private char seccion;
@@ -86,11 +89,10 @@ public class ControladorGradoSeccion {
     
     @FXML
     private void handleConfirmar() {
-        
         /*grado = getGrado();
-        seccion = getSeccion();
+        seccion = getSeccion();*/
         dialogStage.close();
-        app.showListaEstudiantes(grado,seccion);*/
+        app.showListaEstudiantes();
     }
 
     @FXML
