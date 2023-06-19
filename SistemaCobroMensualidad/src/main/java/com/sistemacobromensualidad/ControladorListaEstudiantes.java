@@ -7,11 +7,17 @@ import javafx.event.ActionEvent;
 public class ControladorListaEstudiantes {
     //Constructor
     public ControladorListaEstudiantes(){}
-    private App app;
+
+    private Stage dialogStage;
     //private boolean okClicked = false;
     
+    private App app;
+
     public void setApp(App app) {
         this.app = app;
+    }
+    public void setDialogStage(Stage dialogStage) {
+        this.dialogStage = dialogStage;
     }
     
     @FXML
@@ -26,8 +32,6 @@ public class ControladorListaEstudiantes {
     
     @FXML
     private void handleVolver() {
-        //app.showGradoSeccion();
+        dialogStage.close();
     }
-    
-    
 }
