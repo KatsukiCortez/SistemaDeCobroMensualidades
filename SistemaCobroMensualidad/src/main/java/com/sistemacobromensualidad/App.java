@@ -118,7 +118,7 @@ public class App extends Application {
         }
     }
     
-    public boolean showMatricula(Student student){
+    public boolean showMatricula(/*Student student*/){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
@@ -135,8 +135,9 @@ public class App extends Application {
             
             //Usar el controlador
             ControlMatricula controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.setStudent(student);
+            //controller.setDialogStage(dialogStage);
+            //controller.setApp(this);*/
+
             
             //Mostrar hasta que se cierre la ventana
             dialogStage.showAndWait();
