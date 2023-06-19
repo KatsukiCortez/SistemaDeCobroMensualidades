@@ -45,7 +45,7 @@
                      </toggleGroup></RadioButton>
                   <RadioButton fx:id="SecciB" mnemonicParsing="false" text="B" toggleGroup="$Seccion" />
                   <RadioButton fx:id="SecciC" mnemonicParsing="false" text="C" toggleGroup="$Seccion" />
-                  <RadioButton fx:id="SecciD" mnemonicParsing="false" text="D" />
+                  <RadioButton fx:id="SecciD" mnemonicParsing="false" text="D" toggleGroup="$Seccion" />
                </children>
             </HBox>
          </buttons>
