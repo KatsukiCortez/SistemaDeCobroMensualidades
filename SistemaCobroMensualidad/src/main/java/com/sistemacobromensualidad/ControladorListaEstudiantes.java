@@ -31,6 +31,11 @@ public class ControladorListaEstudiantes {
     }
     
     @FXML
+    private void handleRegistrarPago(){
+        app.showRegistrarPago();
+    }
+    
+    @FXML
     private void handleVolver() {
         dialogStage.close();
     }

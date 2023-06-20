@@ -9,6 +9,10 @@ import com.sistemacobromensualidad.App;
 import javafx.scene.control.Alert;
 
 public class ControladorGradoSeccion {
+    private Stage dialogStage;
+    private boolean okClicked = false;
+    private int grado;
+    private char seccion;
     
     @FXML
     private RadioButton Grado1,Grado2,Grado3,Grado4,Grado5,Grado6;
@@ -20,10 +24,7 @@ public class ControladorGradoSeccion {
     public void setApp(App app) {
         this.app = app;
     }
-    private Stage dialogStage;
-    private boolean okClicked = false;
-    private int grado;
-    private char seccion;
+    
     
     // Constructor
     public ControladorGradoSeccion() {
