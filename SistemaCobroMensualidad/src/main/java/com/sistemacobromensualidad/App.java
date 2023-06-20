@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -221,6 +223,25 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
+    
+    public void showReport(){
+        try{
+            JasperReport jasperReport = null;
+            JasperPrint jasperPrint = null;
+            JasperDesign jasperDesign = null;
+            Map parameters = new HashMap();
+            jasperDesign = JRXmlLoader.load("E:\\Katsuki\\jasper\\src\\main\\java\\ListaPersonas.jrxml");
+            jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JRBeanCollectionDataSource(Datos.generarDatosPersona()));
+            JasperExportManager.exportReportToPdfFile(jasperPrint,"target\\ListaPersonas.pdf");
+            JasperViewer.viewReport(jasperPrint);
+            
+        } catch (Exception ex){
+            System.out.println("EXCEPTION: "+ ex);
+        }
+    }
+    
+    
     
     // Implementamos el Metodo Main de la clase App el cual se usara para iniciar la
     // Aplicacion JavaFX 
