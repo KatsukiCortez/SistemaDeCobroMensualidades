@@ -237,10 +237,10 @@ public class App extends Application {
             JasperPrint jasperPrint = null;
             JasperDesign jasperDesign = null;
             Map parameters = new HashMap();
-            jasperDesign = JRXmlLoader.load("E:\\Katsuki\\jasper\\src\\main\\java\\ListaPersonas.jrxml");
+            jasperDesign = JRXmlLoader.load("Reporte.jrxml");
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
             jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JRBeanCollectionDataSource(Datos.generarDatosPersona()));
-            JasperExportManager.exportReportToPdfFile(jasperPrint,"target\\ListaPersonas.pdf");
+            JasperExportManager.exportReportToPdfFile(jasperPrint,"ListaPersonas.pdf");
             JasperViewer.viewReport(jasperPrint);
             
         } catch (Exception ex){
