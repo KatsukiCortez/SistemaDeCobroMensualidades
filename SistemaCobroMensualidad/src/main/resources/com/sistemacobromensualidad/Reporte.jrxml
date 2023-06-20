@@ -61,7 +61,7 @@ REPORTE DE COBRO DE MESUALIDADES DE ALUMNO]]></text>
 			<textField>
 				<reportElement x="227" y="40" width="100" height="30" uuid="9bc7be0c-252a-4187-b34f-cc6c0d6e0b03"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{appat}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="405" y="40" width="100" height="30" uuid="b63e1878-7c9d-4991-829b-7022f954b4a7"/>
