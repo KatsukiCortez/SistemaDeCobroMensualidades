@@ -239,7 +239,7 @@ public class App extends Application {
             Map parameters = new HashMap();
             jasperDesign = JRXmlLoader.load("Reporte.jrxml");
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
-            jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JRBeanCollectionDataSource(Datos.generarDatosPersona()));
+            //jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JRBeanCollectionDataSource(Datos.generarDatosPersona()));
             JasperExportManager.exportReportToPdfFile(jasperPrint,"ListaPersonas.pdf");
             JasperViewer.viewReport(jasperPrint);
             
