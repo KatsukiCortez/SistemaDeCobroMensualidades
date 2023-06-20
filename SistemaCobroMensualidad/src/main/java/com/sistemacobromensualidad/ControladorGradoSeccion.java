@@ -13,25 +13,10 @@ public class ControladorGradoSeccion {
     private boolean okClicked = false;
     private int grado;
     private char seccion;
-    
-    @FXML
-    private RadioButton Grado1,Grado2,Grado3,Grado4,Grado5,Grado6;
-    @FXML
-    private RadioButton SecciA,SecciB,SecciC,SecciD;
-   
     private App app;
 
     public void setApp(App app) {
         this.app = app;
-    }
-    
-    
-    // Constructor
-    public ControladorGradoSeccion() {
-    }
-    
-    @FXML
-    private void initialize(){
     }
     
     public void setDialogStage(Stage dialogStage) {
@@ -40,6 +25,19 @@ public class ControladorGradoSeccion {
     
     public boolean isOkClicked(){
         return okClicked;
+    }
+    
+    @FXML
+    private RadioButton Grado1,Grado2,Grado3,Grado4,Grado5,Grado6;
+    @FXML
+    private RadioButton SecciA,SecciB,SecciC,SecciD;
+   
+    // Constructor
+    public ControladorGradoSeccion() {
+    }
+    
+    @FXML
+    private void initialize(){
     }
     
     public int getGrado() {

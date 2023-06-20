@@ -211,9 +211,9 @@ public class App extends Application {
             dialogStage.setScene(scene);
             
             //Usar el controlador
-            /*ControladorCuotas controller = loader.getController();
+            ControladorRegistrarPago controller = loader.getController();
             controller.setDialogStage(dialogStage);
-            controller.setApp(this);*/
+            controller.setApp(this);
             
             //Mostrar hasta que se cierre la ventana
             dialogStage.showAndWait();

@@ -11,6 +11,7 @@ public class ControladorListaEstudiantes {
     private Stage dialogStage;
     //private boolean okClicked = false;
     
+    //Referenciar la aplicacion principal
     private App app;
 
     public void setApp(App app) {
