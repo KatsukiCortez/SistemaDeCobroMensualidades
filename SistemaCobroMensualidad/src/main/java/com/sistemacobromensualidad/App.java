@@ -1,5 +1,6 @@
+// Esta es el menu Principal
 package com.sistemacobromensualidad;
-
+// Importamos las librerias y dependencias
 import com.sistemacobromensualidad.ControlMatricula;
 import com.sistemacobromensualidad.modelo.Student;
 import javafx.application.Application;
@@ -14,24 +15,28 @@ import javafx.stage.Modality;
 /**
  * JavaFX App VERSION ESTABLE
  */
+// Extendemos la clase applicacion
 public class App extends Application {
-
+    // Definimos las Variables
     private Stage primaryStage;
     private BorderPane rootLayout;
     
     private static Scene scene;
-
+    
+    // Con esto se ejecutara el programa al inicio
     @Override
     public void start(Stage stage) throws IOException {
         this.primaryStage = stage;
         this.primaryStage.setTitle("Sistema de cobro de mensualidades");
-        
+        // Hacemos la llamada a los metodos
         initRootLayout();
         showMenuPrincipal();
     }
-    
+    // Implementamos el metodo initRootLayout y cargamos el diceño principal
+    // de la interfaz grafica
     public void initRootLayout() {
         try {
+            // Establecemos la Ubicacion
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("rootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
@@ -43,13 +48,16 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
-
+    // Implementamos el metodo showMenuPrincipal para cargar el contenido del
+    // Menú principal dentro de la interfaz anterior
     public void showMenuPrincipal(){
         try{
+            // Establecemos la Ubicacion
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("MenuPrincipal.fxml"));
             AnchorPane menuPrincipal = (AnchorPane) loader.load();
-        
+            
+            // Establecemos como Interfaz Central
             rootLayout.setCenter(menuPrincipal);
             
             ControladorMenuPrincipal controlador = loader.getController();
@@ -58,7 +66,9 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
-    
+    // Implementamos el metodo showGradoSeccion donde cargaremos el FXML GradiSeccion
+    // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Stage
+    // hazta que se cierre
     public boolean showGradoSeccion(){
         try {
             // Cargar el FXML
@@ -89,7 +99,9 @@ public class App extends Application {
             return false;
         }
     }
-    
+    // Implementamos el metodo showListaEstudiantes donde cargaremos el FXML ListaEstudiantes
+    // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Stage
+    // hazta que se cierre
     public void showListaEstudiantes(int grado, char seccion){
         try {
             // Cargar el FXML
@@ -114,11 +126,14 @@ public class App extends Application {
             dialogStage.showAndWait();
             
         }catch(IOException e){
+            // Atrapamos los Errores
             e.printStackTrace();
         
         }
     }
-    
+    // Implementamos el metodo showMatricula donde cargaremos el FXML ListaEstudiantes
+    // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Matricula
+    // hazta que se cierre
     public boolean showMatricula(/*Student student*/){
         try {
             // Cargar el FXML
@@ -150,8 +165,9 @@ public class App extends Application {
             return false;
         }
     }
-    
-    //para mostrar la ventana de cuotas
+    // Implementamos el metodo showCuotas donde cargaremos el FXML ListaEstudiantes
+    // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Cuotas
+    // hazta que se cierre
     public void showCuotas(){
         try {
             // Cargar el FXML
@@ -178,8 +194,10 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
-    
+    // Implementamos el Metodo Main de la clase App el cual se usara para iniciar la
+    // Aplicacion JavaFX 
     public static void main(String[] args) {
+        // Iniciamos la Aplicacion JAVA FX
         launch(args);
     }
 
