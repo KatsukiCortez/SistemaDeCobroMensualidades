@@ -14,6 +14,19 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 
+
+import java.util.HashMap;
+import java.util.Map;
+
+//JASPER
+/*import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;*/
+
+
+
 /**
  * JavaFX App VERSION ESTABLE
  */
@@ -239,6 +252,24 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
+    
+    public void showReport(){
+        /*try{
+            JasperReport jasperReport = null;
+            JasperPrint jasperPrint = null;
+            JasperDesign jasperDesign = null;
+            Map parameters = new HashMap();
+            jasperDesign = JRXmlLoader.load("Reporte.jrxml");
+            jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JRBeanCollectionDataSource(studentData));
+            JasperExportManager.exportReportToPdfFile(jasperPrint,"ListaPersonas.pdf");
+            JasperViewer.viewReport(jasperPrint);
+            
+        } catch (Exception ex){
+            System.out.println("EXCEPTION: "+ ex);
+        }*/
+    }
+
     
     // Implementamos el Metodo Main de la clase App el cual se usara para iniciar la
     // Aplicacion JavaFX 
