@@ -8,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -20,6 +22,22 @@ public class App extends Application {
     // Definimos las Variables
     private Stage primaryStage;
     private BorderPane rootLayout;
+    // Datos tontos
+    private ObservableList<Student> studentData = FXCollections.observableArrayList();
+    public App(){
+        // Agregando datos
+        studentData.add(new Student("Jose Luis","Ramirez","Huanca"));
+        studentData.add(new Student("Jose Alberto","Castillo","Rodriguez"));
+        studentData.add(new Student("Paco","Maram","Lindsey"));
+        studentData.add(new Student("Roberto","Alvez","Garcia"));
+        studentData.add(new Student("Edward","Roque","Pena"));
+        studentData.add(new Student("Javier Nilson","De la cruz","Tintaya"));
+    }
+    
+    public ObservableList<Student> getStudenData(){
+        return studentData;
+    }
+
     
     private static Scene scene;
     

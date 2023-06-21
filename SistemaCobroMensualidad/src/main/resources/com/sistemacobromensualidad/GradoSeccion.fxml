@@ -19,7 +19,7 @@
                <buttons>
                   <HBox>
                      <children>
-                        <RadioButton fx:id="Grado1" mnemonicParsing="false" text="1°">
+                        <RadioButton fx:id="Grado1" mnemonicParsing="false" selected="true" text="1°">
                            <toggleGroup>
                               <ToggleGroup fx:id="Grado" />
                            </toggleGroup>
@@ -39,7 +39,7 @@
          <buttons>
             <HBox>
                <children>
-                  <RadioButton fx:id="SecciA" mnemonicParsing="false" text="A">
+                  <RadioButton fx:id="SecciA" mnemonicParsing="false" selected="true" text="A">
                      <toggleGroup>
                         <ToggleGroup fx:id="Seccion" />
                      </toggleGroup></RadioButton>

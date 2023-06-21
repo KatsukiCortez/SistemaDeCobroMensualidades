@@ -1,10 +1,34 @@
 package com.sistemacobromensualidad;
 
+import com.sistemacobromensualidad.modelo.Student;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class ControladorListaEstudiantes {
+    @FXML
+    private TableView<Student> studentTabla;
+    @FXML
+    private TableColumn<Student, String> nombreColumna;
+    @FXML
+    private TableColumn<Student, String> appatColumna;
+    @FXML
+    private TableColumn<Student, String> apmatColumna;
+    @FXML
+    private Label lblNombre;
+    @FXML
+    private Label lblApellido;
+    @FXML
+    private Label lblFecha;
+    @FXML
+    private Label lblGrado;
+    @FXML
+    private Label lblGenero;
+    
+    
     //Constructor
     public ControladorListaEstudiantes(){}
 

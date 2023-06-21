@@ -92,6 +92,9 @@ public class ControladorGradoSeccion {
         seccion = getSeccion();
         dialogStage.close();
         app.showListaEstudiantes(grado,seccion);
+        /*if(grado == "0" && seccion == ' '){
+            dialogStage.close();
+        }*/
     }
 
     @FXML
