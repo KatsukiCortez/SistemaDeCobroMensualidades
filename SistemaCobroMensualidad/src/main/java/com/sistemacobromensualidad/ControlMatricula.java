@@ -1,7 +1,9 @@
 package com.sistemacobromensualidad;
 
 import com.sistemacobromensualidad.modelo.Student;
+
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -94,6 +96,9 @@ public class ControlMatricula {
         return okClicked;
     }
     
+    /**
+     * Para poder limpiar los campos de texto
+     */
     public void Limpiador(){
         tfdoc.setText("");
         tfnombre.setText("");
@@ -104,6 +109,32 @@ public class ControlMatricula {
         tftele.setText("");
     }
     
+    /**
+     * Llamado cuando el usuario hace click en Nuevo
+     */
+    @FXML
+    private void buttonNuevo(){
+        Limpiador();
+    }
+    
+    /**
+     * Llamado cuando el usuario hace clik en guardar
+     */
+    @FXML
+    private void buttonGuardar(){
+        if(isInputValid()){
+            student.setDocumento(Integer.parseInt(tfdoc.getText()));
+            student.setNombre(tfnombre.getText());
+            student.setAppat(tfappat.getText());
+            student.setApmat(tfapmat.getText());
+            student.setFecha(tffecha.getText());
+            student.setDireccion(tfdire.getText());
+            student.setTelefono(Integer.parseInt(tftele.getText()));
+            
+            okClicked = true;
+            dialogStage.close();
+        }
+    }
     
     /**
      * Llama cuando el usuario hace click en cancel
@@ -148,6 +179,29 @@ public class ControlMatricula {
         }
         if(tftele.getText() == null || tftele.getText().length() == 0){
             errorMessage += "No es valido el telefono\n";
+        }else{
+            //Intenta analizar el Telefono en un entero
+            try{
+                Integer.parseInt(tftele.getText());
+            }catch(NumberFormatException e){
+                errorMessage += "No es valido el Telefono (Debe ser un numero entero)!\n";
+            }
+        }
+        
+        if (errorMessage.length() == 0){
+            return true;
+        } else {
+            //Muestra el mensaje de error
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.initOwner(dialogStage);
+            alert.setTitle("Campos no Validos");
+            alert.setHeaderText("Por fvor corrija los campos de texto no validos");
+            alert.setContentText(errorMessage);
+            
+            alert.showAndWait();
+            return false;
+        }
     }
     
 }
+    
