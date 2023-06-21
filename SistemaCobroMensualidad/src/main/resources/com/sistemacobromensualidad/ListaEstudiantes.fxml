@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorListaEstudiantes">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="800.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorListaEstudiantes">
    <children>
-      <SplitPane dividerPositions="0.8768844221105527" layoutX="120.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.8768844221105527" layoutX="120.0" layoutY="14.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="400.0" styleClass="background" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
@@ -21,7 +21,7 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                            <children>
-                              <TableView layoutX="-94.0" layoutY="-104.0" prefHeight="344.0" prefWidth="234.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TableView layoutX="-94.0" layoutY="-104.0" prefHeight="344.0" prefWidth="234.0" styleClass="label-bright" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
                                   <TableColumn minWidth="100.0" prefWidth="94.0" text="Nombres" />
                                   <TableColumn minWidth="130.0" prefWidth="56.0" text="Apellido Paterno" />
@@ -29,7 +29,7 @@
                               </TableView>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" styleClass="background">
                            <children>
                               <Label layoutX="14.0" layoutY="14.0" text="Datos completos" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
                                  <font>
@@ -56,12 +56,12 @@
                                     <Label text="Fecha de nacimiento:" GridPane.rowIndex="3" />
                                     <Label text="Grado que cursa:" GridPane.rowIndex="4" />
                                     <Label text="Genero" GridPane.rowIndex="5" />
-                                    <Label text="Label" GridPane.columnIndex="1" />
-                                    <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                    <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                    <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                    <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <Label styleClass="label-bright" text="Label" GridPane.columnIndex="1" />
+                                    <Label styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                    <Label styleClass="label-bright" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                                  </children>
                               </GridPane>
                            </children>
@@ -70,11 +70,11 @@
                   </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="background">
                <children>
-                  <Button layoutX="609.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleVerCuotas" text="Ver cuotas" />
-                  <Button layoutX="720.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
-                  <Button layoutX="483.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleRegistrarPago" text="Registrar pago" />
+                  <Button layoutX="562.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleVerCuotas" text="Ver cuotas" />
+                  <Button layoutX="688.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
+                  <Button layoutX="412.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleRegistrarPago" text="Registrar pago" />
                </children>
             </AnchorPane>
         </items>
