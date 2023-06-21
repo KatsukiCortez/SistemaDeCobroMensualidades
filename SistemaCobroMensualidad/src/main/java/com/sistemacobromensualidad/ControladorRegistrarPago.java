@@ -25,6 +25,12 @@ public class ControladorRegistrarPago {
     }
     
     @FXML
+    private void handleReporte(){
+        //dialogStage.close();
+        //se invoca a el metodo de generación de reporte
+    }
+    
+    @FXML
     private void handleVolver(){
         dialogStage.close();
     }
