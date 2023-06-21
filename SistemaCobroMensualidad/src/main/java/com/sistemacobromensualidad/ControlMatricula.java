@@ -1,13 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.sistemacobromensualidad;
 
-/**
- *
- * @author burro
- */
+/*import javafx.faxml.FXML;
+import javafx.scente.control.TextField;
+import com.sistemacobromensualidad.Student;*/
+
 public class ControlMatricula {
     
 }
