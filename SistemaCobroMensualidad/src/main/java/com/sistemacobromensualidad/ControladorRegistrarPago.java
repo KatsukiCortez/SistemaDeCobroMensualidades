@@ -28,7 +28,8 @@ public class ControladorRegistrarPago {
     private void handleReporte(){
         //dialogStage.close();
         //se invoca a el metodo de generación de reporte
-        app.showReport();
+        //app.showReport();
+        System.out.println("hola");
     }
     
     @FXML
