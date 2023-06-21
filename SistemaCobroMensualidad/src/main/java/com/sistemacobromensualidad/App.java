@@ -1,7 +1,7 @@
 // Esta es el menu Principal
 package com.sistemacobromensualidad;
 // Importamos las librerias y dependencias
-import com.sistemacobromensualidad.modelo.Student;
+import com.sistemacobromensualidad.modelo.StudentJavaFX;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,25 +22,25 @@ public class App extends Application {
     // Definimos las Variables
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private ObservableList<Student> studentData = FXCollections.observableArrayList();
+    private ObservableList<StudentJavaFX> studentData = FXCollections.observableArrayList();
     
     public App(){
         // Agregando datos
-        studentData.add(new Student("Jose Luis","Ramirez","Huanca"));
-        studentData.add(new Student("Jose Alberto","Castillo","Rodriguez"));
-        studentData.add(new Student("Paco","Maram","Lindsey"));
-        studentData.add(new Student("Roberto","Alvez","Garcia"));
-        studentData.add(new Student("Edward","Roque","Pena"));
-        studentData.add(new Student("Javier Nilson","De la cruz","Tintaya"));
-        studentData.add(new Student("Jose Luis","Ramirez","Huanca"));
-        studentData.add(new Student("Jose Alberto","Castillo","Rodriguez"));
-        studentData.add(new Student("Paco","Maram","Lindsey"));
-        studentData.add(new Student("Roberto","Alvez","Garcia"));
-        studentData.add(new Student("Edward","Roque","Pena"));
-        studentData.add(new Student("Javier Nilson","De la cruz","Tintaya"));
+        studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
+        studentData.add(new StudentJavaFX("Jose Alberto","Castillo","Rodriguez"));
+        studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
+        studentData.add(new StudentJavaFX("Roberto","Alvez","Garcia"));
+        studentData.add(new StudentJavaFX("Edward","Roque","Pena"));
+        studentData.add(new StudentJavaFX("Javier Nilson","De la cruz","Tintaya"));
+        studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
+        studentData.add(new StudentJavaFX("Jose Alberto","Castillo","Rodriguez"));
+        studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
+        studentData.add(new StudentJavaFX("Roberto","Alvez","Garcia"));
+        studentData.add(new StudentJavaFX("Edward","Roque","Pena"));
+        studentData.add(new StudentJavaFX("Javier Nilson","De la cruz","Tintaya"));
     }
     
-    public ObservableList<Student> getStudenData(){
+    public ObservableList<StudentJavaFX> getStudenData(){
         return studentData;
     }
 
@@ -159,7 +159,7 @@ public class App extends Application {
     // Implementamos el metodo showMatricula donde cargaremos el FXML ListaEstudiantes
     // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Matricula
     // hazta que se cierre
-    public boolean showMatricula(/*Student student*/){
+    public boolean showMatricula(/*StudentJavaFX student*/){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();

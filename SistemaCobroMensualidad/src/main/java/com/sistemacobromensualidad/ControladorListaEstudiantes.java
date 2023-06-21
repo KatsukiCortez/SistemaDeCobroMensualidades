@@ -1,6 +1,6 @@
 package com.sistemacobromensualidad;
 
-import com.sistemacobromensualidad.modelo.Student;
+import com.sistemacobromensualidad.modelo.StudentJavaFX;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
@@ -9,11 +9,11 @@ import javafx.scene.control.TableView;
 
 public class ControladorListaEstudiantes {
     @FXML
-    private TableView<Student> studentTabla;
+    private TableView<StudentJavaFX> studentTabla;
     @FXML
-    private TableColumn<Student, String> nombreColumna;
+    private TableColumn<StudentJavaFX, String> nombreColumna;
     @FXML
-    private TableColumn<Student, String> appatColumna;
+    private TableColumn<StudentJavaFX, String> appatColumna;
     
     @FXML
     private Label lblNombre;
@@ -66,7 +66,7 @@ public class ControladorListaEstudiantes {
     }
     
     // MostrarDatos de los estudiantes
-    private void showStudentDetails(Student student){
+    private void showStudentDetails(StudentJavaFX student){
         if(student != null){
             lblNombre.setText(student.getNombre());
             lblApPat.setText(student.getAppat());
