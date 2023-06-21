@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 public class ControlMatricula {
@@ -24,6 +25,7 @@ public class ControlMatricula {
     private TableColumn<Student, String> DireColum;
     @FXML
     private TableColumn<Student, Integer> TeleColum;
+
     
     @FXML
     private TextField tfdoc;
@@ -40,8 +42,14 @@ public class ControlMatricula {
     @FXML
     private TextField tffecha;
     
+    @FXML
+    private RadioButton rbfem;
+    @FXML
+    private RadioButton rbmas;
+    
     private Student student;
     private Stage dialogStage;
+    private boolean okClicked = false;
     
     /**
      * Inicializa la clase control.
@@ -76,4 +84,70 @@ public class ControlMatricula {
         tfdire.setText(student.getDireccion());
         tftele.setText(Integer.toString(student.getTelefono()));
     }
+    
+    /**
+     * Retorna trues si el ususario hace click, caso contrario es falso
+     * 
+     * @return
+     */
+    public boolean isOkClicked(){
+        return okClicked;
+    }
+    
+    public void Limpiador(){
+        tfdoc.setText("");
+        tfnombre.setText("");
+        tfappat.setText("");
+        tfapmat.setText("");
+        tffecha.setText("");
+        tfdire.setText("");
+        tftele.setText("");
+    }
+    
+    
+    /**
+     * Llama cuando el usuario hace click en cancel
+     */
+    @FXML
+    private void buttonCancel(){
+        dialogStage.close();
+    }
+    
+    /**
+     * Valida cuando el usuario ingresa en los campos de texto.
+     * 
+     * @return retorna verdadero si el ingreso en verdadero
+     */
+    private boolean isInputValid(){
+        String errorMessage = "";
+        
+        if(tfdoc.getText() == null || tfdoc.getText().length() == 0){
+            errorMessage += "No es valido el Documento\n";
+        }else{
+            //Intenta analizar el documento en un entero
+            try{
+                Integer.parseInt(tfdoc.getText());
+            }catch(NumberFormatException e){
+                errorMessage += "No es valido el Documento, (Debe ser numero entero)!\n";
+            }
+        }
+        if(tfappat.getText() == null || tfappat.getText().length() == 0){
+            errorMessage += "No es valido el Apellido Paterno\n";
+        }
+        if(tfapmat.getText() == null || tfapmat.getText().length() == 0){
+            errorMessage += "No es valido el Apellido Materno\n";
+        }
+        if(tffecha.getText() == null || tfdoc.getText().length() == 0){
+            errorMessage += "No es valido la fecha de nacimiento\n";
+        }
+        if(tfdire.getText() == null || tfdire.getText().length() == 0){
+            errorMessage += "No es valido la Direccion\n";
+        }
+        if(tfnombre.getText() == null || tfnombre.getText().length() == 0){
+            errorMessage += "No es valido el Nombre\n";
+        }
+        if(tftele.getText() == null || tftele.getText().length() == 0){
+            errorMessage += "No es valido el telefono\n";
+    }
+    
 }
