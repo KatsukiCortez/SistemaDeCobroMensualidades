@@ -72,7 +72,6 @@ public class Student {
         return appat.get();
     }
     
-
     public StringProperty ApmatProperty() {
         return apmat;
     }
@@ -83,7 +82,6 @@ public class Student {
         return apmat.get();
     }
     
-
     public StringProperty FechaProperty() {
         return fecha;
     }
@@ -94,7 +92,6 @@ public class Student {
         return fecha.get();
     }
     
-
     public StringProperty DireccionProperty() {
         return direccion;
     }
@@ -105,7 +102,6 @@ public class Student {
         return direccion.get();
     }
     
-
     public IntegerProperty TelefonoProperty() {
         return telefono;
     }

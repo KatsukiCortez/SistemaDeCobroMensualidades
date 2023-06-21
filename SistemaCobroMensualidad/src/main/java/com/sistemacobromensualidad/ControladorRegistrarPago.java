@@ -1,17 +1,18 @@
-
 package com.sistemacobromensualidad;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
-//import javafx.event.ActionEvent;
 
+public class ControladorRegistrarPago {
+    //Constructor
+    public ControladorRegistrarPago(){}
 
-public class ControladorCuotas {
-
-    public ControladorCuotas() {
-    }
-    private App app;
     private Stage dialogStage;
+    //private boolean okClicked = false;
+    
+    //Referenciar la aplicacion principal
+    private App app;
+
     public void setApp(App app) {
         this.app = app;
     }
@@ -20,7 +21,11 @@ public class ControladorCuotas {
     }
     
     @FXML
-    private void handleVolver() {
+    private void initialize(){
+    }
+    
+    @FXML
+    private void handleVolver(){
         dialogStage.close();
     }
 }

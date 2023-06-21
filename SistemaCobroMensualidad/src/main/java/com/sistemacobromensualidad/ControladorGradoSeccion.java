@@ -9,28 +9,14 @@ import com.sistemacobromensualidad.App;
 import javafx.scene.control.Alert;
 
 public class ControladorGradoSeccion {
-    
-    @FXML
-    private RadioButton Grado1,Grado2,Grado3,Grado4,Grado5,Grado6;
-    @FXML
-    private RadioButton SecciA,SecciB,SecciC,SecciD;
-   
-    private App app;
-
-    public void setApp(App app) {
-        this.app = app;
-    }
     private Stage dialogStage;
     private boolean okClicked = false;
     private int grado;
     private char seccion;
-    
-    // Constructor
-    public ControladorGradoSeccion() {
-    }
-    
-    @FXML
-    private void initialize(){
+    private App app;
+
+    public void setApp(App app) {
+        this.app = app;
     }
     
     public void setDialogStage(Stage dialogStage) {
@@ -39,6 +25,19 @@ public class ControladorGradoSeccion {
     
     public boolean isOkClicked(){
         return okClicked;
+    }
+    
+    @FXML
+    private RadioButton Grado1,Grado2,Grado3,Grado4,Grado5,Grado6;
+    @FXML
+    private RadioButton SecciA,SecciB,SecciC,SecciD;
+   
+    // Constructor
+    public ControladorGradoSeccion() {
+    }
+    
+    @FXML
+    private void initialize(){
     }
     
     public int getGrado() {
@@ -93,6 +92,9 @@ public class ControladorGradoSeccion {
         seccion = getSeccion();
         dialogStage.close();
         app.showListaEstudiantes(grado,seccion);
+        /*if(grado == "0" && seccion == ' '){
+            dialogStage.close();
+        }*/
     }
 
     @FXML
