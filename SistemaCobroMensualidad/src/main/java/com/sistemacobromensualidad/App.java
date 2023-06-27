@@ -1,8 +1,7 @@
 // Esta es el menu Principal
 package com.sistemacobromensualidad;
 // Importamos las librerias y dependencias
-import com.sistemacobromensualidad.ControlMatricula;
-import com.sistemacobromensualidad.modelo.Student;
+import com.sistemacobromensualidad.modelo.StudentJavaFX;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -22,30 +22,37 @@ public class App extends Application {
     // Definimos las Variables
     private Stage primaryStage;
     private BorderPane rootLayout;
-    // Datos tontos
-    private ObservableList<Student> studentData = FXCollections.observableArrayList();
+    private ObservableList<StudentJavaFX> studentData = FXCollections.observableArrayList();
+    
     public App(){
         // Agregando datos
-        studentData.add(new Student("Jose Luis","Ramirez","Huanca"));
-        studentData.add(new Student("Jose Alberto","Castillo","Rodriguez"));
-        studentData.add(new Student("Paco","Maram","Lindsey"));
-        studentData.add(new Student("Roberto","Alvez","Garcia"));
-        studentData.add(new Student("Edward","Roque","Pena"));
-        studentData.add(new Student("Javier Nilson","De la cruz","Tintaya"));
+        studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
+        studentData.add(new StudentJavaFX("Jose Alberto","Castillo","Rodriguez"));
+        studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
+        studentData.add(new StudentJavaFX("Roberto","Alvez","Garcia"));
+        studentData.add(new StudentJavaFX("Edward","Roque","Pena"));
+        studentData.add(new StudentJavaFX("Javier Nilson","De la cruz","Tintaya"));
+        studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
+        studentData.add(new StudentJavaFX("Jose Alberto","Castillo","Rodriguez"));
+        studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
+        studentData.add(new StudentJavaFX("Roberto","Alvez","Garcia"));
+        studentData.add(new StudentJavaFX("Edward","Roque","Pena"));
+        studentData.add(new StudentJavaFX("Javier Nilson","De la cruz","Tintaya"));
     }
     
-    public ObservableList<Student> getStudenData(){
+    public ObservableList<StudentJavaFX> getStudenData(){
         return studentData;
     }
 
-    
-    private static Scene scene;
-    
     // Con esto se ejecutara el programa al inicio
     @Override
     public void start(Stage stage) throws IOException {
         this.primaryStage = stage;
         this.primaryStage.setTitle("Sistema de cobro de mensualidades");
+        
+        //Agregar icono principal
+        this.primaryStage.getIcons().add(new Image(App.class.getResourceAsStream("/img/matricula.png")));
+        
         // Hacemos la llamada a los metodos
         initRootLayout();
         showMenuPrincipal();
@@ -56,7 +63,7 @@ public class App extends Application {
         try {
             // Establecemos la Ubicacion
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("rootLayout.fxml"));
+            loader.setLocation(App.class.getResource("/fxml/rootLayout.fxml"));
             rootLayout = (BorderPane) loader.load();
 
             Scene scene = new Scene(rootLayout);
@@ -72,7 +79,7 @@ public class App extends Application {
         try{
             // Establecemos la Ubicacion
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("MenuPrincipal.fxml"));
+            loader.setLocation(App.class.getResource("/fxml/MenuPrincipal.fxml"));
             AnchorPane menuPrincipal = (AnchorPane) loader.load();
             
             // Establecemos como Interfaz Central
@@ -91,7 +98,7 @@ public class App extends Application {
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("GradoSeccion.fxml"));
+            loader.setLocation(App.class.getResource("/fxml/GradoSeccion.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
         
             // Crear la ventana ejecutable
@@ -124,7 +131,7 @@ public class App extends Application {
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("ListaEstudiantes.fxml"));
+            loader.setLocation(App.class.getResource("/fxml/ListaEstudiantes.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
         
             // Crear la ventana ejecutable
@@ -152,11 +159,11 @@ public class App extends Application {
     // Implementamos el metodo showMatricula donde cargaremos el FXML ListaEstudiantes
     // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Matricula
     // hazta que se cierre
-    public boolean showMatricula(/*Student student*/){
+    public boolean showMatricula(/*StudentJavaFX student*/){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("Matricula.fxml"));
+            loader.setLocation(App.class.getResource("/fxml/Matricula.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
         
             // Crear la ventana ejecutable
@@ -190,7 +197,7 @@ public class App extends Application {
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("Cuotas.fxml"));
+            loader.setLocation(App.class.getResource("/fxml/Cuotas.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
         
             // Crear la ventana ejecutable
@@ -217,7 +224,7 @@ public class App extends Application {
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("RegistrarPago.fxml"));
+            loader.setLocation(App.class.getResource("/fxml/RegistrarPago.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
         
             // Crear la ventana ejecutable
@@ -238,6 +245,10 @@ public class App extends Application {
         } catch(IOException e){
             e.printStackTrace();
         }
+    }
+    
+    public Stage getPrimaryStage(){
+        return primaryStage;
     }
     
     // Implementamos el Metodo Main de la clase App el cual se usara para iniciar la

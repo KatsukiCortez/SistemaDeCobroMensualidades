@@ -1,7 +1,6 @@
 package com.sistemacobromensualidad;
 
-import com.sistemacobromensualidad.modelo.Student;
-
+import com.sistemacobromensualidad.modelo.StudentJavaFX;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
@@ -12,22 +11,21 @@ import javafx.stage.Stage;
 
 public class ControlMatricula {
     @FXML
-    private TableView<Student> studentTable;
+    private TableView<StudentJavaFX> studentTable;
     @FXML
-    private TableColumn<Student, Integer> DccColum;
+    private TableColumn<StudentJavaFX, Integer> DccColum;
     @FXML
-    private TableColumn<Student, String> NomColum;
+    private TableColumn<StudentJavaFX, String> NomColum;
     @FXML
-    private TableColumn<Student, String> AppatColum;
+    private TableColumn<StudentJavaFX, String> AppatColum;
     @FXML
-    private TableColumn<Student, String> ApmatColum;
+    private TableColumn<StudentJavaFX, String> ApmatColum;
     @FXML
-    private TableColumn<Student, String> FechatColum;
+    private TableColumn<StudentJavaFX, String> FechatColum;
     @FXML
-    private TableColumn<Student, String> DireColum;
+    private TableColumn<StudentJavaFX, String> DireColum;
     @FXML
-    private TableColumn<Student, Integer> TeleColum;
-
+    private TableColumn<StudentJavaFX, Integer> TeleColum;
     
     @FXML
     private TextField tfdoc;
@@ -44,12 +42,7 @@ public class ControlMatricula {
     @FXML
     private TextField tffecha;
     
-    @FXML
-    private RadioButton rbfem;
-    @FXML
-    private RadioButton rbmas;
-    
-    private Student student;
+    private StudentJavaFX student;
     private Stage dialogStage;
     private boolean okClicked = false;
     
@@ -75,7 +68,7 @@ public class ControlMatricula {
      * 
      * @param student
      */
-    public void setStudent(Student student){
+    public void setStudent(StudentJavaFX student){
         this.student = student;
         
         tfdoc.setText(Integer.toString(student.getDocumento()));

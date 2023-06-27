@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-public class Student {
+public class StudentJavaFX {
     private final IntegerProperty documento; 
     private final StringProperty nombre;
     private final StringProperty appat;
@@ -17,7 +17,7 @@ public class Student {
     /**
      * Constructor por defecto
      */
-    public Student(){
+    public StudentJavaFX(){
         this(null,null,null);
     }
     
@@ -28,7 +28,7 @@ public class Student {
      * @param appat
      * @param apmat
      */
-    public Student(String nombre, String appat, String apmat){
+    public StudentJavaFX(String nombre, String appat, String apmat){
         this.nombre = new SimpleStringProperty(nombre);
         this.appat = new SimpleStringProperty(appat);
         this.apmat = new SimpleStringProperty(apmat);
