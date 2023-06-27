@@ -1,8 +1,18 @@
 package com.sistemacobromensualidad.control;
 
+import com.sistemacobromensualidad.control.exceptions.EntidadPreexistenteException;
+import com.sistemacobromensualidad.control.exceptions.NoExisteEntidadException;
 import com.sistemacobromensualidad.entidades.Estudiante;
 import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 public class EstudianteControl implements Serializable {
     public EstudianteControl(EntityManagerFactory emf) {
@@ -67,8 +77,8 @@ public class EstudianteControl implements Serializable {
             em.getTransaction().begin();
             Estudiante estudiante;
             try {
-                estudiante = em.getReference(estudiante.class, id);
-                estudiante.getPersonaId();
+                estudiante = em.getReference(Estudiante.class, id);
+                estudiante.getEstudianteId();
             } catch (EntityNotFoundException enfe) {
                 throw new NoExisteEntidadException("El estudiante con el id " + id + " no existe.", enfe);
             }

@@ -2,6 +2,19 @@ package com.sistemacobromensualidad.entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(catalog = "openjpa", schema = "dbo")
@@ -38,7 +51,8 @@ public class Estudiante implements Serializable{
     @Column(length = 15)
     private String telefono;
     
-    public Estudiante(String snombre, String apPaterno, String apMaterno){
+    public Estudiante(Integer estudianteid,String snombre, String apPaterno, String apMaterno){
+        this.estudianteId = estudianteid;
         this.nombre = snombre;
         this.apellidoPaterno = apPaterno;
         this.apellidoMaterno = apMaterno;
@@ -47,9 +61,9 @@ public class Estudiante implements Serializable{
         this.telefono = "999999999";
     }
     
-    public Estudiante(Integer estudianteid){
+    /*public Estudiante(Integer estudianteid){
         this.estudianteId = estudianteid;
-    }
+    }*/
     
     /**
      * @return the estudianteId
