@@ -36,7 +36,7 @@ public class App extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
     // Datos tontos
-    private ObservableList<Student> studentData = FXCollections.observableArrayList();
+    /*private ObservableList<Student> studentData = FXCollections.observableArrayList();
     public App(){
         // Agregando datos
         studentData.add(new Student("Jose Luis","Ramirez","Huanca"));
@@ -49,7 +49,7 @@ public class App extends Application {
     
     public ObservableList<Student> getStudenData(){
         return studentData;
-    }
+    }*/
 
     
     private static Scene scene;
