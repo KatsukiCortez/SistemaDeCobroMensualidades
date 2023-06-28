@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="600.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorCuotas">
+<AnchorPane id="AnchorPane" prefHeight="463.0" prefWidth="600.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorCuotas">
    <children>
-      <Label layoutX="231.0" layoutY="14.0" text="Detalles Avanzandos">
+      <Label layoutX="116.0" layoutY="7.0" styleClass="label-header" stylesheets="@../temas/TemaMarron.css" text="Detalles Avanzandos">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <GridPane layoutX="167.0" layoutY="61.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
+      <GridPane layoutX="15.0" layoutY="75.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="75.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -34,7 +34,7 @@
          <children>
             <Label text="Nombre(s):" />
             <Label text="Apellido paterno:" GridPane.rowIndex="1" />
-            <Label text="Fecha de nacimiento:" GridPane.rowIndex="3" />
+            <Label styleClass="background" stylesheets="@../temas/TemaMarron.css" text="Fecha de nacimiento:" GridPane.rowIndex="3" />
             <Label text="Grado:" GridPane.rowIndex="4" />
             <Label text="Seccion:" GridPane.rowIndex="5" />
             <Label text="Cuotas:" GridPane.rowIndex="6" />
@@ -53,7 +53,7 @@
             <Label fx:id="lblApMat" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Button layoutX="365.0" layoutY="386.0" mnemonicParsing="false" text="Reporte" />
-      <Button layoutX="471.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
+      <Button layoutX="365.0" layoutY="386.0" mnemonicParsing="false" text="Reporte" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="120.0" />
+      <Button layoutX="471.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
    </children>
 </AnchorPane>

@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="682.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorRegistrarPago">
    <children>
-      <Label layoutX="271.0" layoutY="14.0" text="Registrar Pago" AnchorPane.topAnchor="14.0">
+      <Label layoutX="113.0" layoutY="-3.0" styleClass="label-header" stylesheets="@../temas/FondoCssStyle.css" text="Registrar Pago" AnchorPane.topAnchor="-3.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -81,13 +81,13 @@
          <items>
             <TableView prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="194.0" text="Estado de deuda" />
+                <TableColumn prefWidth="191.20001220703125" text="Estado de deuda" />
               </columns>
             </TableView>
          </items>
       </SplitPane>
-      <Button layoutX="385.0" layoutY="411.0" mnemonicParsing="false" text="Pagar" />
-      <Button layoutX="476.0" layoutY="411.0" mnemonicParsing="false" text="Reporte" />
-      <Button layoutX="582.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
+      <Button layoutX="385.0" layoutY="411.0" mnemonicParsing="false" text="Pagar" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="245.0" />
+      <Button layoutX="476.0" layoutY="411.0" mnemonicParsing="false" text="Reporte" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="120.0" />
+      <Button layoutX="582.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
    </children>
 </AnchorPane>
