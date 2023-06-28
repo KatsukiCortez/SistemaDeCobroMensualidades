@@ -45,6 +45,7 @@ public class App extends Application {
     private BorderPane rootLayout;
     private ObservableList<StudentJavaFX> studentData = FXCollections.observableArrayList();
     
+    
     public App(){
         // Agregando datos
         studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
@@ -112,6 +113,49 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
+    
+    public Stage getPrimaryStage(){
+        return primaryStage;
+    }
+    
+    public static void main(String[] args) {
+        /*
+        /*     CONTROL DE ERRORES 
+        Estudiante estudiante;
+        // Creamos la factoría de entity managers y un entity manager
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BaseDatos");
+        
+        EstudianteControl estudianteControl = new EstudianteControl(emf);
+        
+        // Pedimos datos del autor
+        String documento = leerTexto("Introduce documento: ");
+        String nombre = leerTexto("Introduce nombre: ");
+        String apellidos = leerTexto("Introduce apellidos: ");
+        String email = leerTexto("Introduce el correo electrónico: ");
+        int doc = Integer.parseInt(documento);
+        estudiante = new Estudiante(doc, nombre, apellidos, email);
+        try {
+            // Lo añadimos a la BD
+            System.out.println("Documento del alumno: " + estudianteControl.insertar(estudiante));
+        } catch (EntidadPreexistenteException ex) {
+            Logger.getLogger(OpenJPA.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println("============================================");
+
+        List<Estudiante> results = estudianteControl.buscaEstudiantes();
+        for(Estudiante e : results){
+            System.out.println(e);
+        }
+        
+        System.out.println("============================================");
+        // Marcamos el comienzo de la transacción
+        */
+        
+        // Iniciamos la Aplicacion JAVA FX
+        launch(args);
+    }
+    
     // Implementamos el metodo showGradoSeccion donde cargaremos el FXML GradiSeccion
     // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Stage
     // hazta que se cierre
@@ -233,6 +277,7 @@ public class App extends Application {
             ControladorCuotas controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setApp(this);
+            controller.setStudent(student);
             
             //Mostrar hasta que se cierre la ventana
             dialogStage.showAndWait();
@@ -308,43 +353,4 @@ public class App extends Application {
         return texto;
     }
     */
-    
-    public static void main(String[] args) {
-        /*
-        /*     CONTROL DE ERRORES 
-        Estudiante estudiante;
-        // Creamos la factoría de entity managers y un entity manager
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BaseDatos");
-        
-        EstudianteControl estudianteControl = new EstudianteControl(emf);
-        
-        // Pedimos datos del autor
-        String documento = leerTexto("Introduce documento: ");
-        String nombre = leerTexto("Introduce nombre: ");
-        String apellidos = leerTexto("Introduce apellidos: ");
-        String email = leerTexto("Introduce el correo electrónico: ");
-        int doc = Integer.parseInt(documento);
-        estudiante = new Estudiante(doc, nombre, apellidos, email);
-        try {
-            // Lo añadimos a la BD
-            System.out.println("Documento del alumno: " + estudianteControl.insertar(estudiante));
-        } catch (EntidadPreexistenteException ex) {
-            Logger.getLogger(OpenJPA.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        System.out.println("============================================");
-
-        List<Estudiante> results = estudianteControl.buscaEstudiantes();
-        for(Estudiante e : results){
-            System.out.println(e);
-        }
-        
-        System.out.println("============================================");
-        // Marcamos el comienzo de la transacción
-        */
-        
-        // Iniciamos la Aplicacion JAVA FX
-        launch(args);
-    }
-
 }
