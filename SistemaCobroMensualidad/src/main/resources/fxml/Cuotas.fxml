@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorCuotas">
+<AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="600.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorCuotas">
    <children>
-      <Label layoutX="206.0" layoutY="14.0" text="Detalles avanzando">
+      <Label layoutX="231.0" layoutY="14.0" text="Detalles Avanzandos">
          <font>
             <Font size="22.0" />
          </font>
@@ -54,6 +54,6 @@
          </children>
       </GridPane>
       <Button layoutX="365.0" layoutY="386.0" mnemonicParsing="false" text="Reporte" />
-      <Button layoutX="450.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
+      <Button layoutX="471.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
    </children>
 </AnchorPane>
