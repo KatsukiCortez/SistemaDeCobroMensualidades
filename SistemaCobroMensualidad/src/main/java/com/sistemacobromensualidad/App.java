@@ -28,6 +28,13 @@ import java.lang.System.Logger.Level;
 import java.util.List;
 
 
+/*//JASPER
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;*/
+
 /**
  * JavaFX App VERSION ESTABLE
  */
@@ -262,6 +269,23 @@ public class App extends Application {
         } catch(IOException e){
             e.printStackTrace();
         }
+    }
+    
+    public void showReport(){
+        /*try{
+            JasperReport jasperReport = null;
+            JasperPrint jasperPrint = null;
+            JasperDesign jasperDesign = null;
+            Map parameters = new HashMap();
+            jasperDesign = JRXmlLoader.load("Reporte.jrxml");
+            jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            //jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JRBeanCollectionDataSource(getStudenData()));
+            JasperExportManager.exportReportToPdfFile(jasperPrint,"ListaPersonas.pdf");
+            JasperViewer.viewReport(jasperPrint);
+            
+        } catch (Exception ex){
+            System.out.println("EXCEPTION: "+ ex);
+        }*/
     }
     
     public Stage getPrimaryStage(){
