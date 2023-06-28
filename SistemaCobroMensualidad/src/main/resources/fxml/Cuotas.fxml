@@ -53,11 +53,11 @@
             <TextField fx:id="txtFecha" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="txtGrado" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="txtSeccion" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label text="Genero::" GridPane.rowIndex="6" />
+            <Label text="Genero:" GridPane.rowIndex="6" />
             <TextField fx:id="txtGenero" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <Button fx:id="handleReporte" layoutX="365.0" layoutY="386.0" mnemonicParsing="false" text="Reporte" />
-      <Button layoutX="450.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
+      <Button fx:id="handleReporte" layoutX="391.0" layoutY="411.0" mnemonicParsing="false" text="Reporte" />
+      <Button layoutX="488.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
    </children>
 </AnchorPane>
