@@ -3,7 +3,7 @@ package com.sistemacobromensualidad.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.Basic;
+/*import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,18 +14,18 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
+import javax.persistence.TemporalType;*/
+/*
 @Entity
 @Table(catalog = "openjpa", schema = "dbo")
 @NamedQueries({
     @NamedQuery(name = "Estudiante.seleccionaTodos", query = "SELECT e FROM Estudiante e"),
     @NamedQuery(name = "Estudiante.seleccionaPorId", query = "SELECT e FROM Estudiante e WHERE e.estudianteId = :estudianteId"),
     @NamedQuery(name = "Estudiante.seleccionaPorApellidos", query = "SELECT e FROM Estudiante e WHERE e.apellidos = :apellidos")})
-
+*/
 public class Estudiante implements Serializable{
     
-    private static long serialVersionUID = 1L;
+    /*private static long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -64,101 +64,59 @@ public class Estudiante implements Serializable{
     /*public Estudiante(Integer estudianteid){
         this.estudianteId = estudianteid;
     }*/
-    
-    /**
-     * @return the estudianteId
-     */
-    public Integer getEstudianteId() {
+   
+    /*public Integer getEstudianteId() {
         return estudianteId;
     }
 
-    /**
-     * @param estudianteId the estudianteId to set
-     */
     public void setEstudianteId(Integer estudianteId) {
         this.estudianteId = estudianteId;
     }
 
-    /**
-     * @return the nombre
-     */
     public String getNombre() {
         return nombre;
     }
 
-    /**
-     * @param nombre the nombre to set
-     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    /**
-     * @return the apellidoPaterno
-     */
     public String getApellidoPaterno() {
         return apellidoPaterno;
     }
 
-    /**
-     * @param apellidoPaterno the apellidoPaterno to set
-     */
     public void setApellidoPaterno(String apellidoPaterno) {
         this.apellidoPaterno = apellidoPaterno;
     }
 
-    /**
-     * @return the apellidoMaterno
-     */
     public String getApellidoMaterno() {
         return apellidoMaterno;
     }
 
-    /**
-     * @param apellidoMaterno the apellidoMaterno to set
-     */
     public void setApellidoMaterno(String apellidoMaterno) {
         this.apellidoMaterno = apellidoMaterno;
     }
 
-    /**
-     * @return the direccion
-     */
     public String getDireccion() {
         return direccion;
     }
 
-    /**
-     * @param direccion the direccion to set
-     */
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
 
-    /**
-     * @return the fechaNacimiento
-     */
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    /**
-     * @param fechaNacimiento the fechaNacimiento to set
-     */
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    /**
-     * @return the telefono
-     */
     public String getTelefono() {
         return telefono;
     }
 
-    /**
-     * @param telefono the telefono to set
-     */
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
@@ -178,5 +136,5 @@ public class Estudiante implements Serializable{
     @Override
     public String toString(){
         return "com.sistemacobromensualidad.Estudiante[ estudianteId=]" + estudianteId + " ]";
-    }
+    }*/
 }

@@ -1,8 +1,8 @@
 // Esta es el menu Principal
 package com.sistemacobromensualidad;
 // Importamos las librerias y dependencias
-import com.openjpa.OpenJPA;
-import com.sistemacobromensualidad.control.EstudianteControl;
+//import com.openjpa.OpenJPA;
+// import com.sistemacobromensualidad.control.EstudianteControl;
 import com.sistemacobromensualidad.control.exceptions.EntidadPreexistenteException;
 import com.sistemacobromensualidad.entidades.Estudiante;
 import com.sistemacobromensualidad.modelo.StudentJavaFX;
@@ -17,15 +17,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+/*import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;*/
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
-import java.util.Date;
 import java.util.List;
 
 
@@ -174,7 +173,7 @@ public class App extends Application {
     // Implementamos el metodo showMatricula donde cargaremos el FXML ListaEstudiantes
     // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Matricula
     // hazta que se cierre
-    public boolean showMatricula(/*StudentJavaFX student*/){
+    public void showMatricula(/*StudentJavaFX student*/){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
@@ -199,10 +198,10 @@ public class App extends Application {
             dialogStage.showAndWait();
             
             //return controller.isOkClicked();
-            return false;
+            
         }catch(IOException e){
             e.printStackTrace();
-            return false;
+            
         }
     }
     // Implementamos el metodo showCuotas donde cargaremos el FXML ListaEstudiantes
@@ -269,7 +268,7 @@ public class App extends Application {
     // Implementamos el Metodo Main de la clase App el cual se usara para iniciar la
     // Aplicacion JavaFX 
     
-    
+    /*
     static private String leerTexto(String mensaje) {
         String texto;
         try {
@@ -281,10 +280,11 @@ public class App extends Application {
         }
         return texto;
     }
-    
+    */
     
     public static void main(String[] args) {
-        /*     CONTROL DE ERRORES */
+        /*
+        /*     CONTROL DE ERRORES 
         Estudiante estudiante;
         // Creamos la factoría de entity managers y un entity manager
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("BaseDatos");
@@ -314,9 +314,10 @@ public class App extends Application {
         
         System.out.println("============================================");
         // Marcamos el comienzo de la transacción
-        
+        */
         
         // Iniciamos la Aplicacion JAVA FX
         launch(args);
     }
+
 }

@@ -1,6 +1,6 @@
 package com.sistemacobromensualidad.control;
 
-import com.sistemacobromensualidad.control.exceptions.EntidadPreexistenteException;
+/*import com.sistemacobromensualidad.control.exceptions.EntidadPreexistenteException;
 import com.sistemacobromensualidad.control.exceptions.NoExisteEntidadException;
 import com.sistemacobromensualidad.entidades.Estudiante;
 import java.io.Serializable;
@@ -125,4 +125,4 @@ public class EstudianteControl implements Serializable {
             em.close();
         }
     }
-}
+}*/
