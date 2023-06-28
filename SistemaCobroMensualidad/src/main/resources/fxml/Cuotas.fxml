@@ -11,15 +11,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="600.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorCuotas">
    <children>
       <Label layoutX="231.0" layoutY="14.0" text="Detalles Avanzandos">
-=======
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorCuotas">
-   <children>
-      <Label layoutX="206.0" layoutY="14.0" text="Detalles avanzandos">
->>>>>>> Control
          <font>
             <Font size="22.0" />
          </font>
@@ -63,12 +57,7 @@
             <TextField fx:id="txtGenero" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-<<<<<<< HEAD
-      <Button layoutX="365.0" layoutY="386.0" mnemonicParsing="false" text="Reporte" />
-      <Button layoutX="471.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
-=======
       <Button fx:id="handleReporte" layoutX="391.0" layoutY="411.0" mnemonicParsing="false" text="Reporte" />
       <Button layoutX="488.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
->>>>>>> Control
    </children>
 </AnchorPane>

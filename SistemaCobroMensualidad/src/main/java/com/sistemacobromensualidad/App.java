@@ -333,10 +333,6 @@ public class App extends Application {
         }*/
     }
     
-    public Stage getPrimaryStage(){
-        return primaryStage;
-    }
-    
     // Implementamos el Metodo Main de la clase App el cual se usara para iniciar la
     // Aplicacion JavaFX 
     

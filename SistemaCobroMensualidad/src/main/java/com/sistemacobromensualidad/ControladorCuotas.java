@@ -42,6 +42,9 @@ public class ControladorCuotas {
         this.app = app;
     }
     
+    //Constructor
+    public ControladorCuotas(){}
+    
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
