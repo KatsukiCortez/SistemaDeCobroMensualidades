@@ -11,18 +11,18 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorRegistrarPago">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="682.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorRegistrarPago">
    <children>
       <Label layoutX="271.0" layoutY="14.0" text="Registrar Pago" AnchorPane.topAnchor="14.0">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="100.0" layoutY="60.0">
+      <AnchorPane layoutX="100.0" layoutY="60.0" styleClass="background" stylesheets="@../temas/TemaMarron.css">
          <children>
             <SplitPane layoutX="-98.0" prefHeight="340.0" prefWidth="462.0" AnchorPane.bottomAnchor="-138.0" AnchorPane.leftAnchor="-98.0" AnchorPane.rightAnchor="-300.0" AnchorPane.topAnchor="0.0">
                <items>
-                  <GridPane>
+                  <GridPane styleClass="background" stylesheets="@../temas/TemaMarron.css">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -77,7 +77,7 @@
             </SplitPane>
          </children>
       </AnchorPane>
-      <SplitPane layoutX="462.0" layoutY="35.0" prefHeight="364.0" prefWidth="196.0">
+      <SplitPane layoutX="462.0" layoutY="35.0" prefHeight="364.0" prefWidth="196.0" styleClass="background" stylesheets="@../temas/TemaMarron.css">
          <items>
             <TableView prefHeight="200.0" prefWidth="200.0">
               <columns>
@@ -86,8 +86,8 @@
             </TableView>
          </items>
       </SplitPane>
-      <Button layoutX="415.0" layoutY="411.0" mnemonicParsing="false" text="Pagar" />
+      <Button layoutX="385.0" layoutY="411.0" mnemonicParsing="false" text="Pagar" />
       <Button layoutX="476.0" layoutY="411.0" mnemonicParsing="false" text="Reporte" />
-      <Button layoutX="548.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
+      <Button layoutX="582.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
    </children>
 </AnchorPane>

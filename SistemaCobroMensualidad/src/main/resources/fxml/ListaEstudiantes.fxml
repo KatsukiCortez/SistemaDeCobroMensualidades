@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorListaEstudiantes">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="1000.0" stylesheets="@../temas/TemaMarron.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorListaEstudiantes">
    <children>
-      <SplitPane dividerPositions="0.5" prefHeight="500.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.5" prefHeight="500.0" prefWidth="1000.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="100.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="150.0" prefWidth="100.0" styleClass="background" stylesheets="@../temas/TemaMarron.css">
                <children>
                   <TableView fx:id="studentTabla" prefHeight="398.0" prefWidth="496.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
@@ -30,9 +30,9 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0">
                <children>
-                  <Button layoutX="212.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleVerCuotas" text="Ver cuotas" />
-                  <Button layoutX="416.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
-                  <Button layoutX="304.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleRegistrarPago" text="Registrar pago" />
+                  <Button layoutX="123.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleVerCuotas" text="Ver cuotas" />
+                  <Button layoutX="402.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
+                  <Button layoutX="250.0" layoutY="359.0" mnemonicParsing="false" onAction="#handleRegistrarPago" text="Registrar pago" />
                   <Label layoutX="14.0" layoutY="14.0" text="Datos completos" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
                      <font>
                         <Font name="System Italic" size="18.0" />
