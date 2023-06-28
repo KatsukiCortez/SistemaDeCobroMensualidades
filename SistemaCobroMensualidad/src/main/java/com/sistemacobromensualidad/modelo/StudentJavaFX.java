@@ -13,6 +13,7 @@ public class StudentJavaFX {
     private final StringProperty fecha;
     private final StringProperty direccion;
     private final IntegerProperty telefono;
+    private StringProperty genero;
     
     /**
      * Constructor por defecto
@@ -38,6 +39,7 @@ public class StudentJavaFX {
         this.telefono = new SimpleIntegerProperty(1564651);
         this.documento = new SimpleIntegerProperty(777777);
         this.fecha = new SimpleStringProperty("05/12/2011");
+        this.genero = new SimpleStringProperty("Humano");
     }
 
     public IntegerProperty DocumentoProperty() {
@@ -110,5 +112,17 @@ public class StudentJavaFX {
     }
     public int getTelefono(){
         return telefono.get();
+    }
+
+    public StringProperty GeneroProperty() {
+        return genero;
+    }
+
+    public void setGenero(StringProperty genero) {
+        this.genero = genero;
+    }
+    
+    public String getGenero(){
+        return genero.get();
     }
 }
