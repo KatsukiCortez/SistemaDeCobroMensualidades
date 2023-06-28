@@ -8,11 +8,18 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="180.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorGradoSeccion">
+<AnchorPane id="AnchorPane" prefHeight="180.0" prefWidth="400.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorGradoSeccion">
    <children>
-      <Label layoutX="29.0" layoutY="41.0" text="Grado:" />
-      <Label layoutX="29.0" layoutY="82.0" text="Sección:" />
+      <Label layoutX="29.0" layoutY="41.0" text="Grado:">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
+      <Label layoutX="29.0" layoutY="82.0" text="Sección:">
+         <font>
+            <Font size="16.0" />
+         </font></Label>
       <Group layoutX="80.0" layoutY="41.0">
          <children>
             <ButtonBar>
@@ -23,12 +30,30 @@
                            <toggleGroup>
                               <ToggleGroup fx:id="Grado" />
                            </toggleGroup>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
                         </RadioButton>
-                        <RadioButton fx:id="Grado2" mnemonicParsing="false" text="2°" toggleGroup="$Grado" />
-                        <RadioButton fx:id="Grado3" mnemonicParsing="false" text="3°" toggleGroup="$Grado" />
-                        <RadioButton fx:id="Grado4" mnemonicParsing="false" text="4°" toggleGroup="$Grado" />
-                        <RadioButton fx:id="Grado5" mnemonicParsing="false" text="5°" toggleGroup="$Grado" />
-                        <RadioButton fx:id="Grado6" mnemonicParsing="false" text="6°" toggleGroup="$Grado" />
+                        <RadioButton fx:id="Grado2" mnemonicParsing="false" text="2°" toggleGroup="$Grado">
+                           <font>
+                              <Font size="16.0" />
+                           </font></RadioButton>
+                        <RadioButton fx:id="Grado3" mnemonicParsing="false" text="3°" toggleGroup="$Grado">
+                           <font>
+                              <Font size="16.0" />
+                           </font></RadioButton>
+                        <RadioButton fx:id="Grado4" mnemonicParsing="false" text="4°" toggleGroup="$Grado">
+                           <font>
+                              <Font size="16.0" />
+                           </font></RadioButton>
+                        <RadioButton fx:id="Grado5" mnemonicParsing="false" text="5°" toggleGroup="$Grado">
+                           <font>
+                              <Font size="16.0" />
+                           </font></RadioButton>
+                        <RadioButton fx:id="Grado6" mnemonicParsing="false" text="6°" toggleGroup="$Grado">
+                           <font>
+                              <Font size="16.0" />
+                           </font></RadioButton>
                      </children>
                   </HBox>
                </buttons>
@@ -42,15 +67,27 @@
                   <RadioButton fx:id="SecciA" mnemonicParsing="false" selected="true" text="A">
                      <toggleGroup>
                         <ToggleGroup fx:id="Seccion" />
-                     </toggleGroup></RadioButton>
-                  <RadioButton fx:id="SecciB" mnemonicParsing="false" text="B" toggleGroup="$Seccion" />
-                  <RadioButton fx:id="SecciC" mnemonicParsing="false" text="C" toggleGroup="$Seccion" />
-                  <RadioButton fx:id="SecciD" mnemonicParsing="false" text="D" toggleGroup="$Seccion" />
+                     </toggleGroup>
+                     <font>
+                        <Font size="16.0" />
+                     </font></RadioButton>
+                  <RadioButton fx:id="SecciB" mnemonicParsing="false" text="B" toggleGroup="$Seccion">
+                     <font>
+                        <Font size="16.0" />
+                     </font></RadioButton>
+                  <RadioButton fx:id="SecciC" mnemonicParsing="false" text="C" toggleGroup="$Seccion">
+                     <font>
+                        <Font size="16.0" />
+                     </font></RadioButton>
+                  <RadioButton fx:id="SecciD" mnemonicParsing="false" text="D" toggleGroup="$Seccion">
+                     <font>
+                        <Font size="16.0" />
+                     </font></RadioButton>
                </children>
             </HBox>
          </buttons>
       </ButtonBar>
-      <Button layoutX="230.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleConfirmar" text="Confirmar" />
-      <Button layoutX="312.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
+      <Button layoutX="192.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleConfirmar" text="Confirmar" />
+      <Button layoutX="308.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
    </children>
 </AnchorPane>

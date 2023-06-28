@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorCuotas">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControladorCuotas">
    <children>
       <Label layoutX="206.0" layoutY="14.0" text="Detalles avanzando">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <GridPane layoutX="167.0" layoutY="61.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
+      <GridPane layoutX="167.0" layoutY="61.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -50,7 +50,7 @@
             </TableView>
          </children>
       </GridPane>
-      <Button layoutX="365.0" layoutY="361.0" mnemonicParsing="false" text="Reporte" />
-      <Button layoutX="449.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
+      <Button layoutX="355.0" layoutY="361.0" mnemonicParsing="false" text="Reporte" />
+      <Button layoutX="464.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleVolver" text="Volver" />
    </children>
 </AnchorPane>
