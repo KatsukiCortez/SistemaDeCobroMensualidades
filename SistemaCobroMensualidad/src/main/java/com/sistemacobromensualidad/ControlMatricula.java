@@ -45,6 +45,7 @@ public class ControlMatricula {
     private StudentJavaFX student;
     private Stage dialogStage;
     private boolean okClicked = false;
+    private App app;
     
     /**
      * Inicializa la clase control.
@@ -61,6 +62,10 @@ public class ControlMatricula {
      */
     public void setDialogStage(Stage dialogStage){
         this.dialogStage = dialogStage;
+    }
+    
+    public void setApp(App app) {
+        this.app = app;
     }
     
     /**
