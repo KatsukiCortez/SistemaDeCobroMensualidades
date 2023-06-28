@@ -25,15 +25,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.LinkedList;
+
 import java.util.List;
+import java.util.Map;
 
 
-/*//JASPER
+//JASPER
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;*/
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  * JavaFX App VERSION ESTABLE
@@ -43,10 +48,11 @@ public class App extends Application {
     // Definimos las Variables
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private ObservableList<StudentJavaFX> studentData = FXCollections.observableArrayList();
+    //private ObservableList<StudentJavaFX> studentData = FXCollections.observableArrayList();
     
-    public App(){
+    public static Collection<StudentJavaFX> getStudenData(){
         // Agregando datos
+        List<StudentJavaFX> studentData = new LinkedList<>();
         studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
         studentData.add(new StudentJavaFX("Jose Alberto","Castillo","Rodriguez"));
         studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
@@ -59,11 +65,12 @@ public class App extends Application {
         studentData.add(new StudentJavaFX("Roberto","Alvez","Garcia"));
         studentData.add(new StudentJavaFX("Edward","Roque","Pena"));
         studentData.add(new StudentJavaFX("Javier Nilson","De la cruz","Tintaya"));
-    }
-    
-    public ObservableList<StudentJavaFX> getStudenData(){
         return studentData;
     }
+    
+    /*public ObservableList<StudentJavaFX> getStudenData(){
+        return studentData;
+    }*/
 
     // Con esto se ejecutara el programa al inicio
     @Override
@@ -272,20 +279,20 @@ public class App extends Application {
     }
     
     public void showReport(){
-        /*try{
+        try{
             JasperReport jasperReport = null;
             JasperPrint jasperPrint = null;
             JasperDesign jasperDesign = null;
             Map parameters = new HashMap();
-            jasperDesign = JRXmlLoader.load("Reporte.jrxml");
+            jasperDesign = JRXmlLoader.load("C:\\Users\\estudiante\\REPOS\\SistemaDeCobroMensualidades\\SistemaCobroMensualidad\\src\\main\\resources\\fxml\\Reporte.jrxml");
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
-            //jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JRBeanCollectionDataSource(getStudenData()));
+            jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JRBeanCollectionDataSource(getStudenData()));
             JasperExportManager.exportReportToPdfFile(jasperPrint,"ListaPersonas.pdf");
             JasperViewer.viewReport(jasperPrint);
             
         } catch (Exception ex){
             System.out.println("EXCEPTION: "+ ex);
-        }*/
+        }
     }
     
     public Stage getPrimaryStage(){

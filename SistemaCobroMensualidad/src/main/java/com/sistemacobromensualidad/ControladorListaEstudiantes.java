@@ -1,6 +1,7 @@
 package com.sistemacobromensualidad;
 
 import com.sistemacobromensualidad.modelo.StudentJavaFX;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -61,7 +62,7 @@ public class ControladorListaEstudiantes {
         this.app = app;
         
         //Agregar la lista observable a la tabla
-        studentTabla.setItems(app.getStudenData());
+        studentTabla.setItems((ObservableList<StudentJavaFX>) App.getStudenData());
     }
     
     public void setDialogStage(Stage dialogStage) {
