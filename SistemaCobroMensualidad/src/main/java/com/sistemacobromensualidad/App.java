@@ -207,7 +207,7 @@ public class App extends Application {
     // Implementamos el metodo showCuotas donde cargaremos el FXML ListaEstudiantes
     // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Cuotas
     // hazta que se cierre
-    public void showCuotas(){
+    public boolean showCuotas(StudentJavaFX student){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
@@ -216,7 +216,7 @@ public class App extends Application {
         
             // Crear la ventana ejecutable
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("XXXX");
+            dialogStage.setTitle("Detalles de alumnos.");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -229,8 +229,11 @@ public class App extends Application {
             
             //Mostrar hasta que se cierre la ventana
             dialogStage.showAndWait();
+            
+            return controller.isOkClicked();
         } catch(IOException e){
             e.printStackTrace();
+            return false;
         }
     }
     

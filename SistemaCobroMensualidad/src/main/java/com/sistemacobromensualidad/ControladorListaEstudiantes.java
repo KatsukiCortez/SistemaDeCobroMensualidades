@@ -2,6 +2,8 @@ package com.sistemacobromensualidad;
 
 import com.sistemacobromensualidad.modelo.StudentJavaFX;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -61,6 +63,7 @@ public class ControladorListaEstudiantes {
         //Agregar la lista observable a la tabla
         studentTabla.setItems(app.getStudenData());
     }
+    
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
     }
@@ -88,7 +91,20 @@ public class ControladorListaEstudiantes {
     // Boton ver cuotas
     @FXML
     private void handleVerCuotas() {
-        app.showCuotas();
+        StudentJavaFX selectedStudent = studentTabla.getSelectionModel().getSelectedItem();
+        if (selectedStudent != null) {
+            boolean okClicked = app.showCuotas(selectedStudent);
+            if (okClicked) {
+                showStudentDetails(selectedStudent);
+            }
+        } else {
+            Alert alert = new Alert(AlertType.WARNING);
+            //alert.initOwner(App.getPrimaryStage());
+            alert.setTitle("No seleccion.");
+            alert.setHeaderText("Estudiante no seleccionado.");
+            alert.setContentText("Por favor seleccione un estudiante en la tabla.");
+            alert.showAndWait();
+        }
     }
     
     // Boton registrar pago
