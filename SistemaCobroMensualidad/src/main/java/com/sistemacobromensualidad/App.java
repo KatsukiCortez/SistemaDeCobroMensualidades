@@ -1,18 +1,32 @@
 // Esta es el menu Principal
 package com.sistemacobromensualidad;
 // Importamos las librerias y dependencias
+//import com.openjpa.OpenJPA;
+// import com.sistemacobromensualidad.control.EstudianteControl;
+import com.sistemacobromensualidad.control.exceptions.EntidadPreexistenteException;
+import com.sistemacobromensualidad.entidades.Estudiante;
 import com.sistemacobromensualidad.modelo.StudentJavaFX;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
+
+/*import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;*/
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.System.Logger;
+import java.lang.System.Logger.Level;
+import java.util.List;
+
 
 /**
  * JavaFX App VERSION ESTABLE
@@ -159,7 +173,7 @@ public class App extends Application {
     // Implementamos el metodo showMatricula donde cargaremos el FXML ListaEstudiantes
     // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Matricula
     // hazta que se cierre
-    public boolean showMatricula(/*StudentJavaFX student*/){
+    public void showMatricula(/*StudentJavaFX student*/){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
@@ -176,24 +190,24 @@ public class App extends Application {
             
             //Usar el controlador
             ControlMatricula controller = loader.getController();
-            //controller.setDialogStage(dialogStage);
-            //controller.setApp(this);*/
+            controller.setDialogStage(dialogStage);
+            controller.setApp(this);
 
             
             //Mostrar hasta que se cierre la ventana
             dialogStage.showAndWait();
             
             //return controller.isOkClicked();
-            return false;
+            
         }catch(IOException e){
             e.printStackTrace();
-            return false;
+            
         }
     }
     // Implementamos el metodo showCuotas donde cargaremos el FXML ListaEstudiantes
     // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Cuotas
     // hazta que se cierre
-    public void showCuotas(){
+    public boolean showCuotas(StudentJavaFX student){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
@@ -202,7 +216,7 @@ public class App extends Application {
         
             // Crear la ventana ejecutable
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("XXXX");
+            dialogStage.setTitle("Detalles de alumnos.");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -215,8 +229,11 @@ public class App extends Application {
             
             //Mostrar hasta que se cierre la ventana
             dialogStage.showAndWait();
+            
+            return controller.isOkClicked();
         } catch(IOException e){
             e.printStackTrace();
+            return false;
         }
     }
     
@@ -253,7 +270,55 @@ public class App extends Application {
     
     // Implementamos el Metodo Main de la clase App el cual se usara para iniciar la
     // Aplicacion JavaFX 
+    
+    /*
+    static private String leerTexto(String mensaje) {
+        String texto;
+        try {
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            System.out.print(mensaje);
+            texto = in.readLine();
+        } catch (IOException e) {
+            texto = "Error";
+        }
+        return texto;
+    }
+    */
+    
     public static void main(String[] args) {
+        /*
+        /*     CONTROL DE ERRORES 
+        Estudiante estudiante;
+        // Creamos la factoría de entity managers y un entity manager
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BaseDatos");
+        
+        EstudianteControl estudianteControl = new EstudianteControl(emf);
+        
+        // Pedimos datos del autor
+        String documento = leerTexto("Introduce documento: ");
+        String nombre = leerTexto("Introduce nombre: ");
+        String apellidos = leerTexto("Introduce apellidos: ");
+        String email = leerTexto("Introduce el correo electrónico: ");
+        int doc = Integer.parseInt(documento);
+        estudiante = new Estudiante(doc, nombre, apellidos, email);
+        try {
+            // Lo añadimos a la BD
+            System.out.println("Documento del alumno: " + estudianteControl.insertar(estudiante));
+        } catch (EntidadPreexistenteException ex) {
+            Logger.getLogger(OpenJPA.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        System.out.println("============================================");
+
+        List<Estudiante> results = estudianteControl.buscaEstudiantes();
+        for(Estudiante e : results){
+            System.out.println(e);
+        }
+        
+        System.out.println("============================================");
+        // Marcamos el comienzo de la transacción
+        */
+        
         // Iniciamos la Aplicacion JAVA FX
         launch(args);
     }
