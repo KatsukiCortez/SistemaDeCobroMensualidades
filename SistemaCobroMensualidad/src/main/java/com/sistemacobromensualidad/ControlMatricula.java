@@ -1,8 +1,14 @@
 package com.sistemacobromensualidad;
 
 import com.sistemacobromensualidad.modelo.StudentJavaFX;
+import com.sistemacobromensualidad.persistencia.EstudiantePersistencia;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -28,21 +34,30 @@ public class ControlMatricula {
     private TableColumn<StudentJavaFX, Integer> TeleColum;
     
     @FXML
-    private TextField tfdoc;
+    private TextField tfdni;
+    @FXML
+    private TextField tfnombre;
     @FXML
     private TextField tfappat;
     @FXML
     private TextField tfapmat;
     @FXML
-    private TextField tftele;
+    private DatePicker dpfecha;
     @FXML
-    private TextField tfnombre;
+    private TextField tfdireccion;
     @FXML
-    private TextField tfdire;
+    private ChoiceBox<Integer> Grado; 
+    private Integer[] grado = {1,2,3,4,5,6};
+    
     @FXML
-    private TextField tffecha;
+    private RadioButton Femenino,Masculino;
+    @FXML
+    private ChoiceBox<String> Seccion;
+    private String[] seccion = {"A","B","C","D"}; 
+    
     
     private StudentJavaFX student;
+    private EstudiantePersistencia studentpersis;
     private Stage dialogStage;
     private boolean okClicked = false;
     private App app;
@@ -53,6 +68,10 @@ public class ControlMatricula {
      */
     @FXML
     private void initialize(){
+        Grado.getItems().addAll(grado);
+        Grado.setOnAction(this::getGrado);
+        Seccion.getItems().addAll(seccion);
+        //Seccion.setOnAction(this::getSeccion);
     }
     
     /**
@@ -75,16 +94,37 @@ public class ControlMatricula {
      */
     public void setStudent(StudentJavaFX student){
         this.student = student;
-        
-        tfdoc.setText(Integer.toString(student.getDocumento()));
+        tfdni.setText(Integer.toString(student.getDocumento()));
         tfnombre.setText(student.getNombre());
         tfappat.setText(student.getAppat());
         tfapmat.setText(student.getApmat());
-        tffecha.setText(student.getFecha());
-        tfdire.setText(student.getDireccion());
-        tftele.setText(Integer.toString(student.getTelefono()));
     }
     
+    public void getGrado(ActionEvent event) {
+        Integer mygrado = Grado.getValue();
+    }
+
+    public char getSeccion() {
+        String myseccion = Seccion.getValue();
+        return myseccion.charAt(0);
+    }
+    
+    public Integer getGenero(){
+        Integer genero = 1;
+        if(Femenino.isSelected()){
+            genero = 1;
+        }
+        else if(Masculino.isSelected()){
+            genero = 0;
+        }
+        return genero;
+    }
+    
+    public String getDate(){
+        LocalDate myDate = dpfecha.getValue();
+        String myFormattedDate = myDate.format(DateTimeFormatter.ofPattern("yyyy-mm-dd"));
+        return myFormattedDate;
+    }
     /**
      * Retorna trues si el ususario hace click, caso contrario es falso
      * 
@@ -98,13 +138,11 @@ public class ControlMatricula {
      * Para poder limpiar los campos de texto
      */
     public void Limpiador(){
-        tfdoc.setText("");
+        tfdni.setText("");
         tfnombre.setText("");
         tfappat.setText("");
         tfapmat.setText("");
-        tffecha.setText("");
-        tfdire.setText("");
-        tftele.setText("");
+        
     }
     
     /**
@@ -113,6 +151,26 @@ public class ControlMatricula {
     @FXML
     private void buttonNuevo(){
         Limpiador();
+        /*String dni = tfdni.getText();
+        String nombres = tfnombre.getText();
+        String apellidoPaterno = tfappat.getText();
+        String apellidoMaterno = tfapmat.getText();
+        String fnacimiento = getDate();
+        Integer grado = Grado.getValue();
+        String direccion = tfdireccion.getText();
+        Integer genero = getGenero();
+        char seccion = getSeccion();
+        
+        studentpersis.setDni(dni);
+        studentpersis.setNombres(nombres);
+        studentpersis.setApellidoPaterno(apellidoPaterno);
+        studentpersis.setApellidoMaterno(apellidoMaterno);;
+        studentpersis.setFnacimiento(fnacimiento);
+        studentpersis.setGrado(grado);
+        studentpersis.setDireccion(direccion);
+        studentpersis.setGenero(genero);
+        studentpersis.setSeccion(seccion);
+        studentpersis.InsertarEstudiante();*/
     }
     
     /**
@@ -121,7 +179,7 @@ public class ControlMatricula {
     @FXML
     private void buttonGuardar(){
         if(isInputValid()){
-            student.setDocumento(Integer.parseInt(tfdoc.getText()));
+            /*student.setDocumento(Integer.parseInt(tfdoc.getText()));
             student.setNombre(tfnombre.getText());
             student.setAppat(tfappat.getText());
             student.setApmat(tfapmat.getText());
@@ -130,7 +188,7 @@ public class ControlMatricula {
             student.setTelefono(Integer.parseInt(tftele.getText()));
             
             okClicked = true;
-            dialogStage.close();
+            dialogStage.close();*/
         }
     }
     
@@ -150,12 +208,12 @@ public class ControlMatricula {
     private boolean isInputValid(){
         String errorMessage = "";
         
-        if(tfdoc.getText() == null || tfdoc.getText().length() == 0){
+        /*if(tfdni.getText() == null || tfdni.getText().length() == 0){
             errorMessage += "No es valido el Documento\n";
         }else{
             //Intenta analizar el documento en un entero
             try{
-                Integer.parseInt(tfdoc.getText());
+                Integer.parseInt(tfdni.getText());
             }catch(NumberFormatException e){
                 errorMessage += "No es valido el Documento, (Debe ser numero entero)!\n";
             }
@@ -199,6 +257,8 @@ public class ControlMatricula {
             alert.showAndWait();
             return false;
         }
+        */
+        return false;
     }
     
     
