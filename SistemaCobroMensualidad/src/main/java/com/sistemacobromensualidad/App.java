@@ -228,8 +228,8 @@ public class App extends Application {
             
             //Usar el controlador
             ControlMatricula controller = loader.getController();
-            //controller.setDialogStage(dialogStage);
-            //controller.setApp(this);
+            controller.setDialogStage(dialogStage);
+            controller.setApp(this);
 
             
             //Mostrar hasta que se cierre la ventana
