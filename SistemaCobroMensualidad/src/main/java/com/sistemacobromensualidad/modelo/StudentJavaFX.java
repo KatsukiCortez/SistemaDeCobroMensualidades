@@ -6,7 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class StudentJavaFX {
-    private final IntegerProperty documento; 
+    private final IntegerProperty dni; 
     private final StringProperty nombre;
     private final StringProperty appat;
     private final StringProperty apmat;
@@ -37,21 +37,20 @@ public class StudentJavaFX {
         //Algunos datos inciales por conveniencia
         this.direccion = new SimpleStringProperty("Alguna direccion");
         this.telefono = new SimpleIntegerProperty(1564651);
-        this.documento = new SimpleIntegerProperty(777777);
+        this.dni = new SimpleIntegerProperty(777777);
         this.fecha = new SimpleStringProperty("05/12/2011");
         this.genero = new SimpleStringProperty("Humano");
     }
 
     public IntegerProperty DocumentoProperty() {
-        return documento;
+        return dni;
     }
     public void setDocumento (int documento){
-        this.documento.set(documento);
+        this.dni.set(documento);
     }
     public int getDocumento(){
-        return documento.get();
+        return dni.get();
     }
-    
 
     public StringProperty NombreProperty() {
         return nombre;

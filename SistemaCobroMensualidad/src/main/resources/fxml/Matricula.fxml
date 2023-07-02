@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -19,16 +20,15 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="269.0" layoutY="45.0" text="Documento:" />
+      <Label layoutX="269.0" layoutY="45.0" text="DNI:" />
       <Label layoutX="270.0" layoutY="84.0" text="Apellidos Paterno:" />
       <Label layoutX="269.0" layoutY="123.0" text="Fecha de nacimiento:" />
       <Label layoutX="269.0" layoutY="162.0" text="Telefono:" />
       <Label layoutX="742.0" layoutY="45.0" text="Nombres:" />
       <Label layoutX="740.0" layoutY="84.0" text="Apellido Materno:" />
       <Label layoutX="742.0" layoutY="123.0" text="Dirección:" />
-      <TextField fx:id="tfdoc" layoutX="420.0" layoutY="41.0" prefHeight="37.0" prefWidth="305.0" AnchorPane.topAnchor="41.0" />
-      <TextField fx:id="tfappat" layoutX="419.0" layoutY="80.0" prefHeight="37.0" prefWidth="306.0" AnchorPane.topAnchor="80.0" />
-      <TextField fx:id="tffecha" layoutX="420.0" layoutY="119.0" prefHeight="37.0" prefWidth="306.0" AnchorPane.topAnchor="119.0" />
+      <TextField fx:id="tfdoc" layoutX="420.0" layoutY="37.0" prefHeight="37.0" prefWidth="305.0" AnchorPane.topAnchor="37.0" />
+      <TextField fx:id="tfappat" layoutX="422.0" layoutY="76.0" prefHeight="37.0" prefWidth="306.0" AnchorPane.topAnchor="76.0" />
       <TextField fx:id="tftele" layoutX="419.0" layoutY="158.0" prefHeight="37.0" prefWidth="306.0" AnchorPane.topAnchor="158.0" />
       <TextField fx:id="tfnombre" layoutX="902.0" layoutY="41.0" prefHeight="37.0" prefWidth="275.0" AnchorPane.topAnchor="41.0" />
       <TextField fx:id="tfapmat" layoutX="902.0" layoutY="80.0" prefHeight="37.0" prefWidth="275.0" AnchorPane.topAnchor="80.0" />
@@ -65,5 +65,6 @@
             <MenuItem mnemonicParsing="false" text="6to Grado" />
         </items>
       </MenuButton>
+      <DatePicker layoutX="422.0" layoutY="120.0" />
    </children>
 </AnchorPane>

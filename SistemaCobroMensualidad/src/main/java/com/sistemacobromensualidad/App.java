@@ -1,10 +1,5 @@
 // Esta es el menu Principal
 package com.sistemacobromensualidad;
-// Importamos las librerias y dependencias
-//import com.openjpa.OpenJPA;
-// import com.sistemacobromensualidad.control.EstudianteControl;
-import com.sistemacobromensualidad.control.exceptions.EntidadPreexistenteException;
-import com.sistemacobromensualidad.entidades.Estudiante;
 import com.sistemacobromensualidad.modelo.StudentJavaFX;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,15 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 
-/*import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;*/
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
-import java.util.List;
 
 
 /*//JASPER

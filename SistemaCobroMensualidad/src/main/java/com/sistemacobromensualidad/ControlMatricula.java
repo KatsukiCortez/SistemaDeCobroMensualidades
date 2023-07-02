@@ -13,7 +13,7 @@ public class ControlMatricula {
     @FXML
     private TableView<StudentJavaFX> studentTable;
     @FXML
-    private TableColumn<StudentJavaFX, Integer> DccColum;
+    private TableColumn<StudentJavaFX, Integer> DniColum;
     @FXML
     private TableColumn<StudentJavaFX, String> NomColum;
     @FXML
