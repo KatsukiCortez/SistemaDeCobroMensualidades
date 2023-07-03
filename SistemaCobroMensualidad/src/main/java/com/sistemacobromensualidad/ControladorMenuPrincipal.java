@@ -27,8 +27,8 @@ public class ControladorMenuPrincipal {
     }
     
     @FXML
-    private void handleEstudiantes() {
-        app.showGradoSeccion();
+    private void handleReporte() {
+        app.showReport();
     }
 
     @FXML

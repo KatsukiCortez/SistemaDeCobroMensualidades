@@ -156,7 +156,7 @@ public class App extends Application {
     // Implementamos el metodo showGradoSeccion donde cargaremos el FXML GradiSeccion
     // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Stage
     // hazta que se cierre
-    public void showGradoSeccion(){
+    public void showReport(){
         String url = "jdbc:mysql://localhost:3306/cobros";
         String usuario = "root";
         String contraseña = "";
@@ -306,23 +306,6 @@ public class App extends Application {
         } catch(IOException e){
             e.printStackTrace();
         }
-    }
-    
-    public void showReport(){
-        /*try{
-            JasperReport jasperReport = null;
-            JasperPrint jasperPrint = null;
-            JasperDesign jasperDesign = null;
-            Map parameters = new HashMap();
-            jasperDesign = JRXmlLoader.load("Reporte.jrxml");
-            jasperReport = JasperCompileManager.compileReport(jasperDesign);
-            //jasperPrint = JasperFillManager.fillReport(jasperReport, parameters,new JRBeanCollectionDataSource(getStudenData()));
-            JasperExportManager.exportReportToPdfFile(jasperPrint,"ListaPersonas.pdf");
-            JasperViewer.viewReport(jasperPrint);
-            
-        } catch (Exception ex){
-            System.out.println("EXCEPTION: "+ ex);
-        }*/
     }
     
     // Implementamos el Metodo Main de la clase App el cual se usara para iniciar la
