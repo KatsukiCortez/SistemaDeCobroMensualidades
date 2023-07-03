@@ -108,10 +108,10 @@ public class ControladorListaEstudiantes {
     }
     
     // Boton registrar pago
-    @FXML
+    /*@FXML
     private void handleRegistrarPago(){
         app.showRegistrarPago();
-    }
+    }*/
     
     // Boton volver
     @FXML

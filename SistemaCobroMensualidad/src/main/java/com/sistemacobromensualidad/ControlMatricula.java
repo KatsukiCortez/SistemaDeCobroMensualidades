@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -272,6 +271,11 @@ public class ControlMatricula implements Initializable{
     @FXML
     private void buttonCancel(){
         dialogStage.close();
+    }
+    
+    @FXML
+    private void buttonPagar(){
+        app.showRegistrarPago();
     }
     
     private boolean isInputValid(){
