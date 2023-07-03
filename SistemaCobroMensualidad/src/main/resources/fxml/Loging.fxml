@@ -7,18 +7,18 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="265.0" prefWidth="400.0" styleClass="background" stylesheets="@../temas/FondoCssStyle.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19">
+<AnchorPane id="AnchorPane" prefHeight="265.0" prefWidth="400.0" styleClass="background" stylesheets="@../temas/FondoCssStyle.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.sistemacobromensualidad.ControlLogin">
    <children>
-      <Button layoutX="111.0" layoutY="182.0" mnemonicParsing="false" text="INGRESAR" />
-      <Button layoutX="228.0" layoutY="182.0" mnemonicParsing="false" text="SALIR" />
+      <Button layoutX="111.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleIngresar" text="INGRESAR" />
+      <Button layoutX="228.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleSalir" text="SALIR" />
       <Label layoutX="123.0" layoutY="14.0" text="LOGIN" textFill="WHITE">
          <font>
             <Font name="System Bold" size="38.0" />
          </font>
       </Label>
-      <TextField layoutX="188.0" layoutY="80.0" promptText="ingerse  su usuario" />
+      <TextField fx:id="txtuser" layoutX="188.0" layoutY="80.0" promptText="ingerse  su usuario" />
       <Label layoutX="34.0" layoutY="84.0" text="INGRESE SU USUARIO:" textFill="WHITE" />
       <Label layoutX="34.0" layoutY="129.0" text="INGRESE SU CONTRASEÑA:" textFill="WHITE" />
-      <TextField layoutX="188.0" layoutY="120.0" promptText="ingrese su contraseña" />
+      <TextField fx:id="txtcontraseña" layoutX="188.0" layoutY="120.0" promptText="ingrese su contraseña" />
    </children>
 </AnchorPane>
