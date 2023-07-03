@@ -53,7 +53,7 @@ public class App extends Application {
         
         // Hacemos la llamada a los metodos
         initRootLayout();
-        showlog(user, contra);
+        showlog();
         //showMenuPrincipal();
     }
     // Implementamos el metodo initRootLayout y cargamos el diceño principal
@@ -92,61 +92,20 @@ public class App extends Application {
     }
     
     
-    public void showlog(String user, String contra){
+    public void showlog(){
         try{
             // Establecemos la Ubicacion
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("/fxml/Loging.fxml"));
-            AnchorPane menuPrincipal = (AnchorPane) loader.load();
+            AnchorPane login = (AnchorPane) loader.load();
             
             // Establecemos como Interfaz Central
-            rootLayout.setCenter(menuPrincipal);
+            rootLayout.setCenter(login);
             
-            ControladorMenuPrincipal controlador = loader.getController();
+            ControlLogin controlador = loader.getController();
             controlador.setApp(this);
             
             ResultSet rs;
-        if (user.equals("") && contra.equals("")){
-            Alert dialog=new Alert(Alert.AlertType.INFORMATION);// crea un tipode dialogo de alerta simple
-            dialog.setTitle("MENSAJE");
-            dialog.setHeaderText(null);//Sin titulo interno
-            dialog.setContentText("Falta completar datos en un campo");
-            dialog.initStyle(StageStyle.UTILITY);
-            dialog.showAndWait();
-        }
-        else{
-            String url = "jdbc:mysql://localhost:3306/cobros";
-            String usuario = "root";
-            String contraseña = "";
-            try{
-                Connection connection = DriverManager.getConnection(url, usuario, contraseña);
-                
-                PreparedStatement pst = connection.prepareStatement("select * from usuarios where id_usuario=? and usuario=?");
-                pst.setString(1, user);
-                pst.setString(2, contra);
-                
-                rs = pst.executeQuery();
-                if(rs.next()){
-                    Alert dialog=new Alert(Alert.AlertType.INFORMATION);// crea un tipode dialogo de alerta simple
-                    dialog.setTitle("MENSAJE");
-                    dialog.setHeaderText(null);//Sin titulo interno
-                    dialog.setContentText("Ingreso exitoso");
-                    dialog.initStyle(StageStyle.UTILITY);
-                    dialog.showAndWait();
-                    
-                    showMenuPrincipal();
-                }else{
-                    Alert dialog=new Alert(Alert.AlertType.INFORMATION);// crea un tipode dialogo de alerta simple
-                    dialog.setTitle("MENSAJE");
-                    dialog.setHeaderText(null);//Sin titulo interno
-                    dialog.setContentText("Ingreso Fallido, intente nuevamente");
-                    dialog.initStyle(StageStyle.UTILITY);
-                    dialog.showAndWait();
-                }
-            }catch(SQLException e){
-                System.out.println("error en la conección"+e);
-            }
-        }
         } catch(IOException e){
             e.printStackTrace();
         }
