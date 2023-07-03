@@ -1,10 +1,5 @@
 // Esta es el menu Principal
 package com.sistemacobromensualidad;
-// Importamos las librerias y dependencias
-//import com.openjpa.OpenJPA;
-// import com.sistemacobromensualidad.control.EstudianteControl;
-import com.sistemacobromensualidad.control.exceptions.EntidadPreexistenteException;
-import com.sistemacobromensualidad.entidades.Estudiante;
 import com.sistemacobromensualidad.modelo.StudentJavaFX;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,15 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 
-/*import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;*/
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.System.Logger;
-import java.lang.System.Logger.Level;
-import java.util.List;
 
 
 /*//JASPER
@@ -43,11 +30,15 @@ public class App extends Application {
     // Definimos las Variables
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private ObservableList<StudentJavaFX> studentData = FXCollections.observableArrayList();
+    private ObservableList<StudentJavaFX> studentList = FXCollections.observableArrayList();
+    
     
     public App(){
         // Agregando datos
-        studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
+        studentList.add(new StudentJavaFX("78548922", "candy", "callo", "huamani", "1998-03-24", "no tiene casa", 0, 1, "A"));
+        studentList.add(new StudentJavaFX("73317659", "yadir", "cortez", "huaman", "2001-01-08", "no tiene casa", 1, 5, "B"));
+        
+        /*studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
         studentData.add(new StudentJavaFX("Jose Alberto","Castillo","Rodriguez"));
         studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
         studentData.add(new StudentJavaFX("Roberto","Alvez","Garcia"));
@@ -58,11 +49,11 @@ public class App extends Application {
         studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
         studentData.add(new StudentJavaFX("Roberto","Alvez","Garcia"));
         studentData.add(new StudentJavaFX("Edward","Roque","Pena"));
-        studentData.add(new StudentJavaFX("Javier Nilson","De la cruz","Tintaya"));
+        studentData.add(new StudentJavaFX("Javier Nilson","De la cruz","Tintaya"));*/
     }
     
     public ObservableList<StudentJavaFX> getStudenData(){
-        return studentData;
+        return studentList;
     }
 
     // Con esto se ejecutara el programa al inicio
@@ -112,6 +103,15 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
+    
+    public Stage getPrimaryStage(){
+        return primaryStage;
+    }
+    
+    public static void main(String[] args) {
+        launch(args);
+    }
+    
     // Implementamos el metodo showGradoSeccion donde cargaremos el FXML GradiSeccion
     // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Stage
     // hazta que se cierre
@@ -233,6 +233,7 @@ public class App extends Application {
             ControladorCuotas controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setApp(this);
+            controller.setStudent(student);
             
             //Mostrar hasta que se cierre la ventana
             dialogStage.showAndWait();
@@ -288,10 +289,6 @@ public class App extends Application {
         }*/
     }
     
-    public Stage getPrimaryStage(){
-        return primaryStage;
-    }
-    
     // Implementamos el Metodo Main de la clase App el cual se usara para iniciar la
     // Aplicacion JavaFX 
     
@@ -308,43 +305,4 @@ public class App extends Application {
         return texto;
     }
     */
-    
-    public static void main(String[] args) {
-        /*
-        /*     CONTROL DE ERRORES 
-        Estudiante estudiante;
-        // Creamos la factoría de entity managers y un entity manager
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("BaseDatos");
-        
-        EstudianteControl estudianteControl = new EstudianteControl(emf);
-        
-        // Pedimos datos del autor
-        String documento = leerTexto("Introduce documento: ");
-        String nombre = leerTexto("Introduce nombre: ");
-        String apellidos = leerTexto("Introduce apellidos: ");
-        String email = leerTexto("Introduce el correo electrónico: ");
-        int doc = Integer.parseInt(documento);
-        estudiante = new Estudiante(doc, nombre, apellidos, email);
-        try {
-            // Lo añadimos a la BD
-            System.out.println("Documento del alumno: " + estudianteControl.insertar(estudiante));
-        } catch (EntidadPreexistenteException ex) {
-            Logger.getLogger(OpenJPA.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        System.out.println("============================================");
-
-        List<Estudiante> results = estudianteControl.buscaEstudiantes();
-        for(Estudiante e : results){
-            System.out.println(e);
-        }
-        
-        System.out.println("============================================");
-        // Marcamos el comienzo de la transacción
-        */
-        
-        // Iniciamos la Aplicacion JAVA FX
-        launch(args);
-    }
-
 }

@@ -1,19 +1,36 @@
 package com.sistemacobromensualidad;
 
 import com.sistemacobromensualidad.modelo.StudentJavaFX;
+import com.sistemacobromensualidad.persistencia.EstudiantePersistencia;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
-public class ControlMatricula {
+public class ControlMatricula implements Initializable{
     @FXML
     private TableView<StudentJavaFX> studentTable;
     @FXML
-    private TableColumn<StudentJavaFX, Integer> DccColum;
+    private TableColumn<StudentJavaFX, String> DniColum;
     @FXML
     private TableColumn<StudentJavaFX, String> NomColum;
     @FXML
@@ -21,45 +38,95 @@ public class ControlMatricula {
     @FXML
     private TableColumn<StudentJavaFX, String> ApmatColum;
     @FXML
-    private TableColumn<StudentJavaFX, String> FechatColum;
+    private TableColumn<StudentJavaFX, String> FechaColum;
     @FXML
     private TableColumn<StudentJavaFX, String> DireColum;
     @FXML
-    private TableColumn<StudentJavaFX, Integer> TeleColum;
+    private TableColumn<StudentJavaFX, Integer> GradoColum;
+    @FXML
+    private TableColumn<StudentJavaFX, String> SeccionColum;
     
     @FXML
-    private TextField tfdoc;
+    private TextField txtDni;
     @FXML
-    private TextField tfappat;
+    private TextField txtNombres;
     @FXML
-    private TextField tfapmat;
+    private TextField txtApPaterno;
     @FXML
-    private TextField tftele;
+    private TextField txtApMaterno;
     @FXML
-    private TextField tfnombre;
+    private DatePicker dateFecha;
     @FXML
-    private TextField tfdire;
+    private TextField txtDireccion;
     @FXML
-    private TextField tffecha;
+    private RadioButton Femenino,Masculino;
+    @FXML
+    private ChoiceBox<Integer> cbGrado; 
+    private Integer[] grado = {1,2,3,4,5,6};
+    
+    @FXML
+    private ChoiceBox<String> cbSeccion;
+    private String[] seccion = {"A","B","C","D"}; 
+    
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1){
+        cbGrado.getItems().addAll(grado);
+        cbSeccion.getItems().addAll(seccion);
+        
+        
+        studentTable.setItems(getData());
+        LimpiarTabla();
+        
+        /*DniColum.setCellValueFactory(cellData -> cellData.getValue().dniProperty());
+        NomColum.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        AppatColum.setCellValueFactory(cellData -> cellData.getValue().appatProperty());
+        ApmatColum.setCellValueFactory(cellData -> cellData.getValue().apmatProperty());
+        FechaColum.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
+        DireColum.setCellValueFactory(cellData -> cellData.getValue().direccionProperty());
+        //GradoColum.setCellValueFactory(cellData -> cellData.getValue().gradoProperty());
+        SeccionColum.setCellValueFactory(cellData -> cellData.getValue().seccionProperty());*/
+    }
     
     private StudentJavaFX student;
     private Stage dialogStage;
     private boolean okClicked = false;
     private App app;
     
-    /**
-     * Inicializa la clase control.
-     * Este metodo es automaticamente llamado despues de que el fxml haya sido iniciado
-     */
-    @FXML
-    private void initialize(){
+    private void LimpiarTabla(){
+        studentTable.getItems().clear();
     }
     
-    /**
-     * Guarda el escenario en dialogStage
-     * 
-     * @param dialogStage
-     */
+    private ObservableList<StudentJavaFX> studentList = FXCollections.observableArrayList();
+    
+    private ObservableList<StudentJavaFX> getData(){
+        String url = "jdbc:mysql://localhost:3306/cobros";
+        String usuario = "root";
+        String contraseña = "";
+        try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {
+            String query = "SELECT dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, grado, direccion, genero, seccion FROM estudiante";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+            String dni = resultSet.getString("dni");
+            String nombres = resultSet.getString("nombres");
+            String apellidoPaterno = resultSet.getString("apellidoPaterno");
+            String apellidoMaterno = resultSet.getString("apellidoMaterno");
+            String fnacimiento = resultSet.getString("fnacimiento");
+            int grado = resultSet.getInt("grado");
+            String direccion = resultSet.getString("direccion");
+            int genero = resultSet.getInt("genero");
+            String seccion = resultSet.getString("seccion");
+            
+            StudentJavaFX estudiante = new StudentJavaFX(dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, direccion, genero, grado, String.valueOf(seccion));
+            studentList.add(estudiante);
+            return studentList;
+        }
+        } catch (SQLException ex){
+            System.out.println("Error: "+ ex);
+        }
+        return studentList;
+    }
+    
     public void setDialogStage(Stage dialogStage){
         this.dialogStage = dialogStage;
     }
@@ -68,48 +135,88 @@ public class ControlMatricula {
         this.app = app;
     }
     
-    /**
-     * Guarda student para ser editado en dialog
-     * 
-     * @param student
-     */
     public void setStudent(StudentJavaFX student){
         this.student = student;
-        
-        tfdoc.setText(Integer.toString(student.getDocumento()));
-        tfnombre.setText(student.getNombre());
-        tfappat.setText(student.getAppat());
-        tfapmat.setText(student.getApmat());
-        tffecha.setText(student.getFecha());
-        tfdire.setText(student.getDireccion());
-        tftele.setText(Integer.toString(student.getTelefono()));
     }
     
-    /**
-     * Retorna trues si el ususario hace click, caso contrario es falso
-     * 
-     * @return
-     */
+    public int getGrado() {
+        Integer mygrado = cbGrado.getValue();
+        return mygrado;
+    }
+
+    public char getSeccion() {
+        String myseccion = cbSeccion.getValue();
+        return myseccion.charAt(0);
+    }
+    
+    public int getGenero(){
+        Integer genero = 0;
+        if(Femenino.isSelected()){
+            genero = 0;
+        }
+        else if(Masculino.isSelected()){
+            genero = 1;
+        }
+        return genero;
+    }
+    
+    public String getDate(){
+        LocalDate myDate = dateFecha.getValue();
+        String myFormattedDate = myDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        return myFormattedDate;
+    }
+    
     public boolean isOkClicked(){
         return okClicked;
     }
     
-    /**
-     * Para poder limpiar los campos de texto
-     */
     public void Limpiador(){
-        tfdoc.setText("");
-        tfnombre.setText("");
-        tfappat.setText("");
-        tfapmat.setText("");
-        tffecha.setText("");
-        tfdire.setText("");
-        tftele.setText("");
+        txtDni.setText("");
+        txtNombres.setText("");
+        txtApPaterno.setText("");
+        txtApMaterno.setText("");
+        txtDireccion.setText("");
     }
     
-    /**
-     * Llamado cuando el usuario hace click en Nuevo
-     */
+    @FXML
+    private void btnRefresh(){
+        LimpiarTabla();
+        String url = "jdbc:mysql://localhost:3306/cobros";
+        String usuario = "root";
+        String contraseña = "";
+        try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {
+            String query = "SELECT dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, grado, direccion, genero, seccion FROM estudiante";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+            String dni = resultSet.getString("dni");
+            String nombres = resultSet.getString("nombres");
+            String apellidoPaterno = resultSet.getString("apellidoPaterno");
+            String apellidoMaterno = resultSet.getString("apellidoMaterno");
+            String fnacimiento = resultSet.getString("fnacimiento");
+            int grado = resultSet.getInt("grado");
+            String direccion = resultSet.getString("direccion");
+            int genero = resultSet.getInt("genero");
+            String seccion = resultSet.getString("seccion");
+            
+            StudentJavaFX estudiante = new StudentJavaFX(dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, direccion, genero, grado, String.valueOf(seccion));
+            studentList.add(estudiante);
+        }
+        } catch (SQLException ex){
+            System.out.println("Error: "+ ex);
+        }
+        
+        
+        DniColum.setCellValueFactory(cellData -> cellData.getValue().dniProperty());
+        NomColum.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        AppatColum.setCellValueFactory(cellData -> cellData.getValue().appatProperty());
+        ApmatColum.setCellValueFactory(cellData -> cellData.getValue().apmatProperty());
+        FechaColum.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
+        DireColum.setCellValueFactory(cellData -> cellData.getValue().direccionProperty());
+        //GradoColum.setCellValueFactory(cellData -> cellData.getValue().gradoProperty());
+        SeccionColum.setCellValueFactory(cellData -> cellData.getValue().seccionProperty());
+    }
+    
     @FXML
     private void buttonNuevo(){
         Limpiador();
@@ -119,71 +226,87 @@ public class ControlMatricula {
      * Llamado cuando el usuario hace clik en guardar
      */
     @FXML
-    private void buttonGuardar(){
+    private void buttonGuardar() throws IOException{
         if(isInputValid()){
-            student.setDocumento(Integer.parseInt(tfdoc.getText()));
-            student.setNombre(tfnombre.getText());
-            student.setAppat(tfappat.getText());
-            student.setApmat(tfapmat.getText());
-            student.setFecha(tffecha.getText());
-            student.setDireccion(tfdire.getText());
-            student.setTelefono(Integer.parseInt(tftele.getText()));
+            EstudiantePersistencia studentpersis = new EstudiantePersistencia();
             
-            okClicked = true;
-            dialogStage.close();
+            String dni = txtDni.getText();
+            String nombres = txtNombres.getText();
+            String apellidoPaterno = txtApPaterno.getText();
+            String apellidoMaterno = txtApMaterno.getText();
+            String fnacimiento = getDate();
+            String grado = String.valueOf(cbGrado.getValue());
+            String direccion = txtDireccion.getText();
+            String genero = String.valueOf(getGenero());
+            String seccion = String.valueOf(getSeccion());
+            
+            studentpersis.setDni(dni);
+            studentpersis.setNombres(nombres);
+            studentpersis.setApellidoPaterno(apellidoPaterno);
+            studentpersis.setApellidoMaterno(apellidoMaterno);;
+            studentpersis.setFnacimiento(fnacimiento);
+            studentpersis.setGrado(getGrado());
+            studentpersis.setDireccion(direccion);
+            studentpersis.setGenero(getGenero());
+            studentpersis.setSeccion(getSeccion());
+            boolean error = studentpersis.InsertarEstudiante();
+            if(error){
+                Alert exito = new Alert(Alert.AlertType.INFORMATION);
+                exito.initOwner(dialogStage);
+                exito.setTitle("Informacion correcta");
+                exito.setHeaderText("Estudiante matriculado correctamente");
+            
+                exito.showAndWait();
+            }else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(dialogStage);
+                alert.setTitle("Error!");
+                alert.setHeaderText("Estudiante no registrado");
+                alert.setContentText("Estudiante duplicado o campos vacios.");
+                
+                alert.showAndWait();
+            }
         }
     }
     
-    /**
-     * Llama cuando el usuario hace click en cancel
-     */
     @FXML
     private void buttonCancel(){
         dialogStage.close();
     }
     
-    /**
-     * Valida cuando el usuario ingresa en los campos de texto.
-     * 
-     * @return retorna verdadero si el ingreso en verdadero
-     */
     private boolean isInputValid(){
         String errorMessage = "";
         
-        if(tfdoc.getText() == null || tfdoc.getText().length() == 0){
+        if(txtDni.getText() == null || txtDni.getText().length() == 0){
             errorMessage += "No es valido el Documento\n";
         }else{
             //Intenta analizar el documento en un entero
             try{
-                Integer.parseInt(tfdoc.getText());
+                Integer.parseInt(txtDni.getText());
             }catch(NumberFormatException e){
                 errorMessage += "No es valido el Documento, (Debe ser numero entero)!\n";
             }
         }
-        if(tfappat.getText() == null || tfappat.getText().length() == 0){
-            errorMessage += "No es valido el Apellido Paterno\n";
-        }
-        if(tfapmat.getText() == null || tfapmat.getText().length() == 0){
-            errorMessage += "No es valido el Apellido Materno\n";
-        }
-        if(tffecha.getText() == null || tfdoc.getText().length() == 0){
-            errorMessage += "No es valido la fecha de nacimiento\n";
-        }
-        if(tfdire.getText() == null || tfdire.getText().length() == 0){
-            errorMessage += "No es valido la Direccion\n";
-        }
-        if(tfnombre.getText() == null || tfnombre.getText().length() == 0){
+        if(txtNombres.getText() == null || txtNombres.getText().length() == 0){
             errorMessage += "No es valido el Nombre\n";
         }
-        if(tftele.getText() == null || tftele.getText().length() == 0){
-            errorMessage += "No es valido el telefono\n";
-        }else{
-            //Intenta analizar el Telefono en un entero
-            try{
-                Integer.parseInt(tftele.getText());
-            }catch(NumberFormatException e){
-                errorMessage += "No es valido el Telefono (Debe ser un numero entero)!\n";
-            }
+        if(txtApPaterno.getText() == null || txtApPaterno.getText().length() == 0){
+            errorMessage += "No es valido el Apellido Paterno\n";
+        }
+        if(txtApMaterno.getText() == null || txtApMaterno.getText().length() == 0){
+            errorMessage += "No es valido el Apellido Materno\n";
+        }
+        if(txtDireccion.getText() == null || txtDireccion.getText().length() == 0){
+            errorMessage += "No es valido la Direccion\n";
+        }
+        if(dateFecha.getValue() == null){
+            errorMessage += "No es valida la Fecha de Nacimiento\n";
+        }
+        if(cbGrado.getValue() == null){
+            errorMessage += "No es valido el Grado\n";
+        }
+        if(cbSeccion.getValue() == null){
+            errorMessage += "No es valida la Sección\n";
         }
         
         if (errorMessage.length() == 0){
@@ -193,13 +316,12 @@ public class ControlMatricula {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.initOwner(dialogStage);
             alert.setTitle("Campos no Validos");
-            alert.setHeaderText("Por fvor corrija los campos de texto no validos");
+            alert.setHeaderText("Por favor corrija los campos de texto no validos");
             alert.setContentText(errorMessage);
             
             alert.showAndWait();
             return false;
         }
     }
-    
 }
     
