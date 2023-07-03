@@ -39,12 +39,7 @@ public class App extends Application {
     private BorderPane rootLayout;
     private ObservableList<StudentJavaFX> studentList = FXCollections.observableArrayList();
     
-    
     public App(){
-        }
-    
-    public ObservableList<StudentJavaFX> getStudenData(){
-        return studentList;
     }
 
     // Con esto se ejecutara el programa al inicio
@@ -54,8 +49,8 @@ public class App extends Application {
         this.primaryStage.setTitle("Sistema de cobro de mensualidades");
         
         //Agregar icono principal
-        this.primaryStage.getIcons().add(new Image(App.class.getResourceAsStream("/img/matricula.png")));
-        String user = null, contra=null;
+        this.primaryStage.getIcons().add(new Image(App.class.getResourceAsStream("/img/principal.png")));
+        
         // Hacemos la llamada a los metodos
         initRootLayout();
         showlog(user, contra);
@@ -233,11 +228,14 @@ public class App extends Application {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(App.class.getResource("/fxml/Matricula.fxml"));
+                        
             AnchorPane page = (AnchorPane) loader.load();
         
             // Crear la ventana ejecutable
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Matricula");
+            // Poner icono a la ventana ejecutada.
+            dialogStage.getIcons().add(new Image(App.class.getResourceAsStream("/img/matricula.png")));
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
@@ -293,7 +291,7 @@ public class App extends Application {
         }
     }
     
-    public void showRegistrarPago(){
+    public void showRegistrarPago(StudentJavaFX student){
         try {
             // Cargar el FXML
             FXMLLoader loader = new FXMLLoader();
@@ -312,6 +310,7 @@ public class App extends Application {
             ControladorRegistrarPago controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setApp(this);
+            controller.setStudent(student);
             
             //Mostrar hasta que se cierre la ventana
             dialogStage.showAndWait();
@@ -319,21 +318,4 @@ public class App extends Application {
             e.printStackTrace();
         }
     }
-    
-    // Implementamos el Metodo Main de la clase App el cual se usara para iniciar la
-    // Aplicacion JavaFX 
-    
-    /*
-    static private String leerTexto(String mensaje) {
-        String texto;
-        try {
-            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-            System.out.print(mensaje);
-            texto = in.readLine();
-        } catch (IOException e) {
-            texto = "Error";
-        }
-        return texto;
-    }
-    */
 }

@@ -61,7 +61,7 @@ public class ControladorListaEstudiantes {
         this.app = app;
         
         //Agregar la lista observable a la tabla
-        studentTabla.setItems(app.getStudenData());
+        //studentTabla.setItems(app.getStudenData());
     }
     
     public void setDialogStage(Stage dialogStage) {
@@ -108,10 +108,10 @@ public class ControladorListaEstudiantes {
     }
     
     // Boton registrar pago
-    @FXML
+    /*@FXML
     private void handleRegistrarPago(){
         app.showRegistrarPago();
-    }
+    }*/
     
     // Boton volver
     @FXML
