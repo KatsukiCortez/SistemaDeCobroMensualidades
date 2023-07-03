@@ -99,7 +99,7 @@ public class ControlMatricula implements Initializable{
     private ObservableList<StudentJavaFX> studentList = FXCollections.observableArrayList();
     
     private ObservableList<StudentJavaFX> getData(){
-        String url = "jdbc:mysql://localhost:3307/cobros";
+        String url = "jdbc:mysql://localhost:3306/cobros";
         String usuario = "root";
         String contraseña = "";
         try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {
@@ -181,7 +181,7 @@ public class ControlMatricula implements Initializable{
     @FXML
     private void btnRefresh(){
         LimpiarTabla();
-        String url = "jdbc:mysql://localhost:3307/cobros";
+        String url = "jdbc:mysql://localhost:3306/cobros";
         String usuario = "root";
         String contraseña = "";
         try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {

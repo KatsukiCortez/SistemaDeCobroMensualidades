@@ -21,7 +21,7 @@ public class EstudiantePersistencia {
     private Integer genero;
     private char seccion;
     
-    private static final String url = "jdbc:mysql://localhost:3307/cobros";
+    private static final String url = "jdbc:mysql://localhost:3306/cobros";
     private static final String usuario = "root";
     private static final String contraseña = "";
     
