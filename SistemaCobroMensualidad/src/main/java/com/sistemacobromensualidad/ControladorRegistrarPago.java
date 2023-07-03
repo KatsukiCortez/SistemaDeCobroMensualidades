@@ -1,5 +1,7 @@
 package com.sistemacobromensualidad;
 
+import com.sistemacobromensualidad.modelo.StudentJavaFX;
+import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
@@ -44,10 +46,15 @@ public class ControladorRegistrarPago {
     
     @FXML
     private void initialize(){
+        
     }
     
     @FXML
     private void handleVolver(){
         dialogStage.close();
+    }
+    
+    private void DetalleEstudiante(StudentJavaFX student){
+        
     }
 }
