@@ -16,7 +16,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnGuardar" layoutX="70.0" layoutY="380.0" mnemonicParsing="false" text="Guardar" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="229.0" />
+      <Button fx:id="btnGuardar" layoutX="70.0" layoutY="380.0" mnemonicParsing="false" onAction="#btnGuardar" text="Guardar" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="229.0" />
       <Button fx:id="btnsalir" layoutX="244.0" layoutY="380.0" mnemonicParsing="false" onAction="#handleVolver" text="Salir" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="80.0" />
       <GridPane layoutX="10.0" layoutY="10.0" prefHeight="222.0" prefWidth="300.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="70.0">
          <columnConstraints>
