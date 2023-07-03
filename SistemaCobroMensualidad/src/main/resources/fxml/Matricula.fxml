@@ -14,22 +14,22 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1460.0" styleClass="background" stylesheets="@../temas/TemaMarron.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sistemacobromensualidad.ControlMatricula">
    <children>
-      <Label layoutX="760.0" styleClass="label-header" stylesheets="@../temas/TemaMarron.css" text="Matricula">
+      <Label layoutX="608.0" layoutY="7.0" styleClass="label-header" stylesheets="@../temas/TemaMarron.css" text="Matricula">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
-      <Label layoutX="269.0" layoutY="45.0" text="DNI:" />
-      <Label layoutX="270.0" layoutY="84.0" text="Apellido Paterno:" />
-      <Label layoutX="269.0" layoutY="123.0" text="Fecha de nacimiento:" />
-      <Label layoutX="742.0" layoutY="45.0" text="Nombres:" />
-      <Label layoutX="740.0" layoutY="84.0" text="Apellido Materno:" />
-      <Label layoutX="742.0" layoutY="123.0" text="Dirección:" />
-      <TextField fx:id="txtDni" layoutX="420.0" layoutY="37.0" prefHeight="37.0" prefWidth="305.0" AnchorPane.topAnchor="37.0" />
-      <TextField fx:id="txtApPaterno" layoutX="420.0" layoutY="78.0" prefHeight="37.0" prefWidth="306.0" AnchorPane.topAnchor="78.0" />
-      <TextField fx:id="txtNombres" layoutX="902.0" layoutY="41.0" prefHeight="37.0" prefWidth="275.0" AnchorPane.topAnchor="41.0" />
-      <TextField fx:id="txtApMaterno" layoutX="902.0" layoutY="80.0" prefHeight="37.0" prefWidth="275.0" AnchorPane.topAnchor="80.0" />
-      <TextField fx:id="txtDireccion" layoutX="902.0" layoutY="119.0" prefHeight="37.0" prefWidth="275.0" AnchorPane.topAnchor="119.0" />
+      <Label layoutX="236.0" layoutY="97.0" text="DNI:" />
+      <Label layoutX="237.0" layoutY="136.0" text="Apellido Paterno:" />
+      <Label layoutX="236.0" layoutY="175.0" text="Fecha de nacimiento:" />
+      <Label layoutX="709.0" layoutY="97.0" text="Nombres:" />
+      <Label layoutX="707.0" layoutY="136.0" text="Apellido Materno:" />
+      <Label layoutX="709.0" layoutY="175.0" text="Dirección:" />
+      <TextField fx:id="txtDni" layoutX="387.0" layoutY="89.0" prefHeight="37.0" prefWidth="305.0" AnchorPane.topAnchor="89.0" />
+      <TextField fx:id="txtApPaterno" layoutX="387.0" layoutY="130.0" prefHeight="37.0" prefWidth="306.0" AnchorPane.topAnchor="130.0" />
+      <TextField fx:id="txtNombres" layoutX="869.0" layoutY="93.0" prefHeight="37.0" prefWidth="275.0" AnchorPane.topAnchor="93.0" />
+      <TextField fx:id="txtApMaterno" layoutX="869.0" layoutY="132.0" prefHeight="37.0" prefWidth="275.0" AnchorPane.topAnchor="132.0" />
+      <TextField fx:id="txtDireccion" layoutX="869.0" layoutY="171.0" prefHeight="37.0" prefWidth="275.0" AnchorPane.topAnchor="171.0" />
       <Button layoutX="555.0" layoutY="234.00000000000003" mnemonicParsing="false" onAction="#buttonNuevo" text="Nuevo" AnchorPane.bottomAnchor="232.39999999999998" AnchorPane.rightAnchor="462.79999999999995" />
       <Button layoutX="444.0" layoutY="273.0" mnemonicParsing="false" onAction="#buttonGuardar" prefHeight="34.0" prefWidth="115.0" text="Guardar" AnchorPane.bottomAnchor="233.0" AnchorPane.leftAnchor="444.0" AnchorPane.rightAnchor="901.0" />
       <Button layoutX="671.0" layoutY="234.0" mnemonicParsing="false" onAction="#buttonCancel" text="Cancelar" AnchorPane.bottomAnchor="232.39999999999998" AnchorPane.leftAnchor="671.0" />
@@ -45,8 +45,8 @@
             <TableColumn fx:id="SeccionColum" prefWidth="172.0" text="Seccion" />
         </columns>
       </TableView>
-      <Label layoutX="742.0" layoutY="156.0" text="Genero:" />
-      <RadioButton fx:id="Femenino" layoutX="924.0" layoutY="165.0" mnemonicParsing="false" selected="true" text="Femenino" AnchorPane.topAnchor="165.0">
+      <Label layoutX="709.0" layoutY="208.0" text="Genero:" />
+      <RadioButton fx:id="Femenino" layoutX="891.0" layoutY="217.0" mnemonicParsing="false" selected="true" text="Femenino" textFill="WHITE" AnchorPane.topAnchor="217.0">
          <toggleGroup>
             <ToggleGroup fx:id="Genero" />
          </toggleGroup>
@@ -54,12 +54,15 @@
             <Font size="16.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="Masculino" layoutX="1009.0" layoutY="165.0" mnemonicParsing="false" text="Masculino" toggleGroup="$Genero" AnchorPane.topAnchor="165.0" />
-      <DatePicker fx:id="dateFecha" layoutX="422.0" layoutY="120.0" />
-      <ChoiceBox fx:id="cbGrado" layoutX="371.0" layoutY="180.0" prefWidth="150.0" />
-      <Label layoutX="299.0" layoutY="185.0" text="Grado:" />
-      <ChoiceBox fx:id="cbSeccion" layoutX="634.0" layoutY="183.0" prefWidth="150.0" />
-      <Label layoutX="563.0" layoutY="185.0" text="Sección:" />
-      <Button layoutX="322.0" layoutY="232.0" mnemonicParsing="false" onAction="#btnRefresh" prefHeight="34.0" prefWidth="122.0" text="Refrescar" />
+      <RadioButton fx:id="Masculino" layoutX="998.0" layoutY="217.0" mnemonicParsing="false" text="Masculino" textFill="WHITE" toggleGroup="$Genero" AnchorPane.topAnchor="217.0">
+         <font>
+            <Font size="16.0" />
+         </font></RadioButton>
+      <DatePicker fx:id="dateFecha" layoutX="389.0" layoutY="172.0" />
+      <ChoiceBox fx:id="cbGrado" layoutX="338.0" layoutY="232.0" prefWidth="150.0" styleClass="table-view" />
+      <Label layoutX="266.0" layoutY="237.0" text="Grado:" />
+      <ChoiceBox fx:id="cbSeccion" layoutX="601.0" layoutY="235.0" prefWidth="150.0" styleClass="table-view" />
+      <Label layoutX="530.0" layoutY="237.0" text="Sección:" />
+      <Button layoutX="211.0" layoutY="333.0" mnemonicParsing="false" onAction="#btnRefresh" prefHeight="34.0" prefWidth="122.0" text="Refrescar" />
    </children>
 </AnchorPane>
