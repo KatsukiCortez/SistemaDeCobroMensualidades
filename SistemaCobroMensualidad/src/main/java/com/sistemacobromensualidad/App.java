@@ -35,12 +35,7 @@ public class App extends Application {
     private BorderPane rootLayout;
     private ObservableList<StudentJavaFX> studentList = FXCollections.observableArrayList();
     
-    
     public App(){
-    }
-    
-    public ObservableList<StudentJavaFX> getStudenData(){
-        return studentList;
     }
 
     // Con esto se ejecutara el programa al inicio
