@@ -25,9 +25,8 @@ public class ControladorRegistrarPago {
     @FXML
     private RadioButton RBpension;
 
-
-
-
+    private StudentJavaFX student;
+    
     //Constructor
     public ControladorRegistrarPago(){}
 
@@ -54,7 +53,14 @@ public class ControladorRegistrarPago {
         dialogStage.close();
     }
     
-    private void DetalleEstudiante(StudentJavaFX student){
+    public void setStudent(StudentJavaFX student){
+        this.student = student;
+        
+        Lnombre.setText(student.getNombre());
+        Lappat.setText(student.getAppat());
+        Lapmat.setText(student.getApmat());
+        Lgrado.setText(String.valueOf(student.getGrado()));
+        Lseccion.setText(student.getSeccion());
         
     }
 }

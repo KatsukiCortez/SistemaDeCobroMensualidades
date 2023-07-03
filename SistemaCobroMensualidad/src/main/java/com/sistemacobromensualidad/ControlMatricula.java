@@ -72,18 +72,11 @@ public class ControlMatricula implements Initializable{
         cbGrado.getItems().addAll(grado);
         cbSeccion.getItems().addAll(seccion);
         
+        studentTable.getSelectionModel().selectedItemProperty().addListener
+        ((observable, oldValue, newValue) -> showDetallesEstudiante(newValue));
         
         studentTable.setItems(getData());
         LimpiarTabla();
-        
-        /*DniColum.setCellValueFactory(cellData -> cellData.getValue().dniProperty());
-        NomColum.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
-        AppatColum.setCellValueFactory(cellData -> cellData.getValue().appatProperty());
-        ApmatColum.setCellValueFactory(cellData -> cellData.getValue().apmatProperty());
-        FechaColum.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
-        DireColum.setCellValueFactory(cellData -> cellData.getValue().direccionProperty());
-        //GradoColum.setCellValueFactory(cellData -> cellData.getValue().gradoProperty());
-        SeccionColum.setCellValueFactory(cellData -> cellData.getValue().seccionProperty());*/
     }
     
     private StudentJavaFX student;
@@ -175,6 +168,29 @@ public class ControlMatricula implements Initializable{
         txtApPaterno.setText("");
         txtApMaterno.setText("");
         txtDireccion.setText("");
+        dateFecha.setValue(null);
+        cbGrado.valueProperty().set(null);
+        cbSeccion.valueProperty().set(null);
+    }
+    
+    public void showDetallesEstudiante(StudentJavaFX estudiante){
+        if(estudiante != null){
+            txtDni.setText(estudiante.getDni());
+            txtNombres.setText(estudiante.getNombre());
+            txtApPaterno.setText(estudiante.getAppat());
+            txtApMaterno.setText(estudiante.getApmat());
+            txtDireccion.setText(estudiante.getDireccion());
+            // Obtener lista para estudiante
+            String fechaString = estudiante.getFecha(); 
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate fechaLocalDate = LocalDate.parse(fechaString, formatter);
+
+            dateFecha.setValue(fechaLocalDate);
+            cbGrado.valueProperty().set(estudiante.getGrado());
+            cbSeccion.valueProperty().set(estudiante.getSeccion());
+        } else {
+            Limpiador();
+        }
     }
     
     @FXML
@@ -265,6 +281,7 @@ public class ControlMatricula implements Initializable{
                 
                 alert.showAndWait();
             }
+        Limpiador();
         }
     }
     
@@ -275,7 +292,15 @@ public class ControlMatricula implements Initializable{
     
     @FXML
     private void buttonPagar(){
-        app.showRegistrarPago();
+        StudentJavaFX selectedStudent = studentTable.getSelectionModel().getSelectedItem();
+        if(selectedStudent != null){
+            app.showRegistrarPago(selectedStudent);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Seleccion invalida");
+            alert.setHeaderText("Ningun estudiante seleccionado.");
+            alert.showAndWait();
+        }
     }
     
     private boolean isInputValid(){
