@@ -15,22 +15,19 @@ import javafx.stage.Modality;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.scene.control.Alert;
+import javafx.stage.StageStyle;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
-
-/*//JASPER
-import net.sf.jasperreports.engine.*;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;*/
 
 /**
  * JavaFX App VERSION ESTABLE
@@ -44,23 +41,7 @@ public class App extends Application {
     
     
     public App(){
-        // Agregando datos
-        studentList.add(new StudentJavaFX("78548922", "candy", "callo", "huamani", "1998-03-24", "no tiene casa", 0, 1, "A"));
-        studentList.add(new StudentJavaFX("73317659", "yadir", "cortez", "huaman", "2001-01-08", "no tiene casa", 1, 5, "B"));
-        
-        /*studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
-        studentData.add(new StudentJavaFX("Jose Alberto","Castillo","Rodriguez"));
-        studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
-        studentData.add(new StudentJavaFX("Roberto","Alvez","Garcia"));
-        studentData.add(new StudentJavaFX("Edward","Roque","Pena"));
-        studentData.add(new StudentJavaFX("Javier Nilson","De la cruz","Tintaya"));
-        studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
-        studentData.add(new StudentJavaFX("Jose Alberto","Castillo","Rodriguez"));
-        studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
-        studentData.add(new StudentJavaFX("Roberto","Alvez","Garcia"));
-        studentData.add(new StudentJavaFX("Edward","Roque","Pena"));
-        studentData.add(new StudentJavaFX("Javier Nilson","De la cruz","Tintaya"));*/
-    }
+        }
     
     public ObservableList<StudentJavaFX> getStudenData(){
         return studentList;
@@ -74,10 +55,11 @@ public class App extends Application {
         
         //Agregar icono principal
         this.primaryStage.getIcons().add(new Image(App.class.getResourceAsStream("/img/matricula.png")));
-        
+        String user = null, contra=null;
         // Hacemos la llamada a los metodos
         initRootLayout();
-        showMenuPrincipal();
+        showlog(user, contra);
+        //showMenuPrincipal();
     }
     // Implementamos el metodo initRootLayout y cargamos el diceño principal
     // de la interfaz grafica
@@ -109,6 +91,67 @@ public class App extends Application {
             
             ControladorMenuPrincipal controlador = loader.getController();
             controlador.setApp(this);
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    
+    
+    public void showlog(String user, String contra){
+        try{
+            // Establecemos la Ubicacion
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(App.class.getResource("/fxml/Loging.fxml"));
+            AnchorPane menuPrincipal = (AnchorPane) loader.load();
+            
+            // Establecemos como Interfaz Central
+            rootLayout.setCenter(menuPrincipal);
+            
+            ControladorMenuPrincipal controlador = loader.getController();
+            controlador.setApp(this);
+            
+            ResultSet rs;
+        if (user.equals("") && contra.equals("")){
+            Alert dialog=new Alert(Alert.AlertType.INFORMATION);// crea un tipode dialogo de alerta simple
+            dialog.setTitle("MENSAJE");
+            dialog.setHeaderText(null);//Sin titulo interno
+            dialog.setContentText("Falta completar datos en un campo");
+            dialog.initStyle(StageStyle.UTILITY);
+            dialog.showAndWait();
+        }
+        else{
+            String url = "jdbc:mysql://localhost:3306/cobros";
+            String usuario = "root";
+            String contraseña = "";
+            try{
+                Connection connection = DriverManager.getConnection(url, usuario, contraseña);
+                
+                PreparedStatement pst = connection.prepareStatement("select * from usuarios where id_usuario=? and usuario=?");
+                pst.setString(1, user);
+                pst.setString(2, contra);
+                
+                rs = pst.executeQuery();
+                if(rs.next()){
+                    Alert dialog=new Alert(Alert.AlertType.INFORMATION);// crea un tipode dialogo de alerta simple
+                    dialog.setTitle("MENSAJE");
+                    dialog.setHeaderText(null);//Sin titulo interno
+                    dialog.setContentText("Ingreso exitoso");
+                    dialog.initStyle(StageStyle.UTILITY);
+                    dialog.showAndWait();
+                    
+                    showMenuPrincipal();
+                }else{
+                    Alert dialog=new Alert(Alert.AlertType.INFORMATION);// crea un tipode dialogo de alerta simple
+                    dialog.setTitle("MENSAJE");
+                    dialog.setHeaderText(null);//Sin titulo interno
+                    dialog.setContentText("Ingreso Fallido, intente nuevamente");
+                    dialog.initStyle(StageStyle.UTILITY);
+                    dialog.showAndWait();
+                }
+            }catch(SQLException e){
+                System.out.println("error en la conección"+e);
+            }
+        }
         } catch(IOException e){
             e.printStackTrace();
         }

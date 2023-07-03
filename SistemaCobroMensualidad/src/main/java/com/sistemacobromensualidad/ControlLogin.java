@@ -52,45 +52,8 @@ public class ControlLogin {
     public void handleIngresar(){
         String user=txtuser.getText();
         String contra=txtcontraseña.getText();
-        if (user.equals("") && contra.equals("")){
-            Alert dialog=new Alert(AlertType.INFORMATION);// crea un tipode dialogo de alerta simple
-            dialog.setTitle("MENSAJE");
-            dialog.setHeaderText(null);//Sin titulo interno
-            dialog.setContentText("Falta completar datos en un campo");
-            dialog.initStyle(StageStyle.UTILITY);
-            dialog.showAndWait();
-        }
-        else{
-            String url = "jdbc:mysql://localhost:3306/cobros";
-            String usuario = "root";
-            String contraseña = "";
-            try{
-                Connection connection = DriverManager.getConnection(url, usuario, contraseña);
-                
-                PreparedStatement pst = connection.prepareStatement("select * from usuarios where id_usuario=? and usuario=?");
-                pst.setString(1, user);
-                pst.setString(2, contra);
-                
-                rs = pst.executeQuery();
-                if(rs.next()){
-                    Alert dialog=new Alert(AlertType.INFORMATION);// crea un tipode dialogo de alerta simple
-                    dialog.setTitle("MENSAJE");
-                    dialog.setHeaderText(null);//Sin titulo interno
-                    dialog.setContentText("Ingreso exitoso");
-                    dialog.initStyle(StageStyle.UTILITY);
-                    dialog.showAndWait();
-                }else{
-                    Alert dialog=new Alert(AlertType.INFORMATION);// crea un tipode dialogo de alerta simple
-                    dialog.setTitle("MENSAJE");
-                    dialog.setHeaderText(null);//Sin titulo interno
-                    dialog.setContentText("Ingreso Fallido, intente nuevamente");
-                    dialog.initStyle(StageStyle.UTILITY);
-                    dialog.showAndWait();
-                }
-            }catch(SQLException e){
-                System.out.println("error en la conección"+e);
-            }
-        }
+        
+        app.showlog(user, contra);
     }
     
     @FXML
