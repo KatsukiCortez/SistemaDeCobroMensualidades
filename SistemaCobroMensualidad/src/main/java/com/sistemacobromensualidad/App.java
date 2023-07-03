@@ -13,7 +13,17 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 /*//JASPER
 import net.sf.jasperreports.engine.*;
@@ -146,34 +156,27 @@ public class App extends Application {
     // Implementamos el metodo showGradoSeccion donde cargaremos el FXML GradiSeccion
     // y mostraremos el contenido, esto lo mostraremos en una nueva ventana Stage
     // hazta que se cierre
-    public boolean showGradoSeccion(){
-        try {
-            // Cargar el FXML
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(App.class.getResource("/fxml/GradoSeccion.fxml"));
-            AnchorPane page = (AnchorPane) loader.load();
-        
-            // Crear la ventana ejecutable
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Grado y seccion");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(primaryStage);
-            Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
+    public void showGradoSeccion(){
+        String url = "jdbc:mysql://localhost:3306/cobros";
+        String usuario = "root";
+        String contraseña = "";
+        try{  
+            Connection connection = DriverManager.getConnection(url, usuario, contraseña);
+            try{
+            JasperReport jasperReport = null;
+            JasperPrint jasperPrint = null;
+            JasperDesign jasperDesign = null;            
+            jasperDesign = JRXmlLoader.load("fxml/Reporte.jrxml");
+            jasperReport = JasperCompileManager.compileReport(jasperDesign);
+            jasperPrint = JasperFillManager.fillReport(jasperReport, null,connection);
+            JasperExportManager.exportReportToPdfFile(jasperPrint,"temas/ListaPersonas.pdf");
+            JasperViewer.viewReport(jasperPrint);
             
-            //Usar el controlador
-            ControladorGradoSeccion controller = loader.getController();
-            controller.setDialogStage(dialogStage);
-            controller.setApp(this);
-            
-            //Mostrar hasta que se cierre la ventana
-            dialogStage.showAndWait();
-            
-            //return controller.isOkClicked();
-            return false;
-        }catch(IOException e){
-            e.printStackTrace();
-            return false;
+            } catch (Exception ex){
+                System.out.println("EXCEPTION: "+ ex);
+            }
+        }catch(SQLException e){
+            System.out.println("error en la conección"+e);
         }
     }
     // Implementamos el metodo showListaEstudiantes donde cargaremos el FXML ListaEstudiantes
