@@ -213,7 +213,7 @@ public class ControlMatricula implements Initializable{
         ApmatColum.setCellValueFactory(cellData -> cellData.getValue().apmatProperty());
         FechaColum.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
         DireColum.setCellValueFactory(cellData -> cellData.getValue().direccionProperty());
-        //GradoColum.setCellValueFactory(cellData -> cellData.getValue().gradoProperty());
+        GradoColum.setCellValueFactory(cellData -> cellData.getValue().gradoProperty().asObject());
         SeccionColum.setCellValueFactory(cellData -> cellData.getValue().seccionProperty());
     }
     
