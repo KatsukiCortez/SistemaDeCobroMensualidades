@@ -103,6 +103,7 @@ REPORTE DE COBRO DE MESUALIDADES DE ALUMNO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="0" width="100" height="30" uuid="715c651a-40d1-4672-bf66-db91cbaf50b1"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[DNI]]></text>
 			</staticText>
 		</band>
@@ -111,22 +112,27 @@ REPORTE DE COBRO DE MESUALIDADES DE ALUMNO]]></text>
 		<band height="346" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="30" uuid="16614d06-c774-409f-88e8-3b8afc490977"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="0" width="100" height="30" uuid="0785ba38-b3fb-49fb-b907-cc8b7df32ea0"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="200" y="0" width="120" height="30" uuid="0574de42-560e-42d2-8ef3-8125ef85456d"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{apellidoPaterno}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="320" y="0" width="130" height="30" uuid="13f0d804-d95b-4983-8ffa-db82235e8359"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{apellidoMaterno}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="450" y="0" width="100" height="30" uuid="1a7fb5d1-9cf9-4250-9cba-b029b936c5da"/>
+				<textElement textAlignment="Center"/>
 				<text><![CDATA[0]]></text>
 			</staticText>
 		</band>

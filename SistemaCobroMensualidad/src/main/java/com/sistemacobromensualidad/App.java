@@ -166,11 +166,13 @@ public class App extends Application {
             JasperReport jasperReport = null;
             JasperPrint jasperPrint = null;
             JasperDesign jasperDesign = null;            
-            jasperDesign = JRXmlLoader.load("fxml/Reporte.jrxml");
+            jasperDesign = JRXmlLoader.load(getClass().getResourceAsStream("/fxml/Reporte.jrxml"));
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
             jasperPrint = JasperFillManager.fillReport(jasperReport, null,connection);
-            JasperExportManager.exportReportToPdfFile(jasperPrint,"temas/ListaPersonas.pdf");
-            JasperViewer.viewReport(jasperPrint);
+            JasperExportManager.exportReportToPdfFile(jasperPrint,"reportesListaPersonas.pdf");
+            JasperViewer view=new JasperViewer(jasperPrint,false);
+            //view.setDefaultCloseOperation(1);
+            view.setVisible(true);
             
             } catch (Exception ex){
                 System.out.println("EXCEPTION: "+ ex);
