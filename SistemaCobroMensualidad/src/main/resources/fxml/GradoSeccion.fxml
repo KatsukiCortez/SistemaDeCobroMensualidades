@@ -82,7 +82,8 @@
                   <RadioButton fx:id="SecciD" mnemonicParsing="false" text="D" textFill="WHITE" toggleGroup="$Seccion">
                      <font>
                         <Font size="20.0" />
-                     </font></RadioButton>
+                     </font>
+                  </RadioButton>
                </children>
             </HBox>
          </buttons>
