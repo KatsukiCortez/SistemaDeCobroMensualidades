@@ -73,20 +73,18 @@ public class ControlMatricula implements Initializable{
         cbGrado.getItems().addAll(grado);
         cbSeccion.getItems().addAll(seccion);
         
-        studentList.add(new StudentJavaFX(null, null, null, null, null, null, null, null, null));
-        /*studentList.add(new StudentJavaFX("78548922", "candy", "callo", "huamani", "1998-03-24", "no tiene casa", 0, 1, "A"));
-        studentList.add(new StudentJavaFX("73317659", "yadir", "cortez", "huaman", "2001-01-08", "no tiene casa", 1, 5, "B"));*/
         
-        studentTable.setItems(studentList);
+        studentTable.setItems(getData());
+        LimpiarTabla();
         
-        DniColum.setCellValueFactory(cellData -> cellData.getValue().dniProperty());
+        /*DniColum.setCellValueFactory(cellData -> cellData.getValue().dniProperty());
         NomColum.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         AppatColum.setCellValueFactory(cellData -> cellData.getValue().appatProperty());
         ApmatColum.setCellValueFactory(cellData -> cellData.getValue().apmatProperty());
         FechaColum.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
         DireColum.setCellValueFactory(cellData -> cellData.getValue().direccionProperty());
         //GradoColum.setCellValueFactory(cellData -> cellData.getValue().gradoProperty());
-        SeccionColum.setCellValueFactory(cellData -> cellData.getValue().seccionProperty());
+        SeccionColum.setCellValueFactory(cellData -> cellData.getValue().seccionProperty());*/
     }
     
     private StudentJavaFX student;
@@ -94,9 +92,40 @@ public class ControlMatricula implements Initializable{
     private boolean okClicked = false;
     private App app;
     
+    private void LimpiarTabla(){
+        studentTable.getItems().clear();
+    }
     
     private ObservableList<StudentJavaFX> studentList = FXCollections.observableArrayList();
     
+    private ObservableList<StudentJavaFX> getData(){
+        String url = "jdbc:mysql://localhost:3306/cobros";
+        String usuario = "root";
+        String contraseña = "";
+        try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {
+            String query = "SELECT dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, grado, direccion, genero, seccion FROM estudiante";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+            String dni = resultSet.getString("dni");
+            String nombres = resultSet.getString("nombres");
+            String apellidoPaterno = resultSet.getString("apellidoPaterno");
+            String apellidoMaterno = resultSet.getString("apellidoMaterno");
+            String fnacimiento = resultSet.getString("fnacimiento");
+            int grado = resultSet.getInt("grado");
+            String direccion = resultSet.getString("direccion");
+            int genero = resultSet.getInt("genero");
+            String seccion = resultSet.getString("seccion");
+            
+            StudentJavaFX estudiante = new StudentJavaFX(dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, direccion, genero, grado, String.valueOf(seccion));
+            studentList.add(estudiante);
+            return studentList;
+        }
+        } catch (SQLException ex){
+            System.out.println("Error: "+ ex);
+        }
+        return studentList;
+    }
     
     public void setDialogStage(Stage dialogStage){
         this.dialogStage = dialogStage;
@@ -104,8 +133,6 @@ public class ControlMatricula implements Initializable{
     
     public void setApp(App app) {
         this.app = app;
-        
-        //studentTable.setItems(app.getStudenData());
     }
     
     public void setStudent(StudentJavaFX student){
@@ -153,6 +180,7 @@ public class ControlMatricula implements Initializable{
     
     @FXML
     private void btnRefresh(){
+        LimpiarTabla();
         String url = "jdbc:mysql://localhost:3306/cobros";
         String usuario = "root";
         String contraseña = "";
@@ -177,6 +205,8 @@ public class ControlMatricula implements Initializable{
         } catch (SQLException ex){
             System.out.println("Error: "+ ex);
         }
+        
+        
         DniColum.setCellValueFactory(cellData -> cellData.getValue().dniProperty());
         NomColum.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
         AppatColum.setCellValueFactory(cellData -> cellData.getValue().appatProperty());
