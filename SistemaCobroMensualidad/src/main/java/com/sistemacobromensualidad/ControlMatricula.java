@@ -73,8 +73,9 @@ public class ControlMatricula implements Initializable{
         cbGrado.getItems().addAll(grado);
         cbSeccion.getItems().addAll(seccion);
         
-        studentList.add(new StudentJavaFX("78548922", "candy", "callo", "huamani", "1998-03-24", "no tiene casa", 0, 1, "A"));
-        studentList.add(new StudentJavaFX("73317659", "yadir", "cortez", "huaman", "2001-01-08", "no tiene casa", 1, 5, "B"));
+        studentList.add(new StudentJavaFX(null, null, null, null, null, null, null, null, null));
+        /*studentList.add(new StudentJavaFX("78548922", "candy", "callo", "huamani", "1998-03-24", "no tiene casa", 0, 1, "A"));
+        studentList.add(new StudentJavaFX("73317659", "yadir", "cortez", "huaman", "2001-01-08", "no tiene casa", 1, 5, "B"));*/
         
         studentTable.setItems(studentList);
         
@@ -96,22 +97,6 @@ public class ControlMatricula implements Initializable{
     
     private ObservableList<StudentJavaFX> studentList = FXCollections.observableArrayList();
     
-    /*@FXML
-    public void initialize(){
-        studentList.add(new StudentJavaFX("78548922", "candy", "callo", "huamani", "1998-03-24", "no tiene casa", 0, 1, "A"));
-        studentList.add(new StudentJavaFX("73317659", "yadir", "cortez", "huaman", "2001-01-08", "no tiene casa", 1, 5, "B"));
-        
-        studentTable.setItems(studentList);
-        
-        DniColum.setCellValueFactory(cellData -> cellData.getValue().dniProperty());
-        NomColum.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
-        AppatColum.setCellValueFactory(cellData -> cellData.getValue().appatProperty());
-        ApmatColum.setCellValueFactory(cellData -> cellData.getValue().apmatProperty());
-        FechaColum.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
-        DireColum.setCellValueFactory(cellData -> cellData.getValue().direccionProperty());
-        //GradoColum.setCellValueFactory(cellData -> cellData.getValue().gradoProperty());
-        SeccionColum.setCellValueFactory(cellData -> cellData.getValue().seccionProperty());
-    }*/
     
     public void setDialogStage(Stage dialogStage){
         this.dialogStage = dialogStage;
