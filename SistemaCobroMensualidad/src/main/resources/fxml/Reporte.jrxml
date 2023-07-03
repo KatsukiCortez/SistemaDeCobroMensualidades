@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Reporte" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="261da2b4-493c-485a-9ac9-b451967798be">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="cobros"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<subDataset name="estudiante" uuid="d016ccde-4898-4837-a6a8-6ade1043724e">
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 		<queryString>
@@ -12,12 +14,66 @@
 		<field name="pago" class="java.lang.Boolean"/>
 	</subDataset>
 	<queryString>
-		<![CDATA[]]>
+		<![CDATA[SELECT e.*, c.*
+FROM estudiante e
+RIGHT JOIN pago p ON e.dni = p.IDdni
+RIGHT JOIN cuotas c ON p.IDCuota = c.IDCuota]]>
 	</queryString>
-	<field name="nombre" class="java.lang.String"/>
-	<field name="appat" class="java.lang.String"/>
-	<field name="apmat" class="java.lang.String"/>
-	<field name="pago" class="java.lang.Boolean"/>
+	<field name="dni" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="dni"/>
+		<property name="com.jaspersoft.studio.field.label" value="dni"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estudiante"/>
+	</field>
+	<field name="nombres" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombres"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombres"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estudiante"/>
+	</field>
+	<field name="apellidoPaterno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellidoPaterno"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellidoPaterno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estudiante"/>
+	</field>
+	<field name="apellidoMaterno" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellidoMaterno"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellidoMaterno"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estudiante"/>
+	</field>
+	<field name="fnacimiento" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fnacimiento"/>
+		<property name="com.jaspersoft.studio.field.label" value="fnacimiento"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estudiante"/>
+	</field>
+	<field name="grado" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="grado"/>
+		<property name="com.jaspersoft.studio.field.label" value="grado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estudiante"/>
+	</field>
+	<field name="direccion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="direccion"/>
+		<property name="com.jaspersoft.studio.field.label" value="direccion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estudiante"/>
+	</field>
+	<field name="genero" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.name" value="genero"/>
+		<property name="com.jaspersoft.studio.field.label" value="genero"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estudiante"/>
+	</field>
+	<field name="seccion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="seccion"/>
+		<property name="com.jaspersoft.studio.field.label" value="seccion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="estudiante"/>
+	</field>
+	<field name="IDCuota" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="IDCuota"/>
+		<property name="com.jaspersoft.studio.field.label" value="IDCuota"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cuotas"/>
+	</field>
+	<field name="monto" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="monto"/>
+		<property name="com.jaspersoft.studio.field.label" value="monto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="cuotas"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -37,92 +93,63 @@ REPORTE DE COBRO DE MESUALIDADES DE ALUMNO]]></text>
 		<band height="45" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="78" splitType="Stretch">
+		<band height="45" splitType="Stretch">
 			<staticText>
-				<reportElement x="70" y="0" width="100" height="30" uuid="1962e326-4f48-475a-af3b-6839b9994dcf"/>
+				<reportElement x="100" y="0" width="100" height="30" uuid="1962e326-4f48-475a-af3b-6839b9994dcf"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[NOMBRES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="217" y="0" width="120" height="30" uuid="c6e5aa63-39dc-4a1e-bbb0-4bb3a58d80f7"/>
+				<reportElement x="200" y="0" width="120" height="30" uuid="c6e5aa63-39dc-4a1e-bbb0-4bb3a58d80f7"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[APELLIDO PATERNO]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="390" y="0" width="130" height="30" uuid="db569227-62d8-4266-89c5-87905c40eade"/>
+				<reportElement x="320" y="0" width="130" height="30" uuid="db569227-62d8-4266-89c5-87905c40eade"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[APELLIDO MATERNO]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="70" y="40" width="100" height="30" uuid="e7d4c0a1-8fba-4fb2-9920-7828b9197072"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="227" y="40" width="100" height="30" uuid="9bc7be0c-252a-4187-b34f-cc6c0d6e0b03"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{appat}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="405" y="40" width="100" height="30" uuid="b63e1878-7c9d-4991-829b-7022f954b4a7"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{apmat}]]></textFieldExpression>
-			</textField>
-		</band>
-	</columnHeader>
-	<detail>
-		<band height="346" splitType="Stretch">
 			<staticText>
-				<reportElement x="140" y="10" width="100" height="30" uuid="d58fae2e-4ab0-4f09-beb3-ce053813f925"/>
-				<textElement textAlignment="Center"/>
-				<text><![CDATA[MES]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="320" y="10" width="100" height="30" uuid="df4c19db-5f00-4285-9291-53954afcad80"/>
+				<reportElement x="450" y="0" width="100" height="30" uuid="df4c19db-5f00-4285-9291-53954afcad80"/>
 				<textElement textAlignment="Center"/>
 				<text><![CDATA[PAGO]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="320" y="47" width="100" height="30" uuid="42ba2dea-7827-41ce-a1c4-88eef378c643"/>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="715c651a-40d1-4672-bf66-db91cbaf50b1"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{pago}]]></textFieldExpression>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="67" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="20" width="100" height="30" uuid="16614d06-c774-409f-88e8-3b8afc490977"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="140" y="47" width="100" height="30" uuid="49c682ae-922d-42ac-a8e9-4e83a3383adb"/>
-				<text><![CDATA[marzo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="140" y="77" width="100" height="30" uuid="0824de62-668e-47c9-ae4a-4455cf752615"/>
-				<text><![CDATA[abril]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="140" y="107" width="100" height="30" uuid="c09dc716-6da7-4a0c-a3bb-ccd0af176e4e"/>
-				<text><![CDATA[mayo]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="140" y="138" width="100" height="30" uuid="a39710b6-da2e-4a03-8359-c1336ff679e0"/>
-				<text><![CDATA[junio]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="140" y="168" width="100" height="30" uuid="cae280f8-75a4-4448-b15f-276fa96247b7"/>
-				<text><![CDATA[agosto]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="140" y="200" width="100" height="30" uuid="a03a58df-58e5-47fd-83fd-b17e1ad95da6"/>
-				<text><![CDATA[septiembre]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="140" y="230" width="100" height="30" uuid="43b372ac-45a1-4eeb-80e7-bda538f08f4c"/>
-				<text><![CDATA[octubre]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="140" y="260" width="100" height="30" uuid="03a04a00-2ac0-42d0-86b2-166ddf74c30f"/>
-				<text><![CDATA[noviembre]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="140" y="290" width="100" height="30" uuid="c7917070-ecdf-4c1d-a15e-25c9c7743a42"/>
-				<text><![CDATA[diciembre]]></text>
-			</staticText>
+			<textField>
+				<reportElement x="100" y="20" width="100" height="30" uuid="0785ba38-b3fb-49fb-b907-cc8b7df32ea0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="20" width="120" height="30" uuid="0574de42-560e-42d2-8ef3-8125ef85456d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{apellidoPaterno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="20" width="130" height="30" uuid="13f0d804-d95b-4983-8ffa-db82235e8359"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{apellidoMaterno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="18" width="100" height="30" uuid="015bc83b-e843-4a0b-9012-71e3e10ba0bc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="aba89b6f-6f63-42cd-9ab7-1109e4d25a05"/>
+				</reportElement>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
