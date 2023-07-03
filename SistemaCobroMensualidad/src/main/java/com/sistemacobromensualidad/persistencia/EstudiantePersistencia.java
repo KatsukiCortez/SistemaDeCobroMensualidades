@@ -1,9 +1,14 @@
 package com.sistemacobromensualidad.persistencia;
 
+import com.sistemacobromensualidad.modelo.StudentJavaFX;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EstudiantePersistencia {
     private String dni;
@@ -15,8 +20,15 @@ public class EstudiantePersistencia {
     private String direccion;
     private Integer genero;
     private char seccion;
-
-    public EstudiantePersistencia(String dni, String nombres, String apellidoPaterno, String apellidoMaterno, String fnacimiento, Integer grado, String direccion, Integer genero, char seccion) {
+    
+    private static final String url = "jdbc:mysql://localhost:3306/cobros";
+    private static final String usuario = "root";
+    private static final String contraseña = "";
+    
+    public EstudiantePersistencia(){
+    }
+    
+    public EstudiantePersistencia(String dni) {
         this.dni = dni;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
@@ -103,36 +115,63 @@ public class EstudiantePersistencia {
     // Metodos de la base de datos
     
     // Insertar en la base de datos
-    public Boolean InsertarEstudiante(){
-        String url = "jdbc:mysql://localhost:3306/cobros";
-        String usuario = "root";
-        String contraseña = "";
-        //conexion 
-        try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {
-                String sql = "INSERT INTO personas (dni, nombres, apellidoPaterno, apellidoMaterno ,fnacimiento, grado, direccion, genero, seccion) "
-                        + "VALUES (?, ?, ?, ?, ?, ?,?, ?, ?)";
-                try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                    statement.setString(1, dni);
-                    statement.setString(2, nombres);
-                    statement.setString(3, apellidoPaterno);
-                    statement.setString(4, apellidoMaterno);
-                    statement.setString(5, fnacimiento);
-                    statement.setString(6, String.valueOf(grado));
-                    statement.setString(7, direccion);
-                    statement.setString(8, String.valueOf(genero));
-                    statement.setString(9, apellidoPaterno);
-
-                    int filasAfectadas = statement.executeUpdate();
-                    if (filasAfectadas > 0) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-            } catch (SQLException e) {
+    public boolean InsertarEstudiante() {
+    try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {
+        String sql = "INSERT INTO estudiante (dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, grado, direccion, genero, seccion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, dni);
+            statement.setString(2, nombres);
+            statement.setString(3, apellidoPaterno);
+            statement.setString(4, apellidoMaterno);
+            statement.setString(5, fnacimiento);
+            statement.setInt(6, grado);
+            statement.setString(7, direccion);
+            statement.setInt(8, genero);
+            statement.setString(9, String.valueOf(seccion));
+            int filasAfectadas = statement.executeUpdate();
+            if (filasAfectadas > 0) {
+                return true;
+            } else {
                 return false;
+            }
         }
+    } catch (SQLException e) {
+        return false;
     }
+    }
+    
+    public List<StudentJavaFX> obtenerEstudiantes() {
+    List<StudentJavaFX> estudiantes = new ArrayList<>();
+
+    try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {
+        String query = "SELECT dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, grado, direccion, genero, seccion FROM estudiante";
+        PreparedStatement statement = connection.prepareStatement(query);
+        ResultSet resultSet = statement.executeQuery();
+
+        while (resultSet.next()) {
+            String dni = resultSet.getString("dni");
+            String nombres = resultSet.getString("nombres");
+            String apellidoPaterno = resultSet.getString("apellidoPaterno");
+            String apellidoMaterno = resultSet.getString("apellidoMaterno");
+            String fnacimiento = resultSet.getString("fnacimiento");
+            int grado = resultSet.getInt("grado");
+            String direccion = resultSet.getString("direccion");
+            int genero = resultSet.getInt("genero");
+            String seccion = resultSet.getString("seccion");
+
+            StudentJavaFX estudiante = new StudentJavaFX(dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, direccion, grado, genero, String.valueOf(seccion));
+            estudiantes.add(estudiante);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return estudiantes;
 }
+
+    
+}
+
 
    

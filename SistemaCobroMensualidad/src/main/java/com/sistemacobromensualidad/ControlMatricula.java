@@ -7,11 +7,14 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -27,7 +30,7 @@ public class ControlMatricula implements Initializable{
     @FXML
     private TableView<StudentJavaFX> studentTable;
     @FXML
-    private TableColumn<StudentJavaFX, Integer> DniColum;
+    private TableColumn<StudentJavaFX, String> DniColum;
     @FXML
     private TableColumn<StudentJavaFX, String> NomColum;
     @FXML
@@ -39,7 +42,9 @@ public class ControlMatricula implements Initializable{
     @FXML
     private TableColumn<StudentJavaFX, String> DireColum;
     @FXML
-    private TableColumn<StudentJavaFX, Integer> TeleColum;
+    private TableColumn<StudentJavaFX, String> GradoColum;
+    @FXML
+    private TableColumn<StudentJavaFX, String> SeccionColum;
     
     @FXML
     private TextField txtDni;
@@ -70,14 +75,13 @@ public class ControlMatricula implements Initializable{
     }
     
     private StudentJavaFX student;
-    private EstudiantePersistencia studentpersis;
     private Stage dialogStage;
     private boolean okClicked = false;
     private App app;
+    private ObservableList<StudentJavaFX> studentList = FXCollections.observableArrayList();
     
     @FXML
     public void initialize(){
-        
     }
     
     public void setDialogStage(Stage dialogStage){
@@ -90,14 +94,11 @@ public class ControlMatricula implements Initializable{
     
     public void setStudent(StudentJavaFX student){
         this.student = student;
-        /*tfdni.setText(Integer.toString(student.getDocumento()));
-        tfnombre.setText(student.getNombre());
-        tfappat.setText(student.getAppat());
-        tfapmat.setText(student.getApmat());*/
     }
     
-    public void getGrado(ActionEvent event) {
+    public int getGrado() {
         Integer mygrado = cbGrado.getValue();
+        return mygrado;
     }
 
     public char getSeccion() {
@@ -105,13 +106,13 @@ public class ControlMatricula implements Initializable{
         return myseccion.charAt(0);
     }
     
-    public Integer getGenero(){
-        Integer genero = 1;
+    public int getGenero(){
+        Integer genero = 0;
         if(Femenino.isSelected()){
-            genero = 1;
+            genero = 0;
         }
         else if(Masculino.isSelected()){
-            genero = 0;
+            genero = 1;
         }
         return genero;
     }
@@ -120,6 +121,31 @@ public class ControlMatricula implements Initializable{
         LocalDate myDate = dateFecha.getValue();
         String myFormattedDate = myDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         return myFormattedDate;
+    }
+    
+    private ObservableList<EstudiantePersistencia> estudianteData = FXCollections.observableArrayList();
+    
+    public void getData(){
+        EstudiantePersistencia estudiantePersistencia = new EstudiantePersistencia();
+    List<StudentJavaFX> estudiantes = estudiantePersistencia.obtenerEstudiantes(); // Obtener datos de la base de datos
+    
+    // Convertir los datos en objetos StudentJavaFX y agregarlos a la lista observable
+    for (StudentJavaFX estudiante : estudiantes) {
+        StudentJavaFX student = new StudentJavaFX();
+        student.setDni(estudiante.getDni());
+        student.setNombre(estudiante.getNombre());
+        student.setAppat(estudiante.getAppat());
+        student.setApmat(estudiante.getApmat());
+        student.setFecha(estudiante.getFecha());
+        student.setDireccion(estudiante.getDireccion());
+        student.setGenero(estudiante.getGenero());
+        student.setGrado(estudiante.getGrado());
+        student.setSeccion(String.valueOf(estudiante.getSeccion()));
+        studentList.add(student);
+    }
+    
+    // Enlazar la lista observable con la TableView
+    studentTable.setItems(studentList);
     }
     
     public boolean isOkClicked(){
@@ -135,6 +161,34 @@ public class ControlMatricula implements Initializable{
     }
     
     @FXML
+    private void btnRefresh(){
+        String url = "jdbc:mysql://localhost:3306/nombre_basedatos";
+        String usuario = "usuario";
+        String contraseña = "contraseña";
+        try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {            String query = "SELECT dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, grado, direccion, genero, seccion FROM estudiante";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+            String dni = resultSet.getString("dni");
+            String nombres = resultSet.getString("nombres");
+            String apellidoPaterno = resultSet.getString("apellidoPaterno");
+            String apellidoMaterno = resultSet.getString("apellidoMaterno");
+            String fnacimiento = resultSet.getString("fnacimiento");
+            int grado = resultSet.getInt("grado");
+            String direccion = resultSet.getString("direccion");
+            int genero = resultSet.getInt("genero");
+            String seccion = resultSet.getString("seccion");
+            
+            StudentJavaFX estudiante = new StudentJavaFX(dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, direccion, grado, genero, String.valueOf(seccion));
+            studentList.add(estudiante);
+        }
+        } catch (SQLException ex){
+            System.out.println("Error: "+ ex);
+        }
+        DniColum.setCellValueFactory(cellData -> cellData.getValue().dniProperty());
+    }
+    
+    @FXML
     private void buttonNuevo(){
         Limpiador();
     }
@@ -145,6 +199,8 @@ public class ControlMatricula implements Initializable{
     @FXML
     private void buttonGuardar() throws IOException{
         if(isInputValid()){
+            EstudiantePersistencia studentpersis = new EstudiantePersistencia();
+            
             String dni = txtDni.getText();
             String nombres = txtNombres.getText();
             String apellidoPaterno = txtApPaterno.getText();
@@ -152,70 +208,36 @@ public class ControlMatricula implements Initializable{
             String fnacimiento = getDate();
             String grado = String.valueOf(cbGrado.getValue());
             String direccion = txtDireccion.getText();
-            //Integer genero = getGenero();
             String genero = String.valueOf(getGenero());
-            //char seccion = getSeccion();
             String seccion = String.valueOf(getSeccion());
-
-            String url = "jdbc:mysql://localhost:3306/cobros";
-            String usuario = "root";
-            String contraseña = "";
-            //conexion 
-            try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {
-                String sql = "INSERT INTO estudiante (dni, nombres, apellidoPaterno, apellidoMaterno ,fnacimiento, grado, direccion, genero, seccion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                    statement.setString(1, dni);
-                    statement.setString(2, nombres);
-                    statement.setString(3, apellidoPaterno);
-                    statement.setString(4, apellidoMaterno);
-                    statement.setString(5, fnacimiento);
-                    statement.setString(6, String.valueOf(grado));
-                    statement.setString(7, direccion);
-                    statement.setString(8, String.valueOf(genero));
-                    statement.setString(9, seccion);
-                
-                    int filasAfectadas = statement.executeUpdate();
-                    if (filasAfectadas > 0) {
-                        System.out.println("Los datos se han guardado correctamente en la base de datos.");
-                    } else {
-                        System.out.println("No se pudieron guardar los datos en la base de datos.");
-                    }
-                    
-                }
-            } catch (SQLException e) {
-                System.out.println("No se pudo insertar en la base de datos.");
-            }
             
-            /*studentpersis.setDni(dni);
+            studentpersis.setDni(dni);
             studentpersis.setNombres(nombres);
             studentpersis.setApellidoPaterno(apellidoPaterno);
             studentpersis.setApellidoMaterno(apellidoMaterno);;
             studentpersis.setFnacimiento(fnacimiento);
-            studentpersis.setGrado(grado);
+            studentpersis.setGrado(getGrado());
             studentpersis.setDireccion(direccion);
-            studentpersis.setGenero(genero);
-            studentpersis.setSeccion(seccion);
-
-            System.out.println(studentpersis.getDni());
-            System.out.println(studentpersis.getNombres());
-            System.out.println(studentpersis.getApellidoPaterno());
-            System.out.println(studentpersis.getApellidoMaterno());
-            System.out.println(studentpersis.getFnacimiento());
-            System.out.println(studentpersis.getGrado());
-            System.out.println(studentpersis.getSeccion());
-            System.out.println(studentpersis.getGenero());
-            System.out.println(studentpersis.getSeccion());*/
-        }
-            /*student.setDocumento(Integer.parseInt(tfdoc.getText()));
-            student.setNombre(tfnombre.getText());
-            student.setAppat(tfappat.getText());
-            student.setApmat(tfapmat.getText());
-            student.setFecha(tffecha.getText());
-            student.setDireccion(tfdire.getText());
-            student.setTelefono(Integer.parseInt(tftele.getText()));
+            studentpersis.setGenero(getGenero());
+            studentpersis.setSeccion(getSeccion());
+            boolean error = studentpersis.InsertarEstudiante();
+            if(error){
+                Alert exito = new Alert(Alert.AlertType.INFORMATION);
+                exito.initOwner(dialogStage);
+                exito.setTitle("Informacion correcta");
+                exito.setHeaderText("Estudiante matriculado correctamente");
             
-            okClicked = true;
-            dialogStage.close();*/
+                exito.showAndWait();
+            }else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.initOwner(dialogStage);
+                alert.setTitle("Error!");
+                alert.setHeaderText("Estudiante no registrado");
+                alert.setContentText("Estudiante duplicado o campos vacios.");
+                
+                alert.showAndWait();
+            }
+        }
     }
     
     @FXML
@@ -236,6 +258,9 @@ public class ControlMatricula implements Initializable{
                 errorMessage += "No es valido el Documento, (Debe ser numero entero)!\n";
             }
         }
+        if(txtNombres.getText() == null || txtNombres.getText().length() == 0){
+            errorMessage += "No es valido el Nombre\n";
+        }
         if(txtApPaterno.getText() == null || txtApPaterno.getText().length() == 0){
             errorMessage += "No es valido el Apellido Paterno\n";
         }
@@ -245,6 +270,16 @@ public class ControlMatricula implements Initializable{
         if(txtDireccion.getText() == null || txtDireccion.getText().length() == 0){
             errorMessage += "No es valido la Direccion\n";
         }
+        if(dateFecha.getValue() == null){
+            errorMessage += "No es valida la Fecha de Nacimiento\n";
+        }
+        if(cbGrado.getValue() == null){
+            errorMessage += "No es valido el Grado\n";
+        }
+        if(cbSeccion.getValue() == null){
+            errorMessage += "No es valida la Sección\n";
+        }
+        
         
         if (errorMessage.length() == 0){
             return true;

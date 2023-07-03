@@ -6,122 +6,160 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class StudentJavaFX {
-    private final IntegerProperty dni; 
+    private final StringProperty dni;
     private final StringProperty nombre;
     private final StringProperty appat;
     private final StringProperty apmat;
     private final StringProperty fecha;
     private final StringProperty direccion;
-    private final IntegerProperty telefono;
-    private StringProperty genero;
+    private final IntegerProperty genero;
+    private final IntegerProperty grado;
+    private final StringProperty seccion;
     
     /**
      * Constructor por defecto
      */
     public StudentJavaFX(){
-        this(null,null,null);
+        this(null, null, null, null, null, null, null, null, null);
     }
     
     /**
-     * Constructor con algunos datos inciales
+     * Constructor con algunos datos iniciales
      * 
+     * @param dni
      * @param nombre
      * @param appat
      * @param apmat
+     * @param fecha
+     * @param direccion
+     * @param genero
+     * @param grado
+     * @param seccion
      */
-    public StudentJavaFX(String nombre, String appat, String apmat){
+    //StudentJavaFX estudiante = new StudentJavaFX(dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, grado, direccion, genero, String.valueOf(seccion));
+    
+    public StudentJavaFX(String dni, String nombre, String appat, String apmat, String fecha,
+                         String direccion, Integer genero, Integer grado, String seccion){
+        this.dni = new SimpleStringProperty(dni);
         this.nombre = new SimpleStringProperty(nombre);
         this.appat = new SimpleStringProperty(appat);
         this.apmat = new SimpleStringProperty(apmat);
-        
-        //Algunos datos inciales por conveniencia
-        this.direccion = new SimpleStringProperty("Alguna direccion");
-        this.telefono = new SimpleIntegerProperty(1564651);
-        this.dni = new SimpleIntegerProperty(777777);
-        this.fecha = new SimpleStringProperty("05/12/2011");
-        this.genero = new SimpleStringProperty("Humano");
+        this.fecha = new SimpleStringProperty(fecha);
+        this.direccion = new SimpleStringProperty(direccion);
+        this.genero = new SimpleIntegerProperty(genero);
+        this.grado = new SimpleIntegerProperty(grado);
+        this.seccion = new SimpleStringProperty(seccion);
     }
 
-    public IntegerProperty DocumentoProperty() {
-        return dni;
-    }
-    public void setDocumento (int documento){
-        this.dni.set(documento);
-    }
-    public int getDocumento(){
+    // Métodos getter y setter para cada propiedad
+    
+    public String getDni() {
         return dni.get();
     }
 
-    public StringProperty NombreProperty() {
-        return nombre;
+    public void setDni(String dni) {
+        this.dni.set(dni);
     }
-    public void setNombre (String nombre){
-        this.nombre.set(nombre);
+
+    public StringProperty dniProperty() {
+        return dni;
     }
-    public String getNombre(){
+
+    public String getNombre() {
         return nombre.get();
     }
-    
 
-    public StringProperty AppatProperty() {
-        return appat;
+    public void setNombre(String nombre) {
+        this.nombre.set(nombre);
     }
-    public void setAppat (String appat){
-        this.appat.set(appat);
+
+    public StringProperty nombreProperty() {
+        return nombre;
     }
-    public String getAppat(){
+
+    public String getAppat() {
         return appat.get();
     }
-    
-    public StringProperty ApmatProperty() {
-        return apmat;
-    }
-    public void setApmat (String apmat){
-        this.apmat.set(apmat);
-    }
-    public String getApmat(){
-        return apmat.get();
-    }
-    
-    public StringProperty FechaProperty() {
-        return fecha;
-    }
-    public void setFecha (String fecha){
-        this.fecha.set(fecha);
-    }
-    public String getFecha(){
-        return fecha.get();
-    }
-    
-    public StringProperty DireccionProperty() {
-        return direccion;
-    }
-    public void setDireccion (String direccion){
-        this.direccion.set(direccion);
-    }
-    public String getDireccion(){
-        return direccion.get();
-    }
-    
-    public IntegerProperty TelefonoProperty() {
-        return telefono;
-    }
-    public void setTelefono (int telefono){
-        this.telefono.set(telefono);
-    }
-    public int getTelefono(){
-        return telefono.get();
+
+    public void setAppat(String appat) {
+        this.appat.set(appat);
     }
 
-    public StringProperty GeneroProperty() {
+    public StringProperty appatProperty() {
+        return appat;
+    }
+
+    public String getApmat() {
+        return apmat.get();
+    }
+
+    public void setApmat(String apmat) {
+        this.apmat.set(apmat);
+    }
+
+    public StringProperty apmatProperty() {
+        return apmat;
+    }
+
+    public String getFecha() {
+        return fecha.get();
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha.set(fecha);
+    }
+
+    public StringProperty fechaProperty() {
+        return fecha;
+    }
+
+    public String getDireccion() {
+        return direccion.get();
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion.set(direccion);
+    }
+
+    public StringProperty direccionProperty() {
+        return direccion;
+    }
+
+    public Integer getGenero() {
+        return genero.get();
+    }
+
+    public void setGenero(Integer genero) {
+        this.genero.set(genero);
+    }
+
+    public IntegerProperty generoProperty() {
         return genero;
     }
 
-    public void setGenero(StringProperty genero) {
-        this.genero = genero;
+    public Integer getGrado() {
+        return grado.get();
     }
-    
-    public String getGenero(){
-        return genero.get();
+
+    public void setGrado(Integer grado) {
+        this.grado.set(grado);
+    }
+
+    public IntegerProperty gradoProperty() {
+        return grado;
+    }
+
+    public String getSeccion() {
+        return seccion.get();
+    }
+
+    public void setSeccion(String seccion) {
+        this.seccion.set(seccion);
+    }
+
+    public StringProperty seccionProperty() {
+        return seccion;
     }
 }
+
+

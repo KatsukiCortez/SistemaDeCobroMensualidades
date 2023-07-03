@@ -35,7 +35,7 @@ public class App extends Application {
     
     public App(){
         // Agregando datos
-        studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
+        /*studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
         studentData.add(new StudentJavaFX("Jose Alberto","Castillo","Rodriguez"));
         studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
         studentData.add(new StudentJavaFX("Roberto","Alvez","Garcia"));
@@ -46,7 +46,7 @@ public class App extends Application {
         studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
         studentData.add(new StudentJavaFX("Roberto","Alvez","Garcia"));
         studentData.add(new StudentJavaFX("Edward","Roque","Pena"));
-        studentData.add(new StudentJavaFX("Javier Nilson","De la cruz","Tintaya"));
+        studentData.add(new StudentJavaFX("Javier Nilson","De la cruz","Tintaya"));*/
     }
     
     public ObservableList<StudentJavaFX> getStudenData(){

@@ -45,9 +45,9 @@ public class ControladorListaEstudiantes {
     @FXML
     private void initialize(){
         nombreColumna.setCellValueFactory(
-                cellData -> cellData.getValue().NombreProperty());
+                cellData -> cellData.getValue().nombreProperty());
         appatColumna.setCellValueFactory(
-                cellData -> cellData.getValue().AppatProperty());
+                cellData -> cellData.getValue().appatProperty());
         
         // Limpiar datos al inicio
         showStudentDetails(null);

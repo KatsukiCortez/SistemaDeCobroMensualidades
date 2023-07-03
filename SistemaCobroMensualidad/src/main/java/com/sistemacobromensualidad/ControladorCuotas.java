@@ -61,7 +61,7 @@ public class ControladorCuotas {
         txtApMat.setText(student.getApmat());
         txtFecha.setText(student.getFecha());
         txtGrado.setText("Aun no asignado");
-        txtGenero.setText(student.getGenero());
+        //txtGenero.setText(student.getGenero());
         txtSeccion.setText("Aun no asignado");
     }
     
