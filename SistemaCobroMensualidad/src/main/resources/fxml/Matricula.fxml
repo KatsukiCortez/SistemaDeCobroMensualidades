@@ -30,9 +30,9 @@
       <TextField fx:id="txtNombres" layoutX="869.0" layoutY="93.0" prefHeight="37.0" prefWidth="275.0" AnchorPane.topAnchor="93.0" />
       <TextField fx:id="txtApMaterno" layoutX="869.0" layoutY="134.0" prefHeight="37.0" prefWidth="275.0" AnchorPane.topAnchor="134.0" />
       <TextField fx:id="txtDireccion" layoutX="869.0" layoutY="175.0" prefHeight="37.0" prefWidth="275.0" AnchorPane.topAnchor="175.0" />
-      <Button layoutX="895.0" layoutY="335.0" mnemonicParsing="false" onAction="#buttonNuevo" text="Nuevo" AnchorPane.bottomAnchor="232.0" AnchorPane.rightAnchor="474.0" />
+      <Button layoutX="664.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonNuevo" text="Nuevo" AnchorPane.bottomAnchor="233.0" AnchorPane.rightAnchor="705.0" />
       <Button layoutX="444.0" layoutY="273.0" mnemonicParsing="false" onAction="#buttonGuardar" prefHeight="34.0" prefWidth="115.0" text="Guardar" AnchorPane.bottomAnchor="233.0" AnchorPane.leftAnchor="444.0" AnchorPane.rightAnchor="901.0" />
-      <Button layoutX="671.0" layoutY="234.0" mnemonicParsing="false" onAction="#buttonCancel" text="Cancelar" AnchorPane.bottomAnchor="232.39999999999998" AnchorPane.leftAnchor="671.0" />
+      <Button layoutX="1051.0" layoutY="333.0" mnemonicParsing="false" onAction="#buttonCancel" text="Regresar" AnchorPane.bottomAnchor="234.0" AnchorPane.leftAnchor="1051.0" />
       <TableView fx:id="studentTable" layoutX="13.0" layoutY="256.0" prefHeight="200.0" prefWidth="1086.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="13.0">
         <columns>
           <TableColumn fx:id="DniColum" prefWidth="160.0" text="Documento" />
@@ -64,6 +64,6 @@
       <ChoiceBox fx:id="cbSeccion" layoutX="601.0" layoutY="253.0" prefWidth="150.0" styleClass="table-view" />
       <Label layoutX="530.0" layoutY="261.0" text="Sección:" />
       <Button layoutX="211.0" layoutY="333.0" mnemonicParsing="false" onAction="#btnRefresh" prefHeight="34.0" prefWidth="122.0" text="Refrescar" />
-      <Button layoutX="1102.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonPagar" text="Pagar" />
+      <Button layoutX="871.0" layoutY="333.0" mnemonicParsing="false" onAction="#buttonPagar" text="Pagar" />
    </children>
 </AnchorPane>
