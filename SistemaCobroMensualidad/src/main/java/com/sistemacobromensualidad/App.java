@@ -30,11 +30,14 @@ public class App extends Application {
     // Definimos las Variables
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private ObservableList<StudentJavaFX> studentData = FXCollections.observableArrayList();
+    private ObservableList<StudentJavaFX> studentList = FXCollections.observableArrayList();
     
     
     public App(){
         // Agregando datos
+        studentList.add(new StudentJavaFX("78548922", "candy", "callo", "huamani", "1998-03-24", "no tiene casa", 0, 1, "A"));
+        studentList.add(new StudentJavaFX("73317659", "yadir", "cortez", "huaman", "2001-01-08", "no tiene casa", 1, 5, "B"));
+        
         /*studentData.add(new StudentJavaFX("Jose Luis","Ramirez","Huanca"));
         studentData.add(new StudentJavaFX("Jose Alberto","Castillo","Rodriguez"));
         studentData.add(new StudentJavaFX("Paco","Maram","Lindsey"));
@@ -50,7 +53,7 @@ public class App extends Application {
     }
     
     public ObservableList<StudentJavaFX> getStudenData(){
-        return studentData;
+        return studentList;
     }
 
     // Con esto se ejecutara el programa al inicio

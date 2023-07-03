@@ -38,11 +38,11 @@ public class ControlMatricula implements Initializable{
     @FXML
     private TableColumn<StudentJavaFX, String> ApmatColum;
     @FXML
-    private TableColumn<StudentJavaFX, String> FechatColum;
+    private TableColumn<StudentJavaFX, String> FechaColum;
     @FXML
     private TableColumn<StudentJavaFX, String> DireColum;
     @FXML
-    private TableColumn<StudentJavaFX, String> GradoColum;
+    private TableColumn<StudentJavaFX, Integer> GradoColum;
     @FXML
     private TableColumn<StudentJavaFX, String> SeccionColum;
     
@@ -72,17 +72,46 @@ public class ControlMatricula implements Initializable{
     public void initialize(URL arg0, ResourceBundle arg1){
         cbGrado.getItems().addAll(grado);
         cbSeccion.getItems().addAll(seccion);
+        
+        studentList.add(new StudentJavaFX("78548922", "candy", "callo", "huamani", "1998-03-24", "no tiene casa", 0, 1, "A"));
+        studentList.add(new StudentJavaFX("73317659", "yadir", "cortez", "huaman", "2001-01-08", "no tiene casa", 1, 5, "B"));
+        
+        studentTable.setItems(studentList);
+        
+        DniColum.setCellValueFactory(cellData -> cellData.getValue().dniProperty());
+        NomColum.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        AppatColum.setCellValueFactory(cellData -> cellData.getValue().appatProperty());
+        ApmatColum.setCellValueFactory(cellData -> cellData.getValue().apmatProperty());
+        FechaColum.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
+        DireColum.setCellValueFactory(cellData -> cellData.getValue().direccionProperty());
+        //GradoColum.setCellValueFactory(cellData -> cellData.getValue().gradoProperty());
+        SeccionColum.setCellValueFactory(cellData -> cellData.getValue().seccionProperty());
     }
     
     private StudentJavaFX student;
     private Stage dialogStage;
     private boolean okClicked = false;
     private App app;
+    
+    
     private ObservableList<StudentJavaFX> studentList = FXCollections.observableArrayList();
     
-    @FXML
+    /*@FXML
     public void initialize(){
-    }
+        studentList.add(new StudentJavaFX("78548922", "candy", "callo", "huamani", "1998-03-24", "no tiene casa", 0, 1, "A"));
+        studentList.add(new StudentJavaFX("73317659", "yadir", "cortez", "huaman", "2001-01-08", "no tiene casa", 1, 5, "B"));
+        
+        studentTable.setItems(studentList);
+        
+        DniColum.setCellValueFactory(cellData -> cellData.getValue().dniProperty());
+        NomColum.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        AppatColum.setCellValueFactory(cellData -> cellData.getValue().appatProperty());
+        ApmatColum.setCellValueFactory(cellData -> cellData.getValue().apmatProperty());
+        FechaColum.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
+        DireColum.setCellValueFactory(cellData -> cellData.getValue().direccionProperty());
+        //GradoColum.setCellValueFactory(cellData -> cellData.getValue().gradoProperty());
+        SeccionColum.setCellValueFactory(cellData -> cellData.getValue().seccionProperty());
+    }*/
     
     public void setDialogStage(Stage dialogStage){
         this.dialogStage = dialogStage;
@@ -90,6 +119,8 @@ public class ControlMatricula implements Initializable{
     
     public void setApp(App app) {
         this.app = app;
+        
+        //studentTable.setItems(app.getStudenData());
     }
     
     public void setStudent(StudentJavaFX student){
@@ -123,31 +154,6 @@ public class ControlMatricula implements Initializable{
         return myFormattedDate;
     }
     
-    private ObservableList<EstudiantePersistencia> estudianteData = FXCollections.observableArrayList();
-    
-    public void getData(){
-        EstudiantePersistencia estudiantePersistencia = new EstudiantePersistencia();
-    List<StudentJavaFX> estudiantes = estudiantePersistencia.obtenerEstudiantes(); // Obtener datos de la base de datos
-    
-    // Convertir los datos en objetos StudentJavaFX y agregarlos a la lista observable
-    for (StudentJavaFX estudiante : estudiantes) {
-        StudentJavaFX student = new StudentJavaFX();
-        student.setDni(estudiante.getDni());
-        student.setNombre(estudiante.getNombre());
-        student.setAppat(estudiante.getAppat());
-        student.setApmat(estudiante.getApmat());
-        student.setFecha(estudiante.getFecha());
-        student.setDireccion(estudiante.getDireccion());
-        student.setGenero(estudiante.getGenero());
-        student.setGrado(estudiante.getGrado());
-        student.setSeccion(String.valueOf(estudiante.getSeccion()));
-        studentList.add(student);
-    }
-    
-    // Enlazar la lista observable con la TableView
-    studentTable.setItems(studentList);
-    }
-    
     public boolean isOkClicked(){
         return okClicked;
     }
@@ -162,10 +168,11 @@ public class ControlMatricula implements Initializable{
     
     @FXML
     private void btnRefresh(){
-        String url = "jdbc:mysql://localhost:3306/nombre_basedatos";
-        String usuario = "usuario";
-        String contraseña = "contraseña";
-        try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {            String query = "SELECT dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, grado, direccion, genero, seccion FROM estudiante";
+        String url = "jdbc:mysql://localhost:3306/cobros";
+        String usuario = "root";
+        String contraseña = "";
+        try (Connection connection = DriverManager.getConnection(url, usuario, contraseña)) {
+            String query = "SELECT dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, grado, direccion, genero, seccion FROM estudiante";
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -179,13 +186,20 @@ public class ControlMatricula implements Initializable{
             int genero = resultSet.getInt("genero");
             String seccion = resultSet.getString("seccion");
             
-            StudentJavaFX estudiante = new StudentJavaFX(dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, direccion, grado, genero, String.valueOf(seccion));
+            StudentJavaFX estudiante = new StudentJavaFX(dni, nombres, apellidoPaterno, apellidoMaterno, fnacimiento, direccion, genero, grado, String.valueOf(seccion));
             studentList.add(estudiante);
         }
         } catch (SQLException ex){
             System.out.println("Error: "+ ex);
         }
         DniColum.setCellValueFactory(cellData -> cellData.getValue().dniProperty());
+        NomColum.setCellValueFactory(cellData -> cellData.getValue().nombreProperty());
+        AppatColum.setCellValueFactory(cellData -> cellData.getValue().appatProperty());
+        ApmatColum.setCellValueFactory(cellData -> cellData.getValue().apmatProperty());
+        FechaColum.setCellValueFactory(cellData -> cellData.getValue().fechaProperty());
+        DireColum.setCellValueFactory(cellData -> cellData.getValue().direccionProperty());
+        //GradoColum.setCellValueFactory(cellData -> cellData.getValue().gradoProperty());
+        SeccionColum.setCellValueFactory(cellData -> cellData.getValue().seccionProperty());
     }
     
     @FXML
@@ -279,7 +293,6 @@ public class ControlMatricula implements Initializable{
         if(cbSeccion.getValue() == null){
             errorMessage += "No es valida la Sección\n";
         }
-        
         
         if (errorMessage.length() == 0){
             return true;
